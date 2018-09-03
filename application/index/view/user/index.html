@@ -44,18 +44,20 @@
                                 <!-- Success -->
                                 <div class="basicinfo">
                                     <div class="row">
-                                        <div class="col-xs-4 col-md-2">{:__('Lv')}</div>
-                                        <div class="col-xs-8 col-md-4"><a href="javascript:;" class="viewlv">{$user.level}</a>
+                                        <div class="col-xs-4 col-md-2">账户余额</div>
+                                        <div class="col-xs-8 col-md-4">
+                                            {$user.balance}&nbsp;&nbsp;
+                                            <button class="tixian btn btn-primary btn-xs right">立即提现</button>
                                         </div>
-                                        <div class="col-xs-4 col-md-2">{:__('Score')}</div>
-                                        <div class="col-xs-8 col-md-4"><a href="javascript:;" class="viewscore">{$user.score}</a>
+                                        <div class="col-xs-4 col-md-2">待结算余额</div>
+                                        <div class="col-xs-8 col-md-4"><a href="javascript:;" class="viewscore" data-toggle="tooltip" data-placement="right" data-original-title="待结算余额将在第二天存入为余额">{$user.blocked_balances}</a>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-xs-4 col-md-2">提现中</div>
+                                        <div class="col-xs-8 col-md-4">{$user.withdrawal_balances} </div>
                                         <div class="col-xs-4 col-md-2">{:__('Successions')}</div>
                                         <div class="col-xs-8 col-md-4">{$user.successions} {:__('Day')}</div>
-                                        <div class="col-xs-4 col-md-2">{:__('Maxsuccessions')}</div>
-                                        <div class="col-xs-8 col-md-4">{$user.maxsuccessions} {:__('Day')}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-4 col-md-2">{:__('Logintime')}</div>
@@ -72,3 +74,30 @@
         </div>
     </div>
 </div>
+
+<script type="text/html" id="tixianhtml">
+    <form id="tixian-form" class="form-horizontal form-layer" method="POST" action="{:url('index/user/tixian')}">
+        <div class="form-body">
+            <div class="bs-component">
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p>您可提现金额为：<code>{$user.balance}</code>。申请提现后将在1-2个工作日内转账到您的支付宝!</p>
+                </div>
+            </div>
+            <div class="form-group" data-type="email">
+                <label for="email" class="control-label col-xs-12 col-sm-3">申请金额:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" id="email" name="amount" value="" data-rule="required; integer(+);" placeholder="">
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group form-footer">
+            <label class="control-label col-xs-12 col-sm-3"></label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="submit" class="btn btn-md btn-info">{:__('Ok')}</button>
+            </div>
+        </div>
+    </form>
+</script>

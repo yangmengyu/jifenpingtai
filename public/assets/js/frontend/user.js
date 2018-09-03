@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, undefined, Frontend, Form, Template) {
+define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function ($, undefined, Frontend, Form, Template, Table) {
     var validatoroptions = {
         invalid: function (form, errors) {
             $.each(errors, function (i, j) {
@@ -96,6 +96,64 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
                     }
                 });
             });
+        },
+        index:function () {
+            $(document).on("click", ".tixian", function () {
+                var id = "tixianhtml";
+                var content = Template(id, {});
+                Layer.open({
+                    type: 1,
+                    title: '申请提现',
+                    area: ["355px", "355px"],
+                    content: content,
+                    success: function (layero) {
+                        Form.api.bindevent($("#tixian-form", layero), function (data,res) {
+                            Layer.closeAll();
+                            if(res.code === 1){
+                                setTimeout(function(){
+                                    location.reload();
+                                },1500);
+                            }
+
+                        });
+                    }
+                });
+            });
+        },
+        withdraw:function () {
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'user/withdraw',
+
+                    table: 'withdraw',
+                }
+            });
+
+            var table = $("#table");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showColumns: false,
+                showExport: false,
+                columns: [
+                    [
+                        {field: 'id', title: __('Id')},
+                        {field: 'amount', title: '金额',operate:'BETWEEN'},
+                        {field: 'status', title: '状态', searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'createtime', title: '申请时间', operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        /*{field: 'user.username', title: __('User.username')},
+                        {field: 'user.nickname', title: __('User.nickname')},*/
+                    ]
+                ]
+            });
+
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
         }
     };
     return Controller;

@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\admin\model\Withdraw;
 use app\common\controller\Frontend;
 use think\Config;
 use think\Cookie;
@@ -18,6 +19,7 @@ class User extends Frontend
     protected $layout = 'default';
     protected $noNeedLogin = ['login', 'register', 'third'];
     protected $noNeedRight = ['*'];
+    protected $model = null;
 
     public function _initialize()
     {
@@ -269,5 +271,70 @@ class User extends Frontend
         $this->view->assign('title', __('Change password'));
         return $this->view->fetch();
     }
+    /**
+     * 会员提现
+     */
+    public function tixian(){
+        if ($this->request->isPost()) {
+            $user_id = $this->auth->id;
+            $amount = $this->request->post("amount");
+            $userinfo = \app\admin\model\User::get($user_id);
+            $balance = $userinfo->balance;
+            if($amount>$balance){
+                $this->error('您好像没有那么多余额吧!');
+            }
 
+            $res = Withdraw::create([
+                'user_id'=>$user_id,
+                'amount'=>$amount,
+            ]);
+            if($res){
+                $userinfo->balance = $userinfo->balance-$amount;
+                $userinfo->withdrawal_balances = $userinfo->withdrawal_balances+$amount;
+                $userinfo->save();
+                $this->success('申请成功');
+            }else{
+                $this->error('申请失败');
+            }
+        }
+    }
+    /**
+     * 用户提现列表
+    */
+    public function withdraw(){
+        $this->model = new \app\admin\model\Withdraw;
+        $this->view->assign("statusList", $this->model->getStatusList());
+        //当前是否为关联查询
+        $this->relationSearch = true;
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
+        if ($this->request->isAjax())
+        {
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->with(['user'])
+                ->where($where)
+                ->where('user_id',$this->auth->id)
+                ->order($sort, $order)
+                ->count();
+
+            $list = $this->model
+                ->with(['user'])
+                ->where($where)
+                ->where('user_id',$this->auth->id)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+
+            foreach ($list as $row) {
+
+                $row->getRelation('user')->visible(['username','nickname']);
+            }
+            $list = collection($list)->toArray();
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
 }

@@ -3,6 +3,8 @@
 namespace app\admin\controller\user;
 
 use app\common\controller\Backend;
+use app\common\library\Auth;
+use think\Validate;
 
 /**
  * 会员管理
@@ -74,5 +76,50 @@ class User extends Backend
         $this->view->assign('groupList', build_select('row[group_id]', \app\admin\model\UserGroup::column('id,name'), $row['group_id'], ['class' => 'form-control selectpicker']));
         return parent::edit($ids);
     }
+    /**
+     * 添加
+     */
+    public function add(){
+        if ($this->request->isPost()) {
+            $username = $this->request->post('username');
+            $nickname = $this->request->post('nickname');
+            $password = $this->request->post('password');
+            $mobile = $this->request->post('mobile');
+            $discount = $this->request->post('discount');
+            $rule = [
+                'username'  => 'require|length:3,30',
+                'password'  => 'require|length:6,30',
+                'mobile'    => 'regex:/^1\d{10}$/',
+                '__token__' => 'token',
+            ];
 
+            $msg = [
+                'username.require' => '用户名不能是空的',
+                'username.length'  => '用户名必须是3到30个字符',
+                'password.require' => '密码不能是空的',
+                'password.length'  => '密码必须是6到30个字符',
+                'mobile'           => '手机号是不正确的',
+            ];
+            $data = [
+                'username'  => $username,
+                'password'  => $password,
+                'mobile'    => $mobile,
+            ];
+            $validate = new Validate($rule, $msg);
+            $result = $validate->check($data);
+            if (!$result) {
+                $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
+            }
+            $params['nickname'] = $nickname;
+            $params['group_id'] = 1;
+            $params['discount'] = $discount;
+            $this->auth = new Auth();
+            if ($this->auth->register($username,$password,'',$mobile,$params)){
+                $this->success('添加成功');
+            }else{
+                $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
+            }
+        }
+        return $this->view->fetch();
+    }
 }

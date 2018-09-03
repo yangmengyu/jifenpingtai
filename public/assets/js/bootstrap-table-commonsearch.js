@@ -66,7 +66,7 @@
                 vObjCol.operate = that.options.renderDefault && operate ? operate : (typeof vObjCol.operate === 'undefined' ? '=' : vObjCol.operate);
                 ColumnsForSearch.push(vObjCol);
 
-                htmlForm.push('<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">');
+                htmlForm.push('<div class="form-group col-xs-12 col-sm-6 col-md-4">');
                 htmlForm.push(sprintf('<label for="%s" class="control-label col-xs-4">%s</label>', vObjCol.field, vObjCol.title));
                 htmlForm.push('<div class="col-xs-8">');
 
@@ -120,7 +120,7 @@
                 htmlForm.push('</div>');
             }
         }
-        htmlForm.push('<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">');
+        htmlForm.push('<div class="form-group col-xs-12 col-sm-6 col-md-4">');
         htmlForm.push(createFormBtn(that).join(''));
         htmlForm.push('</div>');
         htmlForm.push('</div>');
