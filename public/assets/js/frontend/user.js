@@ -144,6 +144,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                         {field: 'id', title: __('Id')},
                         {field: 'amount', title: '金额',operate:'BETWEEN'},
                         {field: 'status', title: '状态', searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'remark', title: '备注'},
                         {field: 'createtime', title: '申请时间', operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         /*{field: 'user.username', title: __('User.username')},
                         {field: 'user.nickname', title: __('User.nickname')},*/
@@ -154,6 +155,58 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+        },
+        myuser:function () {
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'user/myuser',
+                    add_url: 'user/add',
+                    edit_url: 'user/edit',
+                    del_url: 'user/del',
+                    table: 'user',
+                }
+            });
+
+            var table = $("#table");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showColumns: false,
+                showExport: false,
+                columns: [
+                    [
+                        {field: 'id', title: __('Id'), sortable: true},
+                        {field: 'username', title: __('Username'), operate: 'LIKE'},
+                        {field: 'nickname', title: __('Nickname'), operate: 'LIKE'},
+                        /*{field: 'email', title: __('Email'), operate: 'LIKE'},*/
+                        {field: 'mobile', title: __('Mobile'), operate: 'LIKE'},
+                        /*{field: 'avatar', title: __('Avatar'), formatter: Table.api.formatter.image, operate: false},*/
+                        /*{field: 'level', title: __('Level'), operate: 'BETWEEN', sortable: true},*/
+                        /*{field: 'gender', title: __('Gender'), visible: false, searchList: {1: __('Male'), 0: __('Female')}},*/
+                        /*{field: 'score', title: __('Score'), operate: 'BETWEEN', sortable: true},*/
+                        {field: 'status', title: __('Status'), formatter: Table.api.formatter.status, searchList: {normal: __('Normal'), hidden: __('Hidden')}},
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                    ]
+                ]
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+        },
+        add: function () {
+            Controller.api.bindevent();
+        },
+        edit: function () {
+            Controller.api.bindevent();
+        },
+        api: {
+            bindevent: function () {
+                Form.api.bindevent($("form[role=form]"));
+            }
         }
     };
     return Controller;

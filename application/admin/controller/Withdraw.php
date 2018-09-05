@@ -23,6 +23,7 @@ class Withdraw extends Backend
         parent::_initialize();
         $this->model = new \app\admin\model\Withdraw;
         $this->view->assign("statusList", $this->model->getStatusList());
+        $this->view->assign("typeList", $this->model->getTypeList());
     }
     
     /**
@@ -70,6 +71,7 @@ class Withdraw extends Backend
             $result = array("total" => $total, "rows" => $list);
 
             return json($result);
+
         }
         return $this->view->fetch();
     }

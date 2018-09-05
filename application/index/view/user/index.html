@@ -50,14 +50,14 @@
                                             <button class="tixian btn btn-primary btn-xs right">立即提现</button>
                                         </div>
                                         <div class="col-xs-4 col-md-2">待结算余额</div>
-                                        <div class="col-xs-8 col-md-4"><a href="javascript:;" class="viewscore" data-toggle="tooltip" data-placement="right" data-original-title="待结算余额将在第二天存入为余额">{$user.blocked_balances}</a>
+                                        <div class="col-xs-8 col-md-4"><a href="javascript:;" class="viewscore" data-toggle="tooltip" data-placement="top" data-original-title="待结算余额将在第二天存入为余额">{$user.blocked_balances}</a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-4 col-md-2">提现中</div>
                                         <div class="col-xs-8 col-md-4">{$user.withdrawal_balances} </div>
-                                        <div class="col-xs-4 col-md-2">{:__('Successions')}</div>
-                                        <div class="col-xs-8 col-md-4">{$user.successions} {:__('Day')}</div>
+                                        <div class="col-xs-4 col-md-2">积分</div>
+                                        <div class="col-xs-8 col-md-4"><a href="{:url('user/scorelog')}" class="viewscore" data-toggle="tooltip" data-placement="top"  data-original-title="查看积分日志">{$user.score}</a></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-4 col-md-2">{:__('Logintime')}</div>
@@ -91,7 +91,15 @@
                     <span class="msg-box"></span>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="" class="control-label col-xs-12 col-sm-3">提现方式:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="radio">
+                        <label for="type-alipay"><input id="type-alipay" checked="checked" name="type"   type="radio" value="alipay"> 支付宝</label>
+                        <label for="type-bank"><input id="type-bank" name="type" type="radio"   value="bank"> 银行卡</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="form-group form-footer">
             <label class="control-label col-xs-12 col-sm-3"></label>

@@ -4,6 +4,9 @@ namespace app\index\controller;
 
 use app\admin\model\Withdraw;
 use app\common\controller\Frontend;
+use app\common\library\Auth;
+use app\common\model\ScoreLog;
+use fast\Random;
 use think\Config;
 use think\Cookie;
 use think\Hook;
@@ -20,7 +23,7 @@ class User extends Frontend
     protected $noNeedLogin = ['login', 'register', 'third'];
     protected $noNeedRight = ['*'];
     protected $model = null;
-
+    protected $searchFields = 'id,username,nickname,mobile';
     public function _initialize()
     {
         parent::_initialize();
@@ -75,14 +78,12 @@ class User extends Frontend
         if ($this->request->isPost()) {
             $username = $this->request->post('username');
             $password = $this->request->post('password');
-            $email = $this->request->post('email');
             $mobile = $this->request->post('mobile', '');
             $captcha = $this->request->post('captcha');
             $token = $this->request->post('__token__');
             $rule = [
                 'username'  => 'require|length:3,30',
                 'password'  => 'require|length:6,30',
-                'email'     => 'require|email',
                 'mobile'    => 'regex:/^1\d{10}$/',
                 'captcha'   => 'require|captcha',
                 '__token__' => 'token',
@@ -95,13 +96,11 @@ class User extends Frontend
                 'password.length'  => 'Password must be 6 to 30 characters',
                 'captcha.require'  => 'Captcha can not be empty',
                 'captcha.captcha'  => 'Captcha is incorrect',
-                'email'            => 'Email is incorrect',
                 'mobile'           => 'Mobile is incorrect',
             ];
             $data = [
                 'username'  => $username,
                 'password'  => $password,
-                'email'     => $email,
                 'mobile'    => $mobile,
                 'captcha'   => $captcha,
                 '__token__' => $token,
@@ -111,7 +110,8 @@ class User extends Frontend
             if (!$result) {
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
-            if ($this->auth->register($username, $password, $email, $mobile)) {
+            $params['status'] = 'locked';
+            if ($this->auth->register($username, $password, '', $mobile,$params)) {
                 $synchtml = '';
                 ////////////////同步到Ucenter////////////////
                 if (defined('UC_STATUS') && UC_STATUS) {
@@ -214,6 +214,10 @@ class User extends Frontend
      */
     public function profile()
     {
+
+        $userModel = new \app\common\model\User();
+        $bankList = build_select('bankname', $userModel->getBankName(), $this->auth->bankname, ['class' => '']);
+        $this->view->assign('bankList', $bankList);
         $this->view->assign('title', __('Profile'));
         return $this->view->fetch();
     }
@@ -278,6 +282,8 @@ class User extends Frontend
         if ($this->request->isPost()) {
             $user_id = $this->auth->id;
             $amount = $this->request->post("amount");
+            $type = $this->request->post("type");
+            dump($type);exit;
             $userinfo = \app\admin\model\User::get($user_id);
             $balance = $userinfo->balance;
             if($amount>$balance){
@@ -335,6 +341,176 @@ class User extends Frontend
 
             return json($result);
         }
+        return $this->view->fetch();
+    }
+    /**
+     * 我的用户
+     */
+    public function myuser(){
+
+        $this->model = new \app\admin\model\User();
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
+        if ($this->request->isAjax())
+        {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField'))
+            {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->where($where)
+                ->order($sort, $order)
+                ->count();
+            $list = $this->model
+                ->where($where)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+            foreach ($list as $k => $v)
+            {
+                $v->hidden(['password', 'salt']);
+            }
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
+        }
+        return $this->view->fetch();
+    }
+    /*
+     * 添加下级用户
+     * */
+    public function add(){
+        $this->view->engine->layout(false);
+        if ($this->request->isAjax())
+        {
+            $username = $this->request->post('username');
+            $nickname = $this->request->post('nickname');
+            $password = $this->request->post('password');
+            $mobile = $this->request->post('mobile');
+            $discount = $this->request->post('discount');
+            $rule = [
+                'username'  => 'require|length:3,30',
+                'password'  => 'require|length:6,30',
+                'mobile'    => 'regex:/^1\d{10}$/',
+                '__token__' => 'token',
+            ];
+
+            $msg = [
+                'username.require' => '用户名不能是空的',
+                'username.length'  => '用户名必须是3到30个字符',
+                'password.require' => '密码不能是空的',
+                'password.length'  => '密码必须是6到30个字符',
+                'mobile'           => '手机号是不正确的',
+            ];
+            $data = [
+                'username'  => $username,
+                'password'  => $password,
+                'mobile'    => $mobile,
+            ];
+            $validate = new Validate($rule, $msg);
+            $result = $validate->check($data);
+            if (!$result) {
+                $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
+            }
+            $params['nickname'] = $nickname;
+            $params['group_id'] = 2;
+            $params['discount'] = $discount;
+            $params['pid'] = $this->auth->id;
+
+            if ($this->auth->register($username,$password,'',$mobile,$params)){
+                $this->success('添加成功');
+            }else{
+                $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
+            }
+        }
+        return $this->view->fetch();
+    }
+    /*
+    * 修改下级会员
+    * */
+    public function edit($ids = NULL){
+        $this->view->engine->layout(false);
+        $this->model = new \app\admin\model\User();
+        $row = $this->model->get($ids);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        if ($this->request->isAjax())
+        {
+            $auth = new Auth();
+            $nickname = $this->request->post('nickname');
+            $password = $this->request->post('password');
+            $mobile = $this->request->post('mobile');
+            $discount = $this->request->post('discount');
+            $status = $this->request->post('status');
+            $rule = [
+                'nickname'  => 'require',
+                'discount'  => 'require',
+                'password'  => 'length:6,30',
+                'mobile'    => 'regex:/^1\d{10}$/',
+                '__token__' => 'token',
+            ];
+
+            $msg = [
+                'nickname.require' => '昵称不能是空的',
+                'discount.require' => '费率不能是空的',
+                'password.length'  => '密码必须是6到30个字符',
+                'mobile'           => '手机号是不正确的',
+            ];
+            $data = [
+                'nickname'  => $nickname,
+                'password'  => $password,
+                'mobile'    => $mobile,
+                'discount'    => $discount,
+            ];
+            $validate = new Validate($rule, $msg);
+            $result = $validate->check($data);
+            if (!$result) {
+                $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
+            }
+            $params = [
+                'nickname '=> $nickname,
+                'mobile' => $mobile,
+                'discount' => $discount,
+                'password' => $password,
+                'status' => $status
+            ];
+            $result = $row->allowField(true)->save($params);
+            if ($result !== false) {
+                $this->success();
+            } else {
+                $this->error($row->getError());
+            }
+        }
+        $this->view->assign('row',$row);
+        return $this->view->fetch();
+    }
+    /*
+    * 删除下级会员
+    * */
+    public function del($ids = NULL){
+        $auth = new Auth();
+        $result = $auth->delete($ids);
+        if ($result !== false) {
+            $this->success();
+        } else {
+            $this->error($auth->getError());
+        }
+    }
+    /*
+    * 签到页面
+    * */
+    public function sign(){
+        $this->view->assign('title', '签到');
+        return $this->view->fetch();
+    }
+    /*
+     * 积分日志
+     * */
+    public function scorelog(){
+        $list = ScoreLog::where('user_id',$this->auth->id)->paginate(10);
+        $this->assign('list',$list);
         return $this->view->fetch();
     }
 }

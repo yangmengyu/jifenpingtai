@@ -2,6 +2,7 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\User;
 use app\common\controller\Backend;
 use think\Config;
 
@@ -33,8 +34,9 @@ class Dashboard extends Backend
         Config::parse($addonComposerCfg, "json", "composer");
         $config = Config::get("composer");
         $addonVersion = isset($config['version']) ? $config['version'] : __('Unknown');
+        $totaluser = User::count();
         $this->view->assign([
-            'totaluser'        => 35200,
+            'totaluser'        => $totaluser,
             'totalviews'       => 219390,
             'totalorder'       => 32143,
             'totalorderamount' => 174800,

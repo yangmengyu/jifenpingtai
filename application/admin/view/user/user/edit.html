@@ -88,7 +88,7 @@
     <div class="form-group">
         <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden')], $row['status'])}
+            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden'),'locked'=>__('Locked')], $row['status'])}
         </div>
     </div>
     <div class="form-group layer-footer">

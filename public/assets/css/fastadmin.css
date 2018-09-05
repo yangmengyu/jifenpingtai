@@ -189,8 +189,6 @@ a:focus {
   font-size: 22px;
 }
 .page-header > small {
-  color: #666;
-  display: block;
   margin-top: 5px;
 }
 /*
@@ -5829,8 +5827,5 @@ fieldset[disabled] .btn-yahoo.active {
     white-space: normal !important;
   }
 }
-.columns-right{
-  margin-top:0 !important;
-  margin-bottom:0 !important;
-}
+
 /*# sourceMappingURL=../css/fastadmin.css.map */

@@ -300,3 +300,41 @@ if (!function_exists('var_export_short')) {
     }
 
 }
+
+if (!function_exists('build_select')) {
+
+    /**
+     * 生成下拉列表
+     * @param string $name
+     * @param mixed $options
+     * @param mixed $selected
+     * @param mixed $attr
+     * @return string
+     */
+    function build_select($name, $options, $selected = [], $attr = [])
+    {
+        $options = is_array($options) ? $options : explode(',', $options);
+        $selected = is_array($selected) ? $selected : explode(',', $selected);
+        return Form::select($name, $options, $selected, $attr);
+    }
+}
+if (!function_exists('build_radios')) {
+
+    /**
+     * 生成单选按钮组
+     * @param string $name
+     * @param array $list
+     * @param mixed $selected
+     * @return string
+     */
+    function build_radios($name, $list = [], $selected = null)
+    {
+        $html = [];
+        $selected = is_null($selected) ? key($list) : $selected;
+        $selected = is_array($selected) ? $selected : explode(',', $selected);
+        foreach ($list as $k => $v) {
+            $html[] = sprintf(Form::label("{$name}-{$k}", "%s {$v}"), Form::radio($name, $k, in_array($k, $selected), ['id' => "{$name}-{$k}"]));
+        }
+        return '<div class="radio">' . implode(' ', $html) . '</div>';
+    }
+}

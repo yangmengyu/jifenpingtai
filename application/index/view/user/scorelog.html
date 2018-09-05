@@ -1,0 +1,33 @@
+
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default panel-intro">
+                <div class="panel-body">
+                    <h2 class="page-header">
+                        积分日志
+                        <small class="text-danger">总积分：{$user.score} </small>
+                        <a href="javascript:;" class="btn btn-success btn-transfer pull-right" data-toggle="tooltip" data-placement="top" data-original-title="暂未开放，敬请期待"><i class="fa fa-exchange"></i> 积分兑换</a>
+                    </h2>
+                    <div class="bs-component">
+                        {volist name="list" id="v"}
+                        <blockquote>
+                            <p>{$v.memo}</p>
+                            <p class="text-success">积分：+{$v.score}</p>
+                            <small>操作时间：{$v.createtime|date="Y-m-d H:i:s",###} </small>
+                        </blockquote>
+                        {/volist}
+                        <div class="pager">{$list->render()}</div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

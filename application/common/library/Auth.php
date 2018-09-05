@@ -207,7 +207,7 @@ class Auth
             Token::set($this->_token, $user->id, $this->keeptime);
 
             //注册成功的事件
-            Hook::listen("user_register_successed", $this->_user);
+            /*Hook::listen("user_register_successed", $this->_user);*/
 
             return TRUE;
         }
@@ -510,7 +510,7 @@ class Auth
                 });
         if ($result)
         {
-            Hook::listen("user_delete_successed", $user);
+            /*Hook::listen("user_delete_successed", $user);*/
         }
         return $result ? TRUE : FALSE;
     }

@@ -162,6 +162,12 @@ class User extends Api
         $nickname = $this->request->request('nickname');
         $bio = $this->request->request('bio');
         $avatar = $this->request->request('avatar');
+
+        $bankusername = $this->request->request('bankusername');
+        $bankname = $this->request->request('bankname');
+        $bankcode = $this->request->request('bankcode');
+        $alipay = $this->request->request('alipay');
+
         $exists = \app\common\model\User::where('username', $username)->where('id', '<>', $this->auth->id)->find();
         if ($exists)
         {
@@ -171,6 +177,12 @@ class User extends Api
         $user->nickname = $nickname;
         $user->bio = $bio;
         $user->avatar = $avatar;
+
+        $user->bankusername = $avatar;
+        $user->bankname = $avatar;
+        $user->bankcode = $avatar;
+        $user->alipay = $alipay;
+
         $user->save();
         $this->success();
     }

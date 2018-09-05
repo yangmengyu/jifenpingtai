@@ -20,14 +20,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="header-navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://www.fastadmin.net" target="_blank">{:__('Home')}</a></li>
-                        <li><a href="https://www.fastadmin.net/store.html" target="_blank">{:__('Store')}</a></li>
-                        <li><a href="https://www.fastadmin.net/service.html" target="_blank">{:__('Services')}</a></li>
-                        <li><a href="https://www.fastadmin.net/download.html" target="_blank">{:__('Download')}</a></li>
-                        <li><a href="https://www.fastadmin.net/demo.html" target="_blank">{:__('Demo')}</a></li>
-                        <li><a href="https://www.fastadmin.net/donate.html" target="_blank">{:__('Donation')}</a></li>
-                        <li><a href="https://forum.fastadmin.net" target="_blank">{:__('Forum')}</a></li>
-                        <li><a href="https://doc.fastadmin.net" target="_blank">{:__('Docs')}</a></li>
+                        <li><a href="{:url('/')}">主页</a></li>
+                        <li><a href="https://www.fastadmin.net/store.html" >积分兑换</a></li>
+
                         <li class="dropdown">
                             {if $user}
                             <a href="{:url('user/index')}" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px;height: 50px;">

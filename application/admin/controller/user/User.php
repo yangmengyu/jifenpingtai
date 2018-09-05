@@ -56,6 +56,7 @@ class User extends Backend
                     ->select();
             foreach ($list as $k => $v)
             {
+                $v->pid = $this->model->getUserInfo($v->pid,'nickname');
                 $v->hidden(['password', 'salt']);
             }
             $result = array("total" => $total, "rows" => $list);

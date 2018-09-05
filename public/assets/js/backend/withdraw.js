@@ -28,6 +28,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'user.nickname', title: __('User_id')},
                         {field: 'amount', title: __('Amount')},
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'type', title: __('Type'), searchList: {"alipay":__('Type alipay'),"bank":__('Type bank')}, formatter: Table.api.formatter.normal},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         /*{field: 'user.username', title: __('User.username')},

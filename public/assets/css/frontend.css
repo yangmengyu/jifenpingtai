@@ -475,4 +475,25 @@ main.content {
     line-height: 30px;
   }
 }
+.columns-right{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+.layui-layer-fast .layui-layer-footer{
+  padding: 8px 20px;
+  background-color: #ecf0f1;
+  height: auto;
+  text-align: inherit !important;
+}
+.pager li > a, .pager li > span {
+  background: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 0.25em;
+  padding: .5em .93em;
+  font-size: 14px;
+}
+.pager li {
+  margin: 0 .4em;
+  display: inline-block;
+}
 /*# sourceMappingURL=../css/frontend.css.map */

@@ -24,13 +24,13 @@ class Frontend extends Controller
      * 无需登录的方法,同时也就不需要鉴权了
      * @var array
      */
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = [''];
 
     /**
      * 无需鉴权的方法,但需要登录
      * @var array
      */
-    protected $noNeedRight = [];
+    protected $noNeedRight = [''];
 
     /**
      * 权限Auth
@@ -126,10 +126,13 @@ class Frontend extends Controller
 
         // 配置信息后
         Hook::listen("config_init", $config);
+
         // 加载当前控制器语言包
         $this->loadlang($controllername);
         $this->assign('site', $site);
         $this->assign('config', $config);
+        //渲染权限对象
+        $this->assign('auth', $this->auth);
     }
 
     /**

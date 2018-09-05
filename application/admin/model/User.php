@@ -85,5 +85,14 @@ class User extends Model
     {
         return $this->belongsTo('UserGroup', 'group_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
+    public function getUserInfo($id,$field){
+        if($field){
+            $userinfo = $this->field($field)->find($id);
+            return $userinfo[$field];
+        }else{
+            $userinfo = $this->find($id);
+            return $userinfo;
+        }
+    }
 
 }
