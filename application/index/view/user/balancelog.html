@@ -1,0 +1,72 @@
+
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default panel-intro">
+                <div class="panel-body">
+                    <h2 class="page-header">
+                        账户余额日志
+                        <small class="text-danger">账户余额：{$user.balance} </small>
+                        <a href="javascript:;"  class="btn btn-success btn-transfer pull-right tixian" ><i class="fa fa-exchange"></i> 立即提现</a>
+                    </h2>
+                    <div class="bs-component">
+                        {volist name="list" id="v"}
+                        <blockquote>
+                            <p>{$v.memo}</p>
+
+                            {if condition="($v.type == '+') "}
+                            <p class="text-success">余额：+{$v.balance}</p>
+                            {else /}
+                            <p class="text-danger">余额：-{$v.balance}</p>
+                            {/if}
+                            <small>操作时间：{$v.createtime|date="Y-m-d H:i:s",###} </small>
+                        </blockquote>
+                        {/volist}
+                        <div class="pager">{$list->render()}</div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tixianhtml">
+    <form id="tixian-form" class="form-horizontal form-layer" method="POST" action="{:url('index/user/tixian')}">
+        <div class="form-body">
+            <div class="bs-component">
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p>您可提现金额为：<code>{$user.balance}</code>。申请提现后将在1-2个工作日内转账到您的支付宝!</p>
+                </div>
+            </div>
+            <div class="form-group" data-type="email">
+                <label for="email" class="control-label col-xs-12 col-sm-3">申请金额:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" id="email" name="amount" value="" data-rule="required; integer(+);range(1~{$user.balance}, true)" placeholder="">
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-xs-12 col-sm-3">提现方式:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="radio">
+                        <label for="type-alipay"><input id="type-alipay" checked="checked" name="type"   type="radio" value="alipay"> 支付宝</label>
+                        <label for="type-bank"><input id="type-bank" name="type" type="radio"   value="bank"> 银行卡</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-footer">
+            <label class="control-label col-xs-12 col-sm-3"></label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="submit" class="btn btn-md btn-info">{:__('Ok')}</button>
+            </div>
+        </div>
+    </form>
+</script>
+

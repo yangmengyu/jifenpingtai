@@ -139,6 +139,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 sortName: 'id',
                 showColumns: false,
                 showExport: false,
+                search:false,
                 columns: [
                     [
                         {field: 'id', title: __('Id')},
@@ -196,6 +197,28 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+        },
+        balancelog:function () {
+            $(document).on("click", ".tixian", function () {
+                var id = "tixianhtml";
+                var content = Template(id, {});
+                Layer.open({
+                    type: 1,
+                    title: '申请提现',
+                    area: ["355px", "355px"],
+                    content: content,
+                    success: function (layero) {
+                        Form.api.bindevent($("#tixian-form", layero), function (data,res) {
+                            Layer.closeAll();
+                            if(res.code === 1){
+                                setTimeout(function(){
+                                    location.reload();
+                                },1500);
+                            }
+                        });
+                    }
+                });
+            });
         },
         add: function () {
             Controller.api.bindevent();

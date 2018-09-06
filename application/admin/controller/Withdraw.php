@@ -3,6 +3,10 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use think\Config;
+use app\common\model\User;
+use app\admin\model\Aop\AlipayFundTransToaccountTransferRequest;
+use app\admin\model\Aop\AopClient;
 
 /**
  * 提现列管理
@@ -17,6 +21,7 @@ class Withdraw extends Backend
      * @var \app\admin\model\Withdraw
      */
     protected $model = null;
+    protected $searchFields = 'id,user.nickname,amount';
 
     public function _initialize()
     {
@@ -73,6 +78,96 @@ class Withdraw extends Backend
             return json($result);
 
         }
+        return $this->view->fetch();
+    }
+    /*
+     * 提现审核逻辑
+     * */
+    public function shenhe($ids){
+        $row = $this->model->get($ids);
+        $usermodel = new User();
+        $user = $usermodel->get($row->user_id);
+        $config = Config::get('site');
+        if($this->request->isPost()){
+            $data = $this->request->post("row/a");
+            $amount = $row['amount'];
+            if($amount > $user['withdrawal_balances']){
+                $this->error('参数有误(提现中没有那么多余额)');
+            }
+            if($data['type'] == 'alipay'&&$data['status']== 1){
+
+                $aop = new AopClient();
+                $aop->gatewayUrl = 'https://openapi.alipay.com/gateway.do';
+                $aop->appId = $config['appId'];
+                $aop->rsaPrivateKey = $config['rsaPrivateKey'];
+                $aop->alipayrsaPublicKey = $config['alipayrsaPublicKey'];
+                $aop->apiVersion = '1.0';
+                $aop->signType = 'RSA2';
+                $aop->postCharset='UTF-8';
+                $aop->format='json';
+                $request = new AlipayFundTransToaccountTransferRequest();
+                $payee_account = $user['alipay'];
+                $order_id = 'alipay-'.$user['id'].'-'.time();
+                /*$request->setBizContent("{" .
+                    "\"out_biz_no\":\"$order_id\"," .
+                    "\"payee_type\":\"ALIPAY_LOGONID\"," .
+                    "\"payee_account\":\"$payee_account\"," .
+                    "\"amount\":\"$amount\"" .
+                    "}");
+                $result = $aop->execute ( $request);
+
+                $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+                $resultCode = $result->$responseNode->code;
+                if(!empty($resultCode)&&$resultCode == 10000){
+                    $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
+                    $user->save($update);
+                    $row->save([
+                        'status'=>1,
+                        'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向支付宝为：'.$payee_account.'转账'.$amount.'元。（订单号：'.$result->$responseNode->out_biz_no.'）'
+                    ]);
+                    $this->success('转账成功');
+                } else {
+                    $this->error($result->$responseNode->sub_msg);
+                }*/
+                $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
+                $user->save($update);
+                $row->save([
+                    'status'=>1,
+                    'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向支付宝为：'.$payee_account.'转账'.$amount.'元。'
+                ]);
+                $this->success('转账成功');
+            }elseif($data['type'] == 'bank'&&$data['status']== 1){
+                $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
+                $user->save($update);
+                $row->save([
+                    'status'=>1,
+                    'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向'.$user['bankname'].'：'.$user['bankcode'].'-（'.$user['bankusername'].'）转账'.$amount.'元。'
+                ]);
+                $this->success('转账成功');
+            }elseif($data['status']== 2){
+                $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
+                $user->save($update);
+                $memo = '提现失败退回余额';
+                User::balance($amount,$row->user_id,$memo);
+                $row->save([
+                    'status'=>2,
+                    'remark'=>$data['remark']
+                ]);
+                $this->success('更新状态成功');
+            }else{
+                $this->success('未更新状态');
+            }
+        }
+        $this->view->assign('user',$user);
+        $this->view->assign('row',$row);
+        return $this->view->fetch();
+    }
+    /*
+     * 查看提现信息
+     * */
+    public function detail($ids){
+        $row = $this->model->get($ids);
+        $this->view->assign('row',$row);
         return $this->view->fetch();
     }
 }

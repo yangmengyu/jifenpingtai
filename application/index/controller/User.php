@@ -5,6 +5,7 @@ namespace app\index\controller;
 use app\admin\model\Withdraw;
 use app\common\controller\Frontend;
 use app\common\library\Auth;
+use app\common\model\BalanceLog;
 use app\common\model\ScoreLog;
 use fast\Random;
 use think\Config;
@@ -283,7 +284,6 @@ class User extends Frontend
             $user_id = $this->auth->id;
             $amount = $this->request->post("amount");
             $type = $this->request->post("type");
-            dump($type);exit;
             $userinfo = \app\admin\model\User::get($user_id);
             $balance = $userinfo->balance;
             if($amount>$balance){
@@ -293,9 +293,11 @@ class User extends Frontend
             $res = Withdraw::create([
                 'user_id'=>$user_id,
                 'amount'=>$amount,
+                'type'=>$type,
             ]);
             if($res){
-                $userinfo->balance = $userinfo->balance-$amount;
+                $memo = '发起提现申请';
+                \app\common\model\User::balance($amount,$user_id,$memo,'-');
                 $userinfo->withdrawal_balances = $userinfo->withdrawal_balances+$amount;
                 $userinfo->save();
                 $this->success('申请成功');
@@ -361,10 +363,12 @@ class User extends Frontend
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
                 ->where($where)
+                ->where('pid',$this->auth->id)
                 ->order($sort, $order)
                 ->count();
             $list = $this->model
                 ->where($where)
+                ->where('pid',$this->auth->id)
                 ->order($sort, $order)
                 ->limit($offset, $limit)
                 ->select();
@@ -509,7 +513,15 @@ class User extends Frontend
      * 积分日志
      * */
     public function scorelog(){
-        $list = ScoreLog::where('user_id',$this->auth->id)->paginate(10);
+        $list = ScoreLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
+        $this->assign('list',$list);
+        return $this->view->fetch();
+    }
+    /*
+    * 余额日志
+    * */
+    public function balancelog(){
+        $list = BalanceLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
         $this->assign('list',$list);
         return $this->view->fetch();
     }

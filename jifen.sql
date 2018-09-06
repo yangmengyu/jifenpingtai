@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-05 18:18:02
+Date: 2018-09-06 17:42:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,7 +40,7 @@ CREATE TABLE `fa_admin` (
 -- ----------------------------
 -- Records of fa_admin
 -- ----------------------------
-INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536052058', '1492186163', '1536052058', '4c39432b-7e11-4690-84ff-d53b6f33489c', 'normal');
+INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536201166', '1492186163', '1536201166', '4918d34e-4c52-41e7-ae4f-a30a791a7546', 'normal');
 INSERT INTO `fa_admin` VALUES ('2', 'admin2', 'admin2', '9a28ce07ce875fbd14172a9ca5357d3c', '2dHDmj', '/assets/img/avatar.png', 'admin2@fastadmin.net', '0', '1505450906', '1492186163', '1505450906', 'df45fdd5-26f4-45ca-83b3-47e4491a315a', 'normal');
 INSERT INTO `fa_admin` VALUES ('3', 'admin3', 'admin3', '1c11f945dfcd808a130a8c2a8753fe62', 'WOKJEn', '/assets/img/avatar.png', 'admin3@fastadmin.net', '0', '1501980868', '1492186201', '1501982377', '', 'normal');
 INSERT INTO `fa_admin` VALUES ('4', 'admin22', 'admin22', '1c1a0aa0c3c56a8c1a908aab94519648', 'Aybcn5', '/assets/img/avatar.png', 'admin22@fastadmin.net', '0', '0', '1492186240', '1492186240', '', 'normal');
@@ -62,7 +62,7 @@ CREATE TABLE `fa_admin_log` (
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Records of fa_admin_log
@@ -191,6 +191,20 @@ INSERT INTO `fa_admin_log` VALUES ('121', '1', 'admin', '/admin/auth/rule/edit/i
 INSERT INTO `fa_admin_log` VALUES ('122', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536055724');
 INSERT INTO `fa_admin_log` VALUES ('123', '1', 'admin', '/admin/auth/rule/edit/ids/66?dialog=1', '权限管理 菜单规则 编辑', '{\"dialog\":\"1\",\"row\":{\"ismenu\":\"1\",\"pid\":\"0\",\"name\":\"user\",\"title\":\"\\u4f1a\\u5458\\u7ba1\\u7406\",\"icon\":\"fa fa-th-list\",\"weigh\":\"0\",\"condition\":\"\",\"remark\":\"\",\"status\":\"normal\"},\"ids\":\"66\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536055794');
 INSERT INTO `fa_admin_log` VALUES ('124', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536055795');
+INSERT INTO `fa_admin_log` VALUES ('125', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"375bd987803ec654827d174d5e5b0880\",\"username\":\"admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536201166');
+INSERT INTO `fa_admin_log` VALUES ('126', '1', 'admin', '/admin/withdraw/del/ids/31', '提现管理 删除', '{\"action\":\"del\",\"ids\":\"31\",\"params\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536202512');
+INSERT INTO `fa_admin_log` VALUES ('127', '1', 'admin', '/admin/withdraw/del/ids/32', '提现管理 删除', '{\"ids\":\"32\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536202803');
+INSERT INTO `fa_admin_log` VALUES ('128', '1', 'admin', '/admin/user/user/index', '会员管理 会员管理 查看', '{\"searchTable\":\"tbl\",\"searchKey\":\"id\",\"searchValue\":\"4\",\"orderBy\":[[\"nickname\",\"ASC\"]],\"showField\":\"nickname\",\"keyField\":\"id\",\"keyValue\":\"4\",\"searchField\":[\"nickname\"]}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536202945');
+INSERT INTO `fa_admin_log` VALUES ('129', '1', 'admin', '/admin/user/user/index', '会员管理 会员管理 查看', '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"nickname\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"nickname\",\"keyField\":\"id\",\"searchField\":[\"nickname\"],\"nickname\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536202959');
+INSERT INTO `fa_admin_log` VALUES ('130', '1', 'admin', '/admin/user/user/index', '会员管理 会员管理 查看', '{\"searchTable\":\"tbl\",\"searchKey\":\"id\",\"searchValue\":\"4\",\"orderBy\":[[\"nickname\",\"ASC\"]],\"showField\":\"nickname\",\"keyField\":\"id\",\"keyValue\":\"4\",\"searchField\":[\"nickname\"]}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536203140');
+INSERT INTO `fa_admin_log` VALUES ('131', '1', 'admin', '/admin/withdraw/shenhe/ids/33?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"0\",\"remark\":\"\"},\"ids\":\"33\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536204104');
+INSERT INTO `fa_admin_log` VALUES ('132', '1', 'admin', '/admin/withdraw/shenhe/ids/33?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"2\",\"remark\":\"\\u5931\\u8d25\"},\"ids\":\"33\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536217429');
+INSERT INTO `fa_admin_log` VALUES ('133', '1', 'admin', '/admin/withdraw/shenhe/ids/34?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"alipay\",\"status\":\"0\",\"remark\":\"\"},\"ids\":\"34\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218098');
+INSERT INTO `fa_admin_log` VALUES ('134', '1', 'admin', '/admin/withdraw/shenhe/ids/34?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"alipay\",\"status\":\"2\",\"remark\":\"\"},\"ids\":\"34\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218195');
+INSERT INTO `fa_admin_log` VALUES ('135', '1', 'admin', '/admin/withdraw/shenhe/ids/35?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"2\",\"remark\":\"\\u5931\\u8d25\"},\"ids\":\"35\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218309');
+INSERT INTO `fa_admin_log` VALUES ('136', '1', 'admin', '/admin/withdraw/shenhe/ids/36?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"1\",\"remark\":\"\"},\"ids\":\"36\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218722');
+INSERT INTO `fa_admin_log` VALUES ('137', '1', 'admin', '/admin/withdraw/shenhe/ids/37?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"2\",\"remark\":\"\\u63d0\\u73b0\\u5931\\u8d25\"},\"ids\":\"37\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218847');
+INSERT INTO `fa_admin_log` VALUES ('138', '1', 'admin', '/admin/user/user/edit/ids/6?dialog=1', '会员管理 会员管理 编辑', '{\"dialog\":\"1\",\"row\":{\"group_id\":\"1\",\"username\":\"1jiyonghu\",\"nickname\":\"1jiyonghu\",\"password\":\"\",\"mobile\":\"17633333333\",\"discount\":\"0.85\",\"successions\":\"1\",\"maxsuccessions\":\"1\",\"prevtime\":\"2018-09-06 16:12:40\",\"logintime\":\"2018-09-06 16:12:40\",\"loginip\":\"127.0.0.1\",\"loginfailure\":\"0\",\"joinip\":\"127.0.0.1\",\"jointime\":\"2018-09-06 16:12:40\",\"status\":\"normal\"},\"ids\":\"6\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536221584');
 
 -- ----------------------------
 -- Table structure for fa_area
@@ -4366,12 +4380,13 @@ CREATE TABLE `fa_leesign` (
   `sign_extra_reward` int(11) DEFAULT NULL COMMENT '连签额外奖励',
   `max_sign` int(11) DEFAULT NULL COMMENT '连签数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户签到表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户签到表';
 
 -- ----------------------------
 -- Records of fa_leesign
 -- ----------------------------
 INSERT INTO `fa_leesign` VALUES ('3', '4', '127.0.0.1', '2018-09-04 17:18:08', '0', '1', '1');
+INSERT INTO `fa_leesign` VALUES ('4', '4', '127.0.0.1', '2018-09-06 10:26:54', '0', '1', '1');
 
 -- ----------------------------
 -- Table structure for fa_order
@@ -4501,13 +4516,36 @@ CREATE TABLE `fa_user` (
   KEY `username` (`username`),
   KEY `email` (`email`),
   KEY `mobile` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员表';
 
 -- ----------------------------
 -- Records of fa_user
 -- ----------------------------
-INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '3', '2', '2', '1536048116', '1536048351', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536052688', '', 'normal', '', '0.85', '66.00', '0.00', '34.00', '杨梦雨', '招商银行', '123', '123');
+INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '4', '1', '2', '1536200797', '1536221711', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536221711', '', 'normal', '', '0.85', '100.00', '0.00', '0.00', '杨梦雨', '招商银行', '123', '123');
 INSERT INTO `fa_user` VALUES ('5', '4', '2', 'yangmengyu1', 'ceshi', '3cbe5f6bfd176550697b28c5e6e63583', 'hN3Jpk', '', '17603852732', '', '1', '0', null, '', '0', '1', '1', '1536041409', '1536041409', '127.0.0.1', '0', '127.0.0.1', '1536041409', '1536041409', '1536041469', '', 'normal', '', '0.80', '0.00', '0.00', '0.00', null, null, null, null);
+INSERT INTO `fa_user` VALUES ('6', '0', '1', '1jiyonghu', '1jiyonghu', '11ff4d68dad16a22d509c6a22aae9bf5', 'Be4HOm', '', '17633333333', '', '1', '0', null, '', '0', '1', '1', '1536221560', '1536221586', '127.0.0.1', '0', '127.0.0.1', '1536221560', '1536221560', '1536221586', '', 'normal', '', '0.85', '0.00', '0.00', '0.00', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for fa_user_balance_log
+-- ----------------------------
+DROP TABLE IF EXISTS `fa_user_balance_log`;
+CREATE TABLE `fa_user_balance_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '会员ID',
+  `balance` int(10) NOT NULL DEFAULT '0' COMMENT '变更余额',
+  `before` int(10) NOT NULL DEFAULT '0' COMMENT '变更前余额',
+  `after` int(10) NOT NULL DEFAULT '0' COMMENT '变更后余额',
+  `type` varchar(10) DEFAULT NULL COMMENT '增减方式',
+  `memo` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
+  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
+
+-- ----------------------------
+-- Records of fa_user_balance_log
+-- ----------------------------
+INSERT INTO `fa_user_balance_log` VALUES ('9', '4', '50', '100', '50', '-', '发起提现申请', '1536218739');
+INSERT INTO `fa_user_balance_log` VALUES ('10', '4', '50', '50', '100', '+', '提现失败退回余额', '1536218847');
 
 -- ----------------------------
 -- Table structure for fa_user_group
@@ -4577,7 +4615,7 @@ CREATE TABLE `fa_user_score_log` (
   `memo` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
 
 -- ----------------------------
 -- Records of fa_user_score_log
@@ -4585,6 +4623,7 @@ CREATE TABLE `fa_user_score_log` (
 INSERT INTO `fa_user_score_log` VALUES ('3', '4', '0', '1', '1', '连续签到{$max_sign_num}天奖励', '1536052577');
 INSERT INTO `fa_user_score_log` VALUES ('4', '4', '1', '1', '2', '额外签到奖励', '1536052577');
 INSERT INTO `fa_user_score_log` VALUES ('5', '4', '1', '2', '3', '连续签到1天奖励', '1536052688');
+INSERT INTO `fa_user_score_log` VALUES ('6', '4', '1', '3', '4', '连续签到1天奖励', '1536200814');
 
 -- ----------------------------
 -- Table structure for fa_user_token
@@ -4601,6 +4640,8 @@ CREATE TABLE `fa_user_token` (
 -- ----------------------------
 -- Records of fa_user_token
 -- ----------------------------
+INSERT INTO `fa_user_token` VALUES ('324229ce6ca71277a62e985a53145b0f915ae789', '4', '1536221711', '1538813711');
+INSERT INTO `fa_user_token` VALUES ('3dae2e0f5fc34a8674a8372c84957e9310c67cf5', '6', '1536221561', '1538813561');
 INSERT INTO `fa_user_token` VALUES ('8674aa162cae5d92c158db54c4a1b6985f5138ad', '4', '1536041544', '1538633544');
 INSERT INTO `fa_user_token` VALUES ('8708e237a72acae6c339a4dcb36d8f456991b1c6', '4', '1536042555', '1538634555');
 INSERT INTO `fa_user_token` VALUES ('a5738851e1e104d019d279ea4b9caacca29cc9f3', '3', '1535941458', '1538533458');
@@ -4647,20 +4688,9 @@ CREATE TABLE `fa_withdraw` (
   `createtime` int(11) DEFAULT NULL COMMENT '创建时间',
   `updatetime` int(11) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='提现列表';
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='提现列表';
 
 -- ----------------------------
 -- Records of fa_withdraw
 -- ----------------------------
-INSERT INTO `fa_withdraw` VALUES ('0000000024', '4', '1', '0', 'alipay', null, '1535968521', '1535968521');
-INSERT INTO `fa_withdraw` VALUES ('0000000023', '4', '1', '0', 'alipay', null, '1535968518', '1535968518');
-INSERT INTO `fa_withdraw` VALUES ('0000000022', '4', '1', '0', 'alipay', null, '1535968514', '1535968514');
-INSERT INTO `fa_withdraw` VALUES ('0000000021', '4', '1', '0', 'alipay', null, '1535968510', '1535968510');
-INSERT INTO `fa_withdraw` VALUES ('0000000020', '4', '5', '0', 'alipay', null, '1535962569', '1535962569');
-INSERT INTO `fa_withdraw` VALUES ('0000000019', '5', '10', '0', 'alipay', null, '1535962548', '1535962548');
-INSERT INTO `fa_withdraw` VALUES ('0000000030', '4', '1', '0', 'alipay', null, '1535968544', '1535968544');
-INSERT INTO `fa_withdraw` VALUES ('0000000029', '4', '1', '0', 'alipay', null, '1535968541', '1535968541');
-INSERT INTO `fa_withdraw` VALUES ('0000000028', '4', '1', '0', 'alipay', null, '1535968536', '1535968536');
-INSERT INTO `fa_withdraw` VALUES ('0000000027', '4', '1', '0', 'alipay', null, '1535968533', '1535968533');
-INSERT INTO `fa_withdraw` VALUES ('0000000026', '5', '10', '0', 'alipay', null, '1535968529', '1535968529');
-INSERT INTO `fa_withdraw` VALUES ('0000000025', '4', '1', '0', 'alipay', null, '1535968525', '1535968525');
+INSERT INTO `fa_withdraw` VALUES ('0000000037', '4', '50', '2', 'bank', '提现失败', '1536218739', '1536218847');

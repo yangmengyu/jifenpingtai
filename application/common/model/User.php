@@ -94,6 +94,31 @@ class User Extends Model
             ScoreLog::create(['user_id' => $user_id, 'score' => $score, 'before' => $before, 'after' => $after, 'memo' => $memo]);
         }
     }
+    /**
+     * 增加会员余额
+     * @param int $balance    余额
+     * @param int $user_id  会员ID
+     * @param string $memo  备注
+     */
+    public static function balance($balance, $user_id, $memo,$type='+')
+    {
+        $user = self::get($user_id);
+        if ($user)
+        {
+            $before = $user->balance;
+            if($type == '+'){
+                $after = $user->balance + $balance;
+            }else{
+                $after = $user->balance - $balance;
+            }
+
+            //更新会员信息
+            $user->save(['balance' => $after]);
+            //写入日志
+            BalanceLog::create(['user_id' => $user_id, 'balance' => $balance, 'before' => $before, 'after' => $after, 'memo' => $memo,'type'=>$type]);
+        }
+    }
+
 
     /**
      * 根据积分获取等级

@@ -33,7 +33,25 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         /*{field: 'user.username', title: __('User.username')},
                         {field: 'user.nickname', title: __('User.nickname')},*/
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table, buttons: [
+                            {name: 'name1', text: '审核', title: '确认提现', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'withdraw/shenhe',hidden:function (data,row,index) {
+                                if(data.status == '0'){
+                                    return false;
+                                }else{
+                                    return true;
+                                }
+                            }, callback:function(data){}},
+                            {name: 'name2', text: '查看', title: '查看', icon: 'fa fa-list', classname: 'btn btn-xs btn-success btn-dialog', url: 'withdraw/detail',hidden:function (data,row,index) {
+                                if(data.status == '0'){
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+                            }, callback:function(data){}},
+                            {name: 'del', text: '',confirm:'确认删除该条信息?', title: '删除', icon: 'fa fa-trash', classname: 'btn btn-xs btn-danger btn-ajax', url: 'withdraw/del',success:function(data, ret){
+                                if(ret.code == 1){$(".btn-refresh").trigger("click");}
+                            },error:function(){}}
+                        ], events: Table.api.events.operate, formatter: Table.api.formatter.buttons}
                     ]
                 ]
             });
@@ -64,6 +82,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Controller.api.bindevent();
         },
         edit: function () {
+            Controller.api.bindevent();
+        },
+        shenhe: function () {
             Controller.api.bindevent();
         },
         api: {

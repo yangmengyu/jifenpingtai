@@ -46,7 +46,8 @@
                                     <div class="row">
                                         <div class="col-xs-4 col-md-2">账户余额</div>
                                         <div class="col-xs-8 col-md-4">
-                                            {$user.balance}&nbsp;&nbsp;
+                                            <a href="{:url('user/balancelog')}" class="viewscore" data-toggle="tooltip" data-placement="top"  data-original-title="查看账户余额日志">{$user.balance}</a>
+                                            &nbsp;
                                             <button class="tixian btn btn-primary btn-xs right">立即提现</button>
                                         </div>
                                         <div class="col-xs-4 col-md-2">待结算余额</div>
@@ -87,7 +88,7 @@
             <div class="form-group" data-type="email">
                 <label for="email" class="control-label col-xs-12 col-sm-3">申请金额:</label>
                 <div class="col-xs-12 col-sm-8">
-                    <input type="text" class="form-control" id="email" name="amount" value="" data-rule="required; integer(+);" placeholder="">
+                    <input type="text" class="form-control" id="email" name="amount" value="" data-rule="required; integer(+);range(1~{$user.balance}, true)" placeholder="">
                     <span class="msg-box"></span>
                 </div>
             </div>
