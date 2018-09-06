@@ -95,10 +95,11 @@ class User Extends Model
         }
     }
     /**
-     * 增加会员余额
+     * 变更会员余额
      * @param int $balance    余额
      * @param int $user_id  会员ID
      * @param string $memo  备注
+     * @param string $type  加减类型
      */
     public static function balance($balance, $user_id, $memo,$type='+')
     {
@@ -118,7 +119,62 @@ class User Extends Model
             BalanceLog::create(['user_id' => $user_id, 'balance' => $balance, 'before' => $before, 'after' => $after, 'memo' => $memo,'type'=>$type]);
         }
     }
+    /*
+     * 变更会员待结算余额
+     * @param int $balance  余额
+     * @param int $user_id  会员ID
+     * @param string $memo  备注
+     * @param string $type  加减类型
+     * */
+    public static function blocked_balances($blocked_balances, $user_id, $memo,$type='+')
+    {
+        $user = self::get($user_id);
+        if ($user)
+        {
+            $before = $user->blocked_balances;
+            if($type == '+'){
+                $after = $user->blocked_balances + $blocked_balances;
+            }else{
+                $after = $user->blocked_balances - $blocked_balances;
+            }
 
+            //更新会员信息
+            $user->save(['blocked_balances' => $after]);
+
+        }
+    }
+    /*
+     * 订单增加待结算余额 上下级逻辑计算
+     * */
+    public static function add_blocked_balances($blocked_balances,$user_id,$type="discount"){
+        $user = self::get($user_id);
+        if ($user)
+        {
+            $discount_after = sprintf("%.2f",$blocked_balances*$user->$type);
+            $after = $user->blocked_balances + $discount_after;
+            $user->save(['blocked_balances' => $after]);
+            if($user->pid !== 0){
+                $parent_user = self::get($user->pid);
+                if($parent_user){
+                    $parent_discount_after = sprintf("%.2f",$blocked_balances*$parent_user->$type)-$discount_after;
+                    $parent_after = $parent_user->blocked_balances + $parent_discount_after;
+                    $parent_user->save(['blocked_balances' => $parent_after]);
+                }
+            }
+        }
+    }
+    /*
+     * 获取该用户上级信息
+     * */
+    public static function get_parent_user($user_id,$field = NULL){
+        $user = self::get($user_id);
+        if($field){
+            return $user->$field;
+        }else{
+            return $user;
+        }
+
+    }
 
     /**
      * 根据积分获取等级
