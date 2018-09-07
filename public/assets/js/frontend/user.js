@@ -119,6 +119,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                     }
                 });
             });
+            Form.api.bindevent($("#tixian-form"));
         },
         withdraw:function () {
             // 初始化表格参数配置

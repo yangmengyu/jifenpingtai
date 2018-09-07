@@ -1,0 +1,55 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default ">
+                        <h2 class="page-header" style="margin: 10px">
+                           {$title}
+                        </h2>
+                            <form id="add-form" role="form" data-toggle="validator" method="POST" action="/index/score/add" class="nice-validator n-default n-bootstrap" novalidate="novalidate">
+                                <div class="box-body box-profile">
+                                    <div class="form-group">
+                                        <span class="input-group text-sm text-red">
+                                            通过换积分的手机号码发送JF至10658999，查询积分后，根据现有积分余额，点击扫码或者发送相应短信指令兑换，并回复确认短信。
+                                        </span>
+                                    </div>
+                                    {volist name="lists" id="vo"}
+                                    <div class="form-group" style="margin-bottom: 0; ">
+                                        <button type="button" class="btn btn-success btn-score" data-qrimage="{$vo.qrimage}" data-sms="{$vo.sms}" data-score="{$vo.score}">点我扫码兑换{$vo.score}积分-{$vo.return}</button>
+                                        <p style="margin: 0" class="text-green">或发短信{$vo.sms}到10658999 <a class="text-red" target="_blank" href="{$vo.url}">链接</a></p>
+                                    </div>
+                                    {/volist}
+                                    <span class="text-sm">
+                                        最后一步就大功告成了，扫码后确认回复短信兑换成功，然后请上报平台回收。
+                                    </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="mobile" placeholder="手机号码" type="text" class="form-control" name="mobile" value="" data-rule="required;mobile">
+                                        <span class="msg-box"></span>
+                                    </div>
+                                    <div class="form-group hide">
+                                        <input id="LoginKey" placeholder="" type="text" class="form-control" name="LoginKey" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="验证码"  class="form-control" name="smscode" value="" data-rule="required;">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" id="getsmscode" data-channel="{$channel}">获取验证码</button>
+                                            </span>
+                                        </div>
+                                        <span class="msg-box"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="dosubmit" value="1">
+                                        <button type="submit" class="btn btn-success">提交</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </div>
+
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+</section>

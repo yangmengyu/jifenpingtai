@@ -1,0 +1,25 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>积分兑换</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {volist name="categorys" id="cate"}
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img data-src="holder.js/100%x200" alt="{$cate.name}" style="height: auto; width: 100%; display: block;" src="{$cate.image}" data-holder-rendered="true">
+                    <div class="caption">
+                        <h4 class="text-center">{$cate.name}</h4>
+                        <p class="text-center"><a href="{:url('score/duihuan',['channel'=>$cate.nickname])}" class="btn btn-primary" role="button">立即兑换</a> </p>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+</section>

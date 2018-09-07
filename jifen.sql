@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-06 17:42:31
+Date: 2018-09-07 18:17:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,7 +40,7 @@ CREATE TABLE `fa_admin` (
 -- ----------------------------
 -- Records of fa_admin
 -- ----------------------------
-INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536201166', '1492186163', '1536201166', '4918d34e-4c52-41e7-ae4f-a30a791a7546', 'normal');
+INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536291892', '1492186163', '1536291892', 'de74a31c-ea89-4807-8fb2-014fc0ab236c', 'normal');
 INSERT INTO `fa_admin` VALUES ('2', 'admin2', 'admin2', '9a28ce07ce875fbd14172a9ca5357d3c', '2dHDmj', '/assets/img/avatar.png', 'admin2@fastadmin.net', '0', '1505450906', '1492186163', '1505450906', 'df45fdd5-26f4-45ca-83b3-47e4491a315a', 'normal');
 INSERT INTO `fa_admin` VALUES ('3', 'admin3', 'admin3', '1c11f945dfcd808a130a8c2a8753fe62', 'WOKJEn', '/assets/img/avatar.png', 'admin3@fastadmin.net', '0', '1501980868', '1492186201', '1501982377', '', 'normal');
 INSERT INTO `fa_admin` VALUES ('4', 'admin22', 'admin22', '1c1a0aa0c3c56a8c1a908aab94519648', 'Aybcn5', '/assets/img/avatar.png', 'admin22@fastadmin.net', '0', '0', '1492186240', '1492186240', '', 'normal');
@@ -62,7 +62,7 @@ CREATE TABLE `fa_admin_log` (
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Records of fa_admin_log
@@ -205,6 +205,65 @@ INSERT INTO `fa_admin_log` VALUES ('135', '1', 'admin', '/admin/withdraw/shenhe/
 INSERT INTO `fa_admin_log` VALUES ('136', '1', 'admin', '/admin/withdraw/shenhe/ids/36?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"1\",\"remark\":\"\"},\"ids\":\"36\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218722');
 INSERT INTO `fa_admin_log` VALUES ('137', '1', 'admin', '/admin/withdraw/shenhe/ids/37?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"bank\",\"status\":\"2\",\"remark\":\"\\u63d0\\u73b0\\u5931\\u8d25\"},\"ids\":\"37\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536218847');
 INSERT INTO `fa_admin_log` VALUES ('138', '1', 'admin', '/admin/user/user/edit/ids/6?dialog=1', '会员管理 会员管理 编辑', '{\"dialog\":\"1\",\"row\":{\"group_id\":\"1\",\"username\":\"1jiyonghu\",\"nickname\":\"1jiyonghu\",\"password\":\"\",\"mobile\":\"17633333333\",\"discount\":\"0.85\",\"successions\":\"1\",\"maxsuccessions\":\"1\",\"prevtime\":\"2018-09-06 16:12:40\",\"logintime\":\"2018-09-06 16:12:40\",\"loginip\":\"127.0.0.1\",\"loginfailure\":\"0\",\"joinip\":\"127.0.0.1\",\"jointime\":\"2018-09-06 16:12:40\",\"status\":\"normal\"},\"ids\":\"6\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536221584');
+INSERT INTO `fa_admin_log` VALUES ('139', '1', 'admin', '/admin/withdraw/shenhe/ids/38?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"alipay\",\"status\":\"1\",\"remark\":\"\"},\"ids\":\"38\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536227145');
+INSERT INTO `fa_admin_log` VALUES ('140', '1', 'admin', '/admin/withdraw/shenhe/ids/38?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"alipay\",\"status\":\"1\",\"remark\":\"\"},\"ids\":\"38\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536227153');
+INSERT INTO `fa_admin_log` VALUES ('141', '1', 'admin', '/admin/withdraw/shenhe/ids/39?dialog=1', '', '{\"dialog\":\"1\",\"row\":{\"type\":\"alipay\",\"status\":\"1\",\"remark\":\"\"},\"ids\":\"39\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536227208');
+INSERT INTO `fa_admin_log` VALUES ('142', '1', 'admin', '/admin/user/user/index', '会员管理 会员管理 查看', '{\"searchTable\":\"tbl\",\"searchKey\":\"id\",\"searchValue\":\"4\",\"orderBy\":[[\"nickname\",\"ASC\"]],\"showField\":\"nickname\",\"keyField\":\"id\",\"keyValue\":\"4\",\"searchField\":[\"nickname\"]}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536227802');
+INSERT INTO `fa_admin_log` VALUES ('143', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"5f762db89445ca93c8b7afe25cd021d1\",\"username\":\"admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536291892');
+INSERT INTO `fa_admin_log` VALUES ('144', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536292820');
+INSERT INTO `fa_admin_log` VALUES ('145', '1', 'admin', '/admin/category/del/ids/13,12,5,7,11,10,6,9,8,2,4,3,1', '分类管理 删除', '{\"action\":\"del\",\"ids\":\"13,12,5,7,11,10,6,9,8,2,4,3,1\",\"params\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536299129');
+INSERT INTO `fa_admin_log` VALUES ('146', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"timg.jpg\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536299419');
+INSERT INTO `fa_admin_log` VALUES ('147', '1', 'admin', '/admin/category/add?dialog=1', '分类管理 添加', '{\"dialog\":\"1\",\"row\":{\"type\":\"default\",\"pid\":\"0\",\"name\":\"\\u79fb\\u52a8\\u6c83\\u5c14\\u739b\\u5151\\u6362\",\"nickname\":\"score\\/woerma\",\"image\":\"\\/uploads\\/20180907\\/fb7c79212319f06cc331429feb94a4c5.jpg\",\"keywords\":\"\",\"description\":\"\",\"weigh\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536299426');
+INSERT INTO `fa_admin_log` VALUES ('148', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"timg (1).jpg\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536299534');
+INSERT INTO `fa_admin_log` VALUES ('149', '1', 'admin', '/admin/category/add?dialog=1', '分类管理 添加', '{\"dialog\":\"1\",\"row\":{\"type\":\"default\",\"pid\":\"0\",\"name\":\"\\u79fb\\u52a8\\u9ea6\\u5fb7\\u9f99\\u5151\\u6362\",\"nickname\":\"score\\/maidelong\",\"image\":\"\\/uploads\\/20180907\\/236bd85b57f40e70837e3d4131fee636.jpg\",\"keywords\":\"\",\"description\":\"\",\"weigh\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536299538');
+INSERT INTO `fa_admin_log` VALUES ('150', '1', 'admin', '/admin/category/edit/ids/15?dialog=1', '分类管理 编辑', '{\"dialog\":\"1\",\"row\":{\"type\":\"default\",\"pid\":\"0\",\"name\":\"\\u79fb\\u52a8\\u9ea6\\u5fb7\\u9f99\\u5151\\u6362\",\"nickname\":\"maidelong\",\"image\":\"\\/uploads\\/20180907\\/236bd85b57f40e70837e3d4131fee636.jpg\",\"keywords\":\"\",\"description\":\"\",\"weigh\":\"15\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"15\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536300711');
+INSERT INTO `fa_admin_log` VALUES ('151', '1', 'admin', '/admin/category/edit/ids/14?dialog=1', '分类管理 编辑', '{\"dialog\":\"1\",\"row\":{\"type\":\"default\",\"pid\":\"0\",\"name\":\"\\u79fb\\u52a8\\u6c83\\u5c14\\u739b\\u5151\\u6362\",\"nickname\":\"woerma\",\"image\":\"\\/uploads\\/20180907\\/fb7c79212319f06cc331429feb94a4c5.jpg\",\"keywords\":\"\",\"description\":\"\",\"weigh\":\"14\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"14\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536300716');
+INSERT INTO `fa_admin_log` VALUES ('152', '1', 'admin', '/admin/general.config/edit', '常规管理 系统配置 编辑', '{\"row\":{\"categorytype\":\"{\\\"default\\\":\\\"Default\\\",\\\"page\\\":\\\"Page\\\",\\\"article\\\":\\\"Article\\\",\\\"test\\\":\\\"Test\\\"}\",\"configgroup\":\"{\\\"basic\\\":\\\"Basic\\\",\\\"email\\\":\\\"Email\\\",\\\"dictionary\\\":\\\"Dictionary\\\",\\\"user\\\":\\\"User\\\",\\\"example\\\":\\\"Example\\\",\\\"woerma\\\":\\\"\\u6c83\\u5c14\\u739b\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536301595');
+INSERT INTO `fa_admin_log` VALUES ('153', '1', 'admin', '/admin/general.config/edit', '常规管理 系统配置 编辑', '{\"row\":{\"categorytype\":\"{\\\"default\\\":\\\"Default\\\",\\\"page\\\":\\\"Page\\\",\\\"article\\\":\\\"Article\\\",\\\"test\\\":\\\"Test\\\"}\",\"configgroup\":\"{\\\"basic\\\":\\\"Basic\\\",\\\"email\\\":\\\"Email\\\",\\\"dictionary\\\":\\\"Dictionary\\\",\\\"example\\\":\\\"=\\u53c2\\u6570\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536301676');
+INSERT INTO `fa_admin_log` VALUES ('154', '1', 'admin', '/admin/general.config/edit', '常规管理 系统配置 编辑', '{\"row\":{\"categorytype\":\"{\\\"default\\\":\\\"Default\\\",\\\"page\\\":\\\"Page\\\",\\\"article\\\":\\\"Article\\\",\\\"test\\\":\\\"Test\\\"}\",\"configgroup\":\"{\\\"basic\\\":\\\"Basic\\\",\\\"email\\\":\\\"Email\\\",\\\"dictionary\\\":\\\"Dictionary\\\",\\\"example\\\":\\\"\\u53c2\\u6570\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536301684');
+INSERT INTO `fa_admin_log` VALUES ('155', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302848');
+INSERT INTO `fa_admin_log` VALUES ('156', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_product\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302858');
+INSERT INTO `fa_admin_log` VALUES ('157', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302914');
+INSERT INTO `fa_admin_log` VALUES ('158', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302937');
+INSERT INTO `fa_admin_log` VALUES ('159', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_scoreproduct\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302951');
+INSERT INTO `fa_admin_log` VALUES ('160', '1', 'admin', '/admin/command/command/action/command', '', '{\"commandtype\":\"crud\",\"isrelation\":\"0\",\"local\":\"0\",\"delete\":\"0\",\"force\":\"1\",\"menu\":\"1\",\"table\":\"fa_scoreproduct\",\"controller\":\"\",\"model\":\"\",\"setcheckboxsuffix\":\"\",\"enumradiosuffix\":\"\",\"imagefield\":\"\",\"filefield\":\"\",\"intdatesuffix\":\"\",\"switchsuffix\":\"\",\"citysuffix\":\"\",\"selectpagesuffix\":\"\",\"selectpagessuffix\":\"\",\"ignorefields\":\"\",\"sortfield\":\"\",\"editorsuffix\":\"\",\"headingfilterfield\":\"\",\"action\":\"command\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302954');
+INSERT INTO `fa_admin_log` VALUES ('161', '1', 'admin', '/admin/command/command/action/execute', '', '{\"commandtype\":\"crud\",\"isrelation\":\"0\",\"local\":\"0\",\"delete\":\"0\",\"force\":\"1\",\"menu\":\"1\",\"table\":\"fa_scoreproduct\",\"controller\":\"\",\"model\":\"\",\"setcheckboxsuffix\":\"\",\"enumradiosuffix\":\"\",\"imagefield\":\"\",\"filefield\":\"\",\"intdatesuffix\":\"\",\"switchsuffix\":\"\",\"citysuffix\":\"\",\"selectpagesuffix\":\"\",\"selectpagessuffix\":\"\",\"ignorefields\":\"\",\"sortfield\":\"\",\"editorsuffix\":\"\",\"headingfilterfield\":\"\",\"action\":\"execute\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302956');
+INSERT INTO `fa_admin_log` VALUES ('162', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302957');
+INSERT INTO `fa_admin_log` VALUES ('163', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302961');
+INSERT INTO `fa_admin_log` VALUES ('164', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302964');
+INSERT INTO `fa_admin_log` VALUES ('165', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"3\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302966');
+INSERT INTO `fa_admin_log` VALUES ('166', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"2\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302970');
+INSERT INTO `fa_admin_log` VALUES ('167', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302972');
+INSERT INTO `fa_admin_log` VALUES ('168', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"2\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302975');
+INSERT INTO `fa_admin_log` VALUES ('169', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"3\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302978');
+INSERT INTO `fa_admin_log` VALUES ('170', '1', 'admin', '/admin/command/get_controller_list', '', '{\"q_word\":[\"\"],\"pageNumber\":\"3\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"id\",\"searchField\":[\"name\"],\"name\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302981');
+INSERT INTO `fa_admin_log` VALUES ('171', '1', 'admin', '/admin/command/command/action/command', '', '{\"commandtype\":\"menu\",\"allcontroller\":\"0\",\"delete\":\"0\",\"force\":\"1\",\"controllerfile_text\":\"\",\"controllerfile\":\"Scoreproduct.php\",\"action\":\"command\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302984');
+INSERT INTO `fa_admin_log` VALUES ('172', '1', 'admin', '/admin/command/command/action/execute', '', '{\"commandtype\":\"menu\",\"allcontroller\":\"0\",\"delete\":\"0\",\"force\":\"1\",\"controllerfile_text\":\"\",\"controllerfile\":\"Scoreproduct.php\",\"action\":\"execute\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302985');
+INSERT INTO `fa_admin_log` VALUES ('173', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536302986');
+INSERT INTO `fa_admin_log` VALUES ('174', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-450.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303064');
+INSERT INTO `fa_admin_log` VALUES ('175', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"450\",\"return\":\"5\",\"sms\":\"DH498723\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167185781\",\"qrimage\":\"\\/uploads\\/20180907\\/97986f766b0edd81ba9835a2bf180d57.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303066');
+INSERT INTO `fa_admin_log` VALUES ('176', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-900.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303101');
+INSERT INTO `fa_admin_log` VALUES ('177', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"900\",\"return\":\"10\",\"sms\":\"DH498724\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205779\",\"qrimage\":\"\\/uploads\\/20180907\\/4be8e2309301f10cb8cefbd5c1c9055c.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303102');
+INSERT INTO `fa_admin_log` VALUES ('178', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-1800.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303140');
+INSERT INTO `fa_admin_log` VALUES ('179', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"1800\",\"return\":\"20\",\"sms\":\"DH498725\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205780\",\"qrimage\":\"\\/uploads\\/20180907\\/3e26537584f7236ad580832877a94a20.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303142');
+INSERT INTO `fa_admin_log` VALUES ('180', '1', 'admin', '/admin/scoreproduct/edit/ids/3?dialog=1', '积分产品 编辑', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"1800\",\"return\":\"20\",\"sms\":\"DH498725\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205780\",\"qrimage\":\"\\/uploads\\/20180907\\/3e26537584f7236ad580832877a94a20.png\"},\"ids\":\"3\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303170');
+INSERT INTO `fa_admin_log` VALUES ('181', '1', 'admin', '/admin/scoreproduct/edit/ids/1?dialog=1', '积分产品 编辑', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"450\",\"return\":\"5\",\"sms\":\"DH498723\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167185781\",\"qrimage\":\"\\/uploads\\/20180907\\/97986f766b0edd81ba9835a2bf180d57.png\"},\"ids\":\"1\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303213');
+INSERT INTO `fa_admin_log` VALUES ('182', '1', 'admin', '/admin/scoreproduct/edit/ids/2?dialog=1', '积分产品 编辑', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"900\",\"return\":\"10\",\"sms\":\"DH498724\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205779\",\"qrimage\":\"\\/uploads\\/20180907\\/4be8e2309301f10cb8cefbd5c1c9055c.png\"},\"ids\":\"2\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303227');
+INSERT INTO `fa_admin_log` VALUES ('183', '1', 'admin', '/admin/scoreproduct/edit/ids/3?dialog=1', '积分产品 编辑', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"1800\",\"return\":\"20\",\"sms\":\"DH498725\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205780\",\"qrimage\":\"\\/uploads\\/20180907\\/3e26537584f7236ad580832877a94a20.png\"},\"ids\":\"3\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303233');
+INSERT INTO `fa_admin_log` VALUES ('184', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-4510.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303263');
+INSERT INTO `fa_admin_log` VALUES ('185', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"4510\",\"return\":\"50\",\"sms\":\"DH498726\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205781\",\"qrimage\":\"\\/uploads\\/20180907\\/157f0ed9ed31a3b5d5f62ccaeadbf674.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303264');
+INSERT INTO `fa_admin_log` VALUES ('186', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-9020.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303327');
+INSERT INTO `fa_admin_log` VALUES ('187', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"face\":\"9020\",\"return\":\"100\",\"sms\":\"DH498622\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000167205782\",\"qrimage\":\"\\/uploads\\/20180907\\/52a624cce9a0c8f9c3dae2c89d18fd9a.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303328');
+INSERT INTO `fa_admin_log` VALUES ('188', '1', 'admin', '/admin/command/execute/ids/8', '在线命令管理 运行', '{\"ids\":\"8\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303355');
+INSERT INTO `fa_admin_log` VALUES ('189', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-440.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303409');
+INSERT INTO `fa_admin_log` VALUES ('190', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"woerma\",\"score\":\"440\",\"return\":\"5\",\"sms\":\"DH244823\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000095245779\",\"qrimage\":\"\\/uploads\\/20180907\\/caf49d1b6ae4e835cc4ce017d18ebbb9.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303410');
+INSERT INTO `fa_admin_log` VALUES ('191', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-880.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303451');
+INSERT INTO `fa_admin_log` VALUES ('192', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"woerma\",\"score\":\"880\",\"return\":\"10\",\"sms\":\"DH242839\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000094205812\",\"qrimage\":\"\\/uploads\\/20180907\\/0b01adfe674cff66120985721c9bfaf5.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303452');
+INSERT INTO `fa_admin_log` VALUES ('193', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-1760.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303482');
+INSERT INTO `fa_admin_log` VALUES ('194', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"maidelong\",\"score\":\"1760\",\"return\":\"20\",\"sms\":\"DH244920\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000095245788\",\"qrimage\":\"\\/uploads\\/20180907\\/cd55ffc38ef8959652f66f68a80f64b1.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303483');
+INSERT INTO `fa_admin_log` VALUES ('195', '1', 'admin', '/admin/scoreproduct/edit/ids/8?dialog=1', '积分产品 编辑', '{\"dialog\":\"1\",\"row\":{\"name\":\"woerma\",\"score\":\"1760\",\"return\":\"20\",\"sms\":\"DH244920\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000095245788\",\"qrimage\":\"\\/uploads\\/20180907\\/cd55ffc38ef8959652f66f68a80f64b1.png\"},\"ids\":\"8\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303488');
+INSERT INTO `fa_admin_log` VALUES ('196', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"score-4380.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303518');
+INSERT INTO `fa_admin_log` VALUES ('197', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"woerma\",\"score\":\"4380\",\"return\":\"50\",\"sms\":\"DH244921\",\"url\":\"http:\\/\\/m.jf.10086.cn\\/module\\/wareDetail.html#\\/100000095245789\",\"qrimage\":\"\\/uploads\\/20180907\\/b3224699a775da53e77e60e2d4da55b6.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536303519');
 
 -- ----------------------------
 -- Table structure for fa_area
@@ -4001,13 +4060,24 @@ CREATE TABLE `fa_attachment` (
   `storage` varchar(100) NOT NULL DEFAULT 'local' COMMENT '存储位置',
   `sha1` varchar(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='附件表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='附件表';
 
 -- ----------------------------
 -- Records of fa_attachment
 -- ----------------------------
 INSERT INTO `fa_attachment` VALUES ('1', '1', '0', '/assets/img/qrcode.png', '150', '150', 'png', '0', '21859', 'image/png', '', '1499681848', '1499681848', '1499681848', 'local', '17163603d0263e4838b9387ff2cd4877e8b018f6');
 INSERT INTO `fa_attachment` VALUES ('2', '0', '4', '/uploads/20180904/0ef292e71aa83ed0200ae52aa5c850f2.jpg', '400', '400', 'jpg', '0', '104237', 'image/jpeg', '', '1536024316', '1536024316', '1536024316', 'local', '598b0b86fb279c3971c4cf6efd80488cd4b70814');
+INSERT INTO `fa_attachment` VALUES ('3', '1', '0', '/uploads/20180907/fb7c79212319f06cc331429feb94a4c5.jpg', '339', '280', 'jpg', '0', '61277', 'image/jpeg', '', '1536299419', '1536299419', '1536299418', 'local', '697565a697007bf747c08c85537c29156bbdbe68');
+INSERT INTO `fa_attachment` VALUES ('4', '1', '0', '/uploads/20180907/236bd85b57f40e70837e3d4131fee636.jpg', '923', '762', 'jpg', '0', '179812', 'image/jpeg', '', '1536299534', '1536299534', '1536299534', 'local', '12c5c1f0ccb24075bff57ecbf1083f07a98e6082');
+INSERT INTO `fa_attachment` VALUES ('5', '1', '0', '/uploads/20180907/97986f766b0edd81ba9835a2bf180d57.png', '288', '288', 'png', '0', '1981', 'image/png', '', '1536303064', '1536303064', '1536303064', 'local', '6cc7370dda9cc8ceceb870ab2d52ed90afe6cf8d');
+INSERT INTO `fa_attachment` VALUES ('6', '1', '0', '/uploads/20180907/4be8e2309301f10cb8cefbd5c1c9055c.png', '288', '288', 'png', '0', '1986', 'image/png', '', '1536303101', '1536303101', '1536303101', 'local', '4189fdbdc32326db07d7e7eae6fb52dbe5dbd67b');
+INSERT INTO `fa_attachment` VALUES ('7', '1', '0', '/uploads/20180907/3e26537584f7236ad580832877a94a20.png', '288', '288', 'png', '0', '1977', 'image/png', '', '1536303140', '1536303140', '1536303140', 'local', 'e7b88c56c5d8316f03db0190546c436297eaade9');
+INSERT INTO `fa_attachment` VALUES ('8', '1', '0', '/uploads/20180907/157f0ed9ed31a3b5d5f62ccaeadbf674.png', '288', '288', 'png', '0', '1996', 'image/png', '', '1536303263', '1536303263', '1536303263', 'local', '624e6f7ab089c95977424e0bbe062c96e3e83ec1');
+INSERT INTO `fa_attachment` VALUES ('9', '1', '0', '/uploads/20180907/52a624cce9a0c8f9c3dae2c89d18fd9a.png', '288', '288', 'png', '0', '1977', 'image/png', '', '1536303327', '1536303327', '1536303327', 'local', '94150ac58ad1c838f3942ab92d055cc0def31c62');
+INSERT INTO `fa_attachment` VALUES ('10', '1', '0', '/uploads/20180907/caf49d1b6ae4e835cc4ce017d18ebbb9.png', '288', '288', 'png', '0', '1979', 'image/png', '', '1536303409', '1536303409', '1536303408', 'local', '8d3e010fbd38fcb9d8bc6ebb69a43d50dcb9834a');
+INSERT INTO `fa_attachment` VALUES ('11', '1', '0', '/uploads/20180907/0b01adfe674cff66120985721c9bfaf5.png', '288', '288', 'png', '0', '1955', 'image/png', '', '1536303451', '1536303451', '1536303451', 'local', 'bc2671db0c13488d51976731267ba1a6611103e7');
+INSERT INTO `fa_attachment` VALUES ('12', '1', '0', '/uploads/20180907/cd55ffc38ef8959652f66f68a80f64b1.png', '288', '288', 'png', '0', '1970', 'image/png', '', '1536303482', '1536303482', '1536303482', 'local', '59e3017890914879a5d24a3ea10ef65ab43f1dd8');
+INSERT INTO `fa_attachment` VALUES ('13', '1', '0', '/uploads/20180907/b3224699a775da53e77e60e2d4da55b6.png', '288', '288', 'png', '0', '1979', 'image/png', '', '1536303518', '1536303518', '1536303518', 'local', 'eacffa9af1d79486f584b4e0ef37cff223b32362');
 
 -- ----------------------------
 -- Table structure for fa_auth_group
@@ -4076,7 +4146,7 @@ CREATE TABLE `fa_auth_rule` (
   UNIQUE KEY `name` (`name`) USING BTREE,
   KEY `pid` (`pid`),
   KEY `weigh` (`weigh`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='节点表';
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='节点表';
 
 -- ----------------------------
 -- Records of fa_auth_rule
@@ -4235,6 +4305,12 @@ INSERT INTO `fa_auth_rule` VALUES ('151', 'file', '149', 'order/add', '添加', 
 INSERT INTO `fa_auth_rule` VALUES ('152', 'file', '149', 'order/edit', '编辑', 'fa fa-circle-o', '', '', '0', '1536055314', '1536055314', '0', 'normal');
 INSERT INTO `fa_auth_rule` VALUES ('153', 'file', '149', 'order/del', '删除', 'fa fa-circle-o', '', '', '0', '1536055314', '1536055314', '0', 'normal');
 INSERT INTO `fa_auth_rule` VALUES ('154', 'file', '149', 'order/multi', '批量更新', 'fa fa-circle-o', '', '', '0', '1536055314', '1536055314', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('155', 'file', '0', 'scoreproduct', '积分产品', 'fa fa-circle-o', '', '', '1', '1536302985', '1536302985', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('156', 'file', '155', 'scoreproduct/index', '查看', 'fa fa-circle-o', '', '', '0', '1536302985', '1536302985', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('157', 'file', '155', 'scoreproduct/add', '添加', 'fa fa-circle-o', '', '', '0', '1536302985', '1536302985', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('158', 'file', '155', 'scoreproduct/edit', '编辑', 'fa fa-circle-o', '', '', '0', '1536302985', '1536302985', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('159', 'file', '155', 'scoreproduct/del', '删除', 'fa fa-circle-o', '', '', '0', '1536302985', '1536302985', '0', 'normal');
+INSERT INTO `fa_auth_rule` VALUES ('160', 'file', '155', 'scoreproduct/multi', '批量更新', 'fa fa-circle-o', '', '', '0', '1536302985', '1536302985', '0', 'normal');
 
 -- ----------------------------
 -- Table structure for fa_category
@@ -4258,24 +4334,13 @@ CREATE TABLE `fa_category` (
   PRIMARY KEY (`id`),
   KEY `weigh` (`weigh`,`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='分类表';
 
 -- ----------------------------
 -- Records of fa_category
 -- ----------------------------
-INSERT INTO `fa_category` VALUES ('1', '0', 'page', '官方新闻', 'news', 'recommend', '/assets/img/qrcode.png', '', '', 'news', '1495262190', '1495262190', '1', 'normal');
-INSERT INTO `fa_category` VALUES ('2', '0', 'page', '移动应用', 'mobileapp', 'hot', '/assets/img/qrcode.png', '', '', 'mobileapp', '1495262244', '1495262244', '2', 'normal');
-INSERT INTO `fa_category` VALUES ('3', '2', 'page', '微信公众号', 'wechatpublic', 'index', '/assets/img/qrcode.png', '', '', 'wechatpublic', '1495262288', '1495262288', '3', 'normal');
-INSERT INTO `fa_category` VALUES ('4', '2', 'page', 'Android开发', 'android', 'recommend', '/assets/img/qrcode.png', '', '', 'android', '1495262317', '1495262317', '4', 'normal');
-INSERT INTO `fa_category` VALUES ('5', '0', 'page', '软件产品', 'software', 'recommend', '/assets/img/qrcode.png', '', '', 'software', '1495262336', '1499681850', '5', 'normal');
-INSERT INTO `fa_category` VALUES ('6', '5', 'page', '网站建站', 'website', 'recommend', '/assets/img/qrcode.png', '', '', 'website', '1495262357', '1495262357', '6', 'normal');
-INSERT INTO `fa_category` VALUES ('7', '5', 'page', '企业管理软件', 'company', 'index', '/assets/img/qrcode.png', '', '', 'company', '1495262391', '1495262391', '7', 'normal');
-INSERT INTO `fa_category` VALUES ('8', '6', 'page', 'PC端', 'website-pc', 'recommend', '/assets/img/qrcode.png', '', '', 'website-pc', '1495262424', '1495262424', '8', 'normal');
-INSERT INTO `fa_category` VALUES ('9', '6', 'page', '移动端', 'website-mobile', 'recommend', '/assets/img/qrcode.png', '', '', 'website-mobile', '1495262456', '1495262456', '9', 'normal');
-INSERT INTO `fa_category` VALUES ('10', '7', 'page', 'CRM系统 ', 'company-crm', 'recommend', '/assets/img/qrcode.png', '', '', 'company-crm', '1495262487', '1495262487', '10', 'normal');
-INSERT INTO `fa_category` VALUES ('11', '7', 'page', 'SASS平台软件', 'company-sass', 'recommend', '/assets/img/qrcode.png', '', '', 'company-sass', '1495262515', '1495262515', '11', 'normal');
-INSERT INTO `fa_category` VALUES ('12', '0', 'test', '测试1', 'test1', 'recommend', '/assets/img/qrcode.png', '', '', 'test1', '1497015727', '1497015727', '12', 'normal');
-INSERT INTO `fa_category` VALUES ('13', '0', 'test', '测试2', 'test2', 'recommend', '/assets/img/qrcode.png', '', '', 'test2', '1497015738', '1497015738', '13', 'normal');
+INSERT INTO `fa_category` VALUES ('14', '0', 'default', '移动沃尔玛兑换', 'woerma', '', '/uploads/20180907/fb7c79212319f06cc331429feb94a4c5.jpg', '', '', '', '1536299426', '1536300716', '14', 'normal');
+INSERT INTO `fa_category` VALUES ('15', '0', 'default', '移动麦德龙兑换', 'maidelong', '', '/uploads/20180907/236bd85b57f40e70837e3d4131fee636.jpg', '', '', '', '1536299537', '1536300711', '15', 'normal');
 
 -- ----------------------------
 -- Table structure for fa_command
@@ -4292,7 +4357,7 @@ CREATE TABLE `fa_command` (
   `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` enum('successed','failured') NOT NULL DEFAULT 'failured' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='在线命令表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='在线命令表';
 
 -- ----------------------------
 -- Records of fa_command
@@ -4304,6 +4369,9 @@ INSERT INTO `fa_command` VALUES ('4', 'crud', '[\"--force=1\",\"--menu=1\",\"--t
 INSERT INTO `fa_command` VALUES ('5', 'menu', '[\"--controller=Order\"]', 'php think menu --controller=Order', 'Build Successed!', '1536055314', '1536055314', '1536055314', 'successed');
 INSERT INTO `fa_command` VALUES ('6', 'crud', '[\"--force=1\",\"--menu=1\",\"--table=fa_order\",\"--local=0\",\"--relation=fa_user\",\"--relationmode=belongsto\",\"--relationforeignkey=user_id\",\"--relationprimarykey=id\",\"--relationfields=username,nickname\"]', 'php think crud --force=1 --menu=1 --table=fa_order --local=0 --relation=fa_user --relationmode=belongsto --relationforeignkey=user_id --relationprimarykey=id --relationfields=username,nickname', 'Build Successed', '1536055346', '1536055346', '1536055347', 'successed');
 INSERT INTO `fa_command` VALUES ('7', 'crud', '[\"--force=1\",\"--menu=1\",\"--table=fa_order\",\"--local=0\",\"--relation=fa_user\",\"--relationmode=belongsto\",\"--relationforeignkey=user_id\",\"--relationprimarykey=id\",\"--relationfields=username,nickname\"]', 'php think crud --force=1 --menu=1 --table=fa_order --local=0 --relation=fa_user --relationmode=belongsto --relationforeignkey=user_id --relationprimarykey=id --relationfields=username,nickname', 'Build Successed', '1536055378', '1536055378', '1536055378', 'successed');
+INSERT INTO `fa_command` VALUES ('8', 'crud', '[\"--force=1\",\"--menu=1\",\"--table=fa_scoreproduct\",\"--local=0\"]', 'php think crud --force=1 --menu=1 --table=fa_scoreproduct --local=0', 'Build Successed', '1536302955', '1536302955', '1536302956', 'successed');
+INSERT INTO `fa_command` VALUES ('9', 'menu', '[\"--controller=Scoreproduct\"]', 'php think menu --controller=Scoreproduct', 'Build Successed!', '1536302985', '1536302985', '1536302985', 'successed');
+INSERT INTO `fa_command` VALUES ('10', 'crud', '[\"--force=1\",\"--menu=1\",\"--table=fa_scoreproduct\",\"--local=0\"]', 'php think crud --force=1 --menu=1 --table=fa_scoreproduct --local=0', 'Build Successed', '1536303354', '1536303354', '1536303354', 'successed');
 
 -- ----------------------------
 -- Table structure for fa_config
@@ -4336,7 +4404,7 @@ INSERT INTO `fa_config` VALUES ('6', 'forbiddenip', 'basic', 'Forbidden ip', '�
 INSERT INTO `fa_config` VALUES ('7', 'languages', 'basic', 'Languages', '', 'array', '{\"backend\":\"zh-cn\",\"frontend\":\"zh-cn\"}', '', 'required', '');
 INSERT INTO `fa_config` VALUES ('8', 'fixedpage', 'basic', 'Fixed page', '请尽量输入左侧菜单栏存在的链接', 'string', 'dashboard', '', 'required', '');
 INSERT INTO `fa_config` VALUES ('9', 'categorytype', 'dictionary', 'Category type', '', 'array', '{\"default\":\"Default\",\"page\":\"Page\",\"article\":\"Article\",\"test\":\"Test\"}', '', '', '');
-INSERT INTO `fa_config` VALUES ('10', 'configgroup', 'dictionary', 'Config group', '', 'array', '{\"basic\":\"Basic\",\"email\":\"Email\",\"dictionary\":\"Dictionary\",\"user\":\"User\",\"example\":\"Example\"}', '', '', '');
+INSERT INTO `fa_config` VALUES ('10', 'configgroup', 'dictionary', 'Config group', '', 'array', '{\"basic\":\"Basic\",\"email\":\"Email\",\"dictionary\":\"Dictionary\",\"example\":\"参数\"}', '', '', '');
 INSERT INTO `fa_config` VALUES ('11', 'mail_type', 'email', 'Mail type', '选择邮件发送方式', 'select', '1', '[\"Please select\",\"SMTP\",\"Mail\"]', '', '');
 INSERT INTO `fa_config` VALUES ('12', 'mail_smtp_host', 'email', 'Mail smtp host', '错误的配置发送邮件会导致服务器超时', 'string', 'smtp.qq.com', '', '', '');
 INSERT INTO `fa_config` VALUES ('13', 'mail_smtp_port', 'email', 'Mail smtp port', '(不加密默认25,SSL默认465,TLS默认587)', 'string', '465', '', '', '');
@@ -4409,6 +4477,34 @@ CREATE TABLE `fa_order` (
 -- Records of fa_order
 -- ----------------------------
 INSERT INTO `fa_order` VALUES ('0000000001', '4', '1', '17603852737', '1.00', '0.50', '1', '1536055466', '1536055472');
+
+-- ----------------------------
+-- Table structure for fa_scoreproduct
+-- ----------------------------
+DROP TABLE IF EXISTS `fa_scoreproduct`;
+CREATE TABLE `fa_scoreproduct` (
+  `ID` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` enum('maidelong','woerma') DEFAULT NULL COMMENT '通道名称:maidelong=麦德龙,woerma=沃尔玛',
+  `score` int(10) DEFAULT NULL COMMENT '积分',
+  `return` int(10) DEFAULT NULL COMMENT '返费',
+  `sms` varchar(255) DEFAULT NULL COMMENT '短信',
+  `url` varchar(255) DEFAULT NULL COMMENT '官方兑换',
+  `qrimage` varchar(255) DEFAULT NULL COMMENT '二维码',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='积分产品';
+
+-- ----------------------------
+-- Records of fa_scoreproduct
+-- ----------------------------
+INSERT INTO `fa_scoreproduct` VALUES ('0000000001', 'maidelong', '450', '5', 'DH498723', 'http://m.jf.10086.cn/module/wareDetail.html#/100000167185781', '/uploads/20180907/97986f766b0edd81ba9835a2bf180d57.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000002', 'maidelong', '900', '10', 'DH498724', 'http://m.jf.10086.cn/module/wareDetail.html#/100000167205779', '/uploads/20180907/4be8e2309301f10cb8cefbd5c1c9055c.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000003', 'maidelong', '1800', '20', 'DH498725', 'http://m.jf.10086.cn/module/wareDetail.html#/100000167205780', '/uploads/20180907/3e26537584f7236ad580832877a94a20.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000004', 'maidelong', '4510', '50', 'DH498726', 'http://m.jf.10086.cn/module/wareDetail.html#/100000167205781', '/uploads/20180907/157f0ed9ed31a3b5d5f62ccaeadbf674.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000005', 'maidelong', '9020', '100', 'DH498622', 'http://m.jf.10086.cn/module/wareDetail.html#/100000167205782', '/uploads/20180907/52a624cce9a0c8f9c3dae2c89d18fd9a.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000006', 'woerma', '440', '5', 'DH244823', 'http://m.jf.10086.cn/module/wareDetail.html#/100000095245779', '/uploads/20180907/caf49d1b6ae4e835cc4ce017d18ebbb9.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000007', 'woerma', '880', '10', 'DH242839', 'http://m.jf.10086.cn/module/wareDetail.html#/100000094205812', '/uploads/20180907/0b01adfe674cff66120985721c9bfaf5.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000008', 'woerma', '1760', '20', 'DH244920', 'http://m.jf.10086.cn/module/wareDetail.html#/100000095245788', '/uploads/20180907/cd55ffc38ef8959652f66f68a80f64b1.png');
+INSERT INTO `fa_scoreproduct` VALUES ('0000000009', 'woerma', '4380', '50', 'DH244921', 'http://m.jf.10086.cn/module/wareDetail.html#/100000095245789', '/uploads/20180907/b3224699a775da53e77e60e2d4da55b6.png');
 
 -- ----------------------------
 -- Table structure for fa_sms
@@ -4521,8 +4617,8 @@ CREATE TABLE `fa_user` (
 -- ----------------------------
 -- Records of fa_user
 -- ----------------------------
-INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '4', '1', '2', '1536200797', '1536221711', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536221711', '', 'normal', '', '0.85', '100.00', '0.00', '0.00', '杨梦雨', '招商银行', '123', '123');
-INSERT INTO `fa_user` VALUES ('5', '4', '2', 'yangmengyu1', 'ceshi', '3cbe5f6bfd176550697b28c5e6e63583', 'hN3Jpk', '', '17603852732', '', '1', '0', null, '', '0', '1', '1', '1536041409', '1536041409', '127.0.0.1', '0', '127.0.0.1', '1536041409', '1536041409', '1536041469', '', 'normal', '', '0.80', '0.00', '0.00', '0.00', null, null, null, null);
+INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '4', '2', '2', '1536221711', '1536305435', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536305435', '', 'normal', '', '0.85', '80.00', '4.50', '0.00', '', '', '', '');
+INSERT INTO `fa_user` VALUES ('5', '4', '2', 'yangmengyu1', 'ceshi', '3cbe5f6bfd176550697b28c5e6e63583', 'hN3Jpk', '', '17603852732', '', '1', '0', null, '', '0', '1', '1', '1536041409', '1536041409', '127.0.0.1', '0', '127.0.0.1', '1536041409', '1536041409', '1536229622', '', 'normal', '', '0.80', '0.00', '4.00', '0.00', null, null, null, null);
 INSERT INTO `fa_user` VALUES ('6', '0', '1', '1jiyonghu', '1jiyonghu', '11ff4d68dad16a22d509c6a22aae9bf5', 'Be4HOm', '', '17633333333', '', '1', '0', null, '', '0', '1', '1', '1536221560', '1536221586', '127.0.0.1', '0', '127.0.0.1', '1536221560', '1536221560', '1536221586', '', 'normal', '', '0.85', '0.00', '0.00', '0.00', null, null, null, null);
 
 -- ----------------------------
@@ -4539,13 +4635,15 @@ CREATE TABLE `fa_user_balance_log` (
   `memo` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
 
 -- ----------------------------
 -- Records of fa_user_balance_log
 -- ----------------------------
 INSERT INTO `fa_user_balance_log` VALUES ('9', '4', '50', '100', '50', '-', '发起提现申请', '1536218739');
 INSERT INTO `fa_user_balance_log` VALUES ('10', '4', '50', '50', '100', '+', '提现失败退回余额', '1536218847');
+INSERT INTO `fa_user_balance_log` VALUES ('11', '4', '10', '100', '90', '-', '发起提现申请', '1536227114');
+INSERT INTO `fa_user_balance_log` VALUES ('12', '4', '10', '90', '80', '-', '发起提现申请', '1536227173');
 
 -- ----------------------------
 -- Table structure for fa_user_group
@@ -4640,13 +4738,13 @@ CREATE TABLE `fa_user_token` (
 -- ----------------------------
 -- Records of fa_user_token
 -- ----------------------------
-INSERT INTO `fa_user_token` VALUES ('324229ce6ca71277a62e985a53145b0f915ae789', '4', '1536221711', '1538813711');
 INSERT INTO `fa_user_token` VALUES ('3dae2e0f5fc34a8674a8372c84957e9310c67cf5', '6', '1536221561', '1538813561');
 INSERT INTO `fa_user_token` VALUES ('8674aa162cae5d92c158db54c4a1b6985f5138ad', '4', '1536041544', '1538633544');
 INSERT INTO `fa_user_token` VALUES ('8708e237a72acae6c339a4dcb36d8f456991b1c6', '4', '1536042555', '1538634555');
 INSERT INTO `fa_user_token` VALUES ('a5738851e1e104d019d279ea4b9caacca29cc9f3', '3', '1535941458', '1538533458');
 INSERT INTO `fa_user_token` VALUES ('a5e89cc57de00bb11af9e1e1f0ebb4adb2e50148', '4', '1535960687', '1538552687');
 INSERT INTO `fa_user_token` VALUES ('a76ac0613931ef7c4b527bb76c87d68f1700acc6', '4', '1536048116', '1538640116');
+INSERT INTO `fa_user_token` VALUES ('ad7ba2540f22ba64e42c7d2e64f6d78b4e22065e', '4', '1536305435', '1538897435');
 INSERT INTO `fa_user_token` VALUES ('ef33df45ac3420d3f0f2af4d893e68782d2ed18f', '4', '1535942945', '1538534945');
 INSERT INTO `fa_user_token` VALUES ('fe921b212bb6ae04a688ec02dc450fd7a54004bd', '4', '1536048351', '1538640351');
 
@@ -4688,9 +4786,11 @@ CREATE TABLE `fa_withdraw` (
   `createtime` int(11) DEFAULT NULL COMMENT '创建时间',
   `updatetime` int(11) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='提现列表';
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='提现列表';
 
 -- ----------------------------
 -- Records of fa_withdraw
 -- ----------------------------
 INSERT INTO `fa_withdraw` VALUES ('0000000037', '4', '50', '2', 'bank', '提现失败', '1536218739', '1536218847');
+INSERT INTO `fa_withdraw` VALUES ('0000000038', '4', '10', '1', 'alipay', '系统在2018-09-06 17:45:45向支付宝为：123转账10元。', '1536227114', '1536227145');
+INSERT INTO `fa_withdraw` VALUES ('0000000039', '4', '10', '1', 'alipay', '系统在2018-09-06 17:46:48向支付宝为：123转账10元。', '1536227173', '1536227208');

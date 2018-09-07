@@ -19,6 +19,8 @@ class Index extends Frontend
 
     public function index()
     {
+        $str = md5(md5('13949090167'.md5(md5('ma850413')).'1863817321142955048505345535349443d376839696868376f616b707475717465316c64716d736e3663333b20706174683d2f3b@!@#@#DDSD323dsds'));
+        dump($str);exit;
         return $this->view->fetch();
     }
 

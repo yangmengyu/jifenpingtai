@@ -289,6 +289,15 @@ class User extends Frontend
             if($amount>$balance){
                 $this->error('您好像没有那么多余额吧!');
             }
+            if($type=='alipay'){
+                if(empty($userinfo->alipay)){
+                    $this->error('请完善支付宝信息后再发起提现!');
+                }
+            }else{
+                if(empty($userinfo->bankusername)||empty($userinfo->bankname)||empty($userinfo->bankcode)){
+                    $this->error('请完善银行卡信息后再发起提现!');
+                }
+            }
 
             $res = Withdraw::create([
                 'user_id'=>$user_id,
