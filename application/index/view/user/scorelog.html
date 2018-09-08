@@ -10,7 +10,7 @@
                     <h2 class="page-header">
                         积分日志
                         <small class="text-danger">总积分：{$user.score} </small>
-                        <a href="javascript:;" class="btn btn-success btn-transfer pull-right" data-toggle="tooltip" data-placement="top" data-original-title="暂未开放，敬请期待"><i class="fa fa-exchange"></i> 积分兑换</a>
+                        <button type="button" class="btn btn-success btn-transfer pull-right" data-container="body" data-toggle="popover" data-placement="top" data-content="暂未开放，敬请期待" data-original-title="" title=""><i class="fa fa-exchange"></i> 积分兑换</button>
                     </h2>
                     <div class="bs-component">
                         {volist name="list" id="v"}

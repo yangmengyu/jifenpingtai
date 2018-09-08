@@ -22,6 +22,7 @@ class Order extends Backend
     {
         parent::_initialize();
         $this->model = new \app\common\model\Order;
+        $this->view->assign("channelList", $this->model->getChannelList());
         $this->view->assign("statusList", $this->model->getStatusList());
     }
     

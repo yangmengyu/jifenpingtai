@@ -140,33 +140,39 @@ class User Extends Model
 
             //更新会员信息
             $user->save(['blocked_balances' => $after]);
-
+            //写入日志
+            BlockedBalanceLog::create(['user_id' => $user_id, 'balance' => $blocked_balances, 'before' => $before, 'after' => $after, 'memo' => $memo,'type'=>$type]);
         }
     }
     /*
      * 订单增加待结算余额 上下级逻辑计算
+     * @param int $blocked_balances  待结算余额
+     * @param int $user_id  会员ID
+     * @param string $type  对应折扣
      * */
     public static function add_blocked_balances($blocked_balances,$user_id,$type="discount"){
         $user = self::get($user_id);
         if ($user)
         {
-            $discount_after = sprintf("%.2f",$blocked_balances*$user->$type);
-            $after = $user->blocked_balances + $discount_after;
-            $user->save(['blocked_balances' => $after]);
+            $user_blocked_balances = sprintf("%.2f",$blocked_balances*$user->$type);
+            $mome = '做单返费'.$user_blocked_balances.'元';
+            self::blocked_balances($user_blocked_balances,$user->id,$mome);
             if($user->pid !== 0){
                 $parent_user = self::get($user->pid);
                 if($parent_user){
-                    $parent_discount_after = sprintf("%.2f",$blocked_balances*$parent_user->$type)-$discount_after;
-                    $parent_after = $parent_user->blocked_balances + $parent_discount_after;
-                    $parent_user->save(['blocked_balances' => $parent_after]);
+                    $parent_user_blocked_balances = sprintf("%.2f",$blocked_balances*$parent_user->$type)-$user_blocked_balances;
+                    $mome = '下级用户：'.$user->nickname.'做单给您的返费';
+                    self::blocked_balances($parent_user_blocked_balances,$parent_user->id,$mome);
                 }
             }
         }
     }
     /*
-     * 获取该用户上级信息
+     * 获取用户信息
+     * @param int $user_id  会员ID
+     * @param string $field  对应字段
      * */
-    public static function get_parent_user($user_id,$field = NULL){
+    public static function get_userinfo($user_id,$field = NULL){
         $user = self::get($user_id);
         if($field){
             return $user->$field;
@@ -174,6 +180,24 @@ class User Extends Model
             return $user;
         }
 
+    }
+    /*
+     * 获取下级用户id号
+     * @param array $cate  传入数据
+     * @param int $pid  当前id
+     * */
+    Static function getChildsId ($cate='', $pid) {
+        if(empty($cate)){
+            $cate = self::select();
+        }
+        $arr = array();
+        foreach ($cate as $v) {
+            if ($v['pid'] == $pid) {
+                $arr[] = $v['id'];
+                $arr = array_merge($arr, self::getChildsId($cate, $v['id']));
+            }
+        }
+        return $arr;
     }
 
     /**

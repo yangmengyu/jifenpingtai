@@ -1,0 +1,53 @@
+<section>
+    <div class="container">
+        <div id="myTabContent" class="tab-content">
+            <div class="col-lg-4">
+                <div class="panel panel-default panel-intro">
+                    <div class="panel-body">
+                        <div class="box box-danger">
+                            <div class="box-header">
+                                <h3 class="box-title">最新公告</h3>
+                                <div class="box-tools pull-right">
+                                    <a href="{:url('index/index')}"  class="btn btn-box-tool">更多</a>
+                                </div>
+                            </div>
+                            <div class="box-body" id="news-list">
+                                <ul class="nav nav-stacked">
+                                    {volist name="$news" id="vo"}
+                                    <li>
+                                        <a href="{:url('news/show',['id'=>$vo.id])}" target="_blank">
+                                            <span class="text">{$vo.title}</span>
+                                        </a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="panel panel-default panel-intro">
+                    <div class="panel-body">
+                        <div class="row">
+
+
+                            <div class="box box-default">
+                                <div class="panel-heading text-center">
+                                    {$data.title}
+                                </div>
+                                <div class="panel-body">
+                                    {$data.content}
+                                </div>
+                                <div class="panel-heading text-right">
+                                    {$data.createtime|date="Y-m-d",###}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

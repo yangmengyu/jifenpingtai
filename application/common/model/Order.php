@@ -18,15 +18,29 @@ class Order extends Model
     
     // 追加属性
     protected $append = [
+        'channel_text',
         'status_text'
     ];
     
 
     
+    public function getChannelList()
+    {
+        return ['woerma' => __('Channel woerma'),'maidelong' => __('Channel maidelong')];
+    }     
+
     public function getStatusList()
     {
         return ['0' => __('Status 0'),'1' => __('Status 1'),'2' => __('Status 2')];
     }     
+
+
+    public function getChannelTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['channel']) ? $data['channel'] : '');
+        $list = $this->getChannelList();
+        return isset($list[$value]) ? $list[$value] : '';
+    }
 
 
     public function getStatusTextAttr($value, $data)

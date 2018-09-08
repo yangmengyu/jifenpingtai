@@ -37,4 +37,6 @@ return array (
   'appId' => '',
   'rsaPrivateKey' => '',
   'alipayrsaPublicKey' => '',
+  'MerId' => '17603852737',
+  'MerKey' => 'hcy521...',
 );

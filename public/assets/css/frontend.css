@@ -15,7 +15,6 @@ body {
   font-size: 13px;
 }
 .dropdown:hover .dropdown-menu {
-  display: block;
   margin-top: 0;
 }
 .navbar {
@@ -495,5 +494,54 @@ main.content {
 .pager li {
   margin: 0 .4em;
   display: inline-block;
+}
+.article-metas {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.pull-left {
+  float: left !important;
+}
+.article-metas .date {
+  height: 48px;
+  width: 48px;
+  margin-top: 10px;
+  text-align: center;
+  color: #c1c1c1;
+  border: 1px solid #c1c1c1;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+.article-metas .date .day {
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.article-metas .date .month {
+  font-size: 12px;
+}
+.article-metas .metas-body {
+  padding-left: 60px;
+}
+@media (max-width: 1199px){
+  .article-metas .metas-body .title {
+    font-size: 14px;
+    line-height: 30px;
+  }
+}
+.article-metas .metas-body .title {
+  margin: 5px 0 0 0;
+  line-height: 60px;
+}
+.article-metas .metas-body .title a {
+  color: #616161;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 /*# sourceMappingURL=../css/frontend.css.map */

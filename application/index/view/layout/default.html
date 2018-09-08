@@ -33,13 +33,13 @@
                             {/if}
                             <ul class="dropdown-menu">
                                 {if $user}
-                                <li><a href="{:url('user/index')}"><i class="fa fa-user-circle fa-fw"></i>{:__('User center')}</a></li>
-                                <li><a href="{:url('user/profile')}"><i class="fa fa-user-o fa-fw"></i>{:__('Profile')}</a></li>
-                                <li><a href="{:url('user/changepwd')}"><i class="fa fa-key fa-fw"></i>{:__('Change password')}</a></li>
-                                <li><a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i>{:__('Sign out')}</a></li>
+                                <li><a href="{:url('user/index')}"><i class="fa fa-user-circle fa-fw"></i>会员中心</a></li>
+                                <li><a href="{:url('user/profile')}"><i class="fa fa-user-o fa-fw"></i>个人资料</a></li>
+                                <li><a href="{:url('user/changepwd')}"><i class="fa fa-key fa-fw"></i>修改密码</a></li>
+                                <li><a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i>注销</a></li>
                                 {else /}
-                                <li><a href="{:url('user/login')}"><i class="fa fa-sign-in fa-fw"></i> {:__('Sign in')}</a></li>
-                                <li><a href="{:url('user/register')}"><i class="fa fa-user-o fa-fw"></i> {:__('Sign up')}</a></li>
+                                <li><a href="{:url('user/login')}"><i class="fa fa-sign-in fa-fw"></i> 登录</a></li>
+                                <li><a href="{:url('user/register')}"><i class="fa fa-user-o fa-fw"></i> 注册</a></li>
                                 {/if}
 
                             </ul>

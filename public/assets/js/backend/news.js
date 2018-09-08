@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'order/index',
-                    add_url: 'order/add',
-                    edit_url: 'order/edit',
-                    del_url: 'order/del',
-                    multi_url: 'order/multi',
-                    table: 'order',
+                    index_url: 'news/index',
+                    add_url: 'news/add',
+                    edit_url: 'news/edit',
+                    del_url: 'news/del',
+                    multi_url: 'news/multi',
+                    table: 'news',
                 }
             });
 
@@ -25,18 +25,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'channel', title: __('Channel'), searchList: {"woerma":__('Channel woerma'),"maidelong":__('Channel maidelong')}, formatter: Table.api.formatter.normal},
-                        {field: 'user_id', title: __('User_id')},
-                        {field: 'order', title: __('Order')},
-                        {field: 'mobile', title: __('Mobile')},
-                        {field: 'amount', title: __('Amount'), operate:'BETWEEN'},
-                        {field: 'return_amount', title: __('Return_amount'), operate:'BETWEEN'},
-                        {field: 'area', title: __('Area')},
-                        {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
+                        {field: 'title', title: __('Title')},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
-                        {field: 'user.username', title: __('User.username')},
-                        {field: 'user.nickname', title: __('User.nickname')},
+                        {field: 'status', title: __('Status'), searchList: {"normal":__('Normal'),"hidden":__('Hidden')}, formatter: Table.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
