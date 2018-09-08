@@ -82,16 +82,8 @@ class Score extends Frontend
 
             return json($result);
         }
-        switch ($channel)
-        {
-            case 'woerma':
-                $this->view->assign('title', '移动积分沃尔玛兑换');
-
-                break;
-            case 'maidelong':
-                $this->view->assign('title', '移动积分麦德龙兑换');
-                break;
-        }
+        $cate = Category::where('nickname',$channel)->find();
+        $this->view->assign('title',$cate->name);
         $lists = Scoreproduct::where('name',$channel)->order('score','asc')->select();
         $this->view->assign('lists',$lists);
         $this->view->assign('channel',$channel);

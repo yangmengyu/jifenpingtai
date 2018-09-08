@@ -363,5 +363,23 @@ class User extends Api
             $this->error($this->auth->getError());
         }
     }
-
+    /*
+     * 会员待结算余额转为可用余额
+     * */
+    public function blocked_to_use(){
+        $yesterday = date('Y-m-d',strtotime("-1 day"));
+        $data = [];
+        \app\common\model\User::field('id,blocked_balances,balance,save_status')
+            ->where('blocked_balances','>',0)
+            ->where('save_status','<>',$yesterday)
+            ->chunk(100, function ($items) use(&$yesterday,&$data){
+                foreach ($items as $index => $item) {
+                    \app\common\model\User::balance($item->blocked_balances,$item->id,$yesterday.'结算余额');
+                    \app\common\model\User::blocked_balances($item->blocked_balances,$item->id,$yesterday.'转入余额','-');
+                    \app\common\model\User::update(['save_status'=>$yesterday],['id'=>$item->id]);
+                    $data[] = '给用户ID'.$item->id.'增加:'.$item->blocked_balances.'元余额';
+                }
+            });
+        $this->success('转化成功',$data);
+    }
 }

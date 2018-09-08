@@ -3,8 +3,10 @@
 return [
     'Id'  =>  'ID',
     'Channel'  =>  '兑换通道',
-    'Channel woerma'  =>  '沃尔玛',
-    'Channel maidelong'  =>  '麦德龙',
+    'Channel unicom_maidelong'  =>  '联通麦德龙',
+    'Channel unicom_woerma'  =>  '联通沃尔玛',
+    'Channel mobile_maidelong'  =>  '移动麦德龙',
+    'Channel mobile_woerma'  =>  '移动沃尔玛',
     'User_id'  =>  '用户',
     'Order'  =>  '订单号',
     'Mobile'  =>  '手机号',

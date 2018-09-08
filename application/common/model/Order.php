@@ -26,7 +26,7 @@ class Order extends Model
     
     public function getChannelList()
     {
-        return ['woerma' => __('Channel woerma'),'maidelong' => __('Channel maidelong')];
+        return ['unicom_maidelong' => __('Channel unicom_maidelong'),'unicom_woerma' => __('Channel unicom_woerma'),'mobile_maidelong' => __('Channel mobile_maidelong'),'mobile_woerma' => __('Channel mobile_woerma')];
     }     
 
     public function getStatusList()

@@ -11,17 +11,32 @@
                                 <div class="box-body box-profile">
                                     <div class="form-group">
                                         <span class="input-group text-sm text-red">
+                                            {if condition="$channel == 'mobile_woerma' || $channel == 'mobile_maidelong'"}
                                             通过换积分的手机号码发送JF至10658999，查询积分后，根据现有积分余额，点击扫码或者发送相应短信指令兑换，并回复确认短信。
+                                            {else/}
+                                             通过换积分的手机号码发送105或cxjf至10010查询，查询积分后，根据现有积分余额，点击扫码进入官网兑换。
+                                            {/if}
                                         </span>
                                     </div>
                                     {volist name="lists" id="vo"}
                                     <div class="form-group" style="margin-bottom: 0; ">
                                         <button type="button" class="btn btn-success btn-score" data-qrimage="{$vo.qrimage}" data-sms="{$vo.sms}" data-score="{$vo.score}">点我扫码兑换{$vo.score}积分-{$vo.return}</button>
-                                        <p style="margin: 0" class="text-green">或发短信{$vo.sms}到10658999 <a class="text-red" target="_blank" href="{$vo.url}">链接</a></p>
+                                        <p style="margin: 5px" class="text-green">
+                                            {if condition="$channel == 'mobile_woerma' || $channel == 'mobile_maidelong'"}
+                                            或发短信{$vo.sms}到10658999<a class="text-red" target="_blank" href="{$vo.url}">链接</a>
+                                            {else/}
+                                            或点击<a class="text-red" target="_blank" href="{$vo.url}">链接</a>进行兑换
+                                            {/if}
+
+                                        </p>
                                     </div>
                                     {/volist}
                                     <span class="text-sm">
-                                        最后一步就大功告成了，扫码后确认回复短信兑换成功，然后请上报平台回收。
+                                        {if condition="$channel == 'mobile_woerma' || $channel == 'mobile_maidelong'"}
+                                         最后一步就大功告成了，扫码后确认回复短信兑换成功，然后请上报平台回收。
+                                        {else/}
+                                         最后一步就大功告成了，进入官网兑换成功后，然后请上报平台回收。
+                                        {/if}
                                     </span>
                                     </div>
                                     <div class="form-group">

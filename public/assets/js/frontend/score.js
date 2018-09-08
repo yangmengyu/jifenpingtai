@@ -32,7 +32,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 columns: [
                     [
                         {field: 'id', title: 'ID'},
-                        {field: 'channel', title: '兑换通道', searchList: {"woerma":'沃尔玛',"maidelong":'麦德龙'}, formatter: Table.api.formatter.normal},
+                        //{field: 'channel', title: '兑换通道', searchList: {"mobile_woerma":'移动沃尔玛',"mobile_maidelong":'移动麦德龙','unicom_woerma':'联通沃尔玛','unicom_maidelong':'联通麦德龙'}, formatter: Table.api.formatter.normal},
                         {field: 'user.nickname', title: '用户'},
                         //{field: 'order', title: '订单号'},
                         {field: 'mobile', title: '手机号'},
@@ -40,6 +40,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                         {field: 'return_amount', title: '返费', operate:'BETWEEN'},
                         {field: 'area', title: '归属地'},
                         {field: 'status', title: '状态', searchList: {"0":'兑换中',"1":'成功',"2":'失败'}, formatter: Table.api.formatter.status},
+                        {field: 'memo', title: '说明'},
                         {field: 'createtime', title: '创建时间', operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'updatetime', title: '更新时间', operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                     ]
@@ -52,6 +53,16 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 var qrimage = $(this).data('qrimage');
                 var sms = $(this).data('sms');
                 var score = $(this).data('score');
+                var content = '<div class="panel-body"><p class="text-center"><img width="200" src="'+qrimage+'" alt=""></p>';
+                    if(sms == ''){
+                        content += '注：扫码后进入联通积分商城，点击‘立刻兑换’（第一次登录需输入手机号和登录密码或使用随机密码登录），获取到验证码兑换';
+                    }else{
+                        content += '注：扫码后点击发送，兑换短信发出后会收到一条确认短信，根据对应的短信输入对应的数据回复确认，即完成兑换,若发送失败请手动发短信<span class="text-danger">' +
+                            sms +
+                            '</span>到' +
+                            '<span class="text-danger">10658999</span>';
+                    }
+                    content += '</div>';
                 layer.open({
                     type: 1
                     ,area: ['350px', '500px']
@@ -59,13 +70,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                     ,shade: 0.6
                     ,maxmin: true
                     ,anim: 1
-                    ,content: '<div class="panel-body">' +
-                    '<p class="text-center"><img width="200" src="'+qrimage+'" alt=""></p>'+
-                    '注：扫码后点击发送，兑换短信发出后会收到一条确认短信，根据对应的短信输入对应的数据回复确认，即完成兑换,若发送失败请手动发短信<span class="text-danger">' +
-                    sms +
-                    '</span>到' +
-                    '<span class="text-danger">10658999</span>' +
-                    '</div>'
+                    ,content:content
                 });
             });
             $('#getsmscode').click(function () {
@@ -78,7 +83,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
             });
             $('#shuoming').click(function () {
                 var channel = $(this).data('channel');
-                if(channel == 'woerma'){
+                if(channel == 'mobile_woerma'){
                     var content =  '<div class="panel-body">' +
                         '<p>1.沃尔玛兑换目前支持北京、上海、浙江、安徽、福建、广东、贵州、河北、湖北、湖南、吉林、江苏、内蒙古、山东、山西、陕西、四川、天津、重庆、河南区域。</p>'+
                         '<p>2.以上省份除了河南、四川不支持短信兑换，其余省份用户均可使用扫码或短信指令兑换，且每种面值限兑换一次。如分值较多大客户可以用服务密码加入购物车兑换。</p>'+
@@ -86,7 +91,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                         '<p>4.如遇移动系统延时兑换之后卡券没有到账（系统会有红色弹窗提示：还没找到兑换信息，请稍后再次提交）系统自带有记忆登录功能，12小时之内再次提交只需输入客户号码，点击-获取验证码（此时并不会给客户下发验证码，会有弹窗）直接上报成功。</p>'+
                         '<p>5.兑换完成之后请注意查看订单明细后台会在1分钟之内更新状态结果。</p>'+
                         '</div>';
-                }else{
+                }else if(channel == 'mobile_maidelong'){
                     var content = '<div class="panel-body">' +
                         '<p>1.麦德龙兑换目前支持安徽、北京市、福建、广东、河南、湖北、湖南、江苏、吉林、江西、宁夏、山东、陕西、上海市、四川、天津市、浙江、重庆市等地区的麦德龙超市门店（除西安浐灞商场外）消费使用。</p>'+
                         '<p>2.以上省份除了河南、四川不支持短信兑换，其余省份用户均可使用扫码或短信指令兑换，且每种面值限兑换一次。如分值较多大客户可以用服务密码加入购物车兑换。</p>'+
@@ -94,6 +99,10 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                         '<p>4.如遇移动系统延时兑换之后卡券没有到账（系统会有红色弹窗提示：还没找到兑换信息，请稍后再次提交）系统自带有记忆登录功能，12小时之内再次提交只需输入客户号码，点击-获取验证码（此时并不会给客户下发验证码，会有弹窗）直接上报成功。</p>'+
                         '<p>5.兑换完成之后请注意查看订单明细后台会在1分钟之内更新状态结果。</p>'+
                         '</div>';
+                }else if(channel == 'unicom_woerma'){
+
+                }else{
+
                 }
 
                 layer.open({
