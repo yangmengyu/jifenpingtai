@@ -47,6 +47,10 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                     }
                 });
             });
+            var msg = Config.msg;
+            if(msg){
+                Toastr.error(msg)
+            }
         },
         register: function () {
             //本地验证未通过时提示

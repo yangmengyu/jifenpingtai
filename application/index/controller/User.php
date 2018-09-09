@@ -189,6 +189,10 @@ class User extends Frontend
             && !preg_match("/(user\/login|user\/register)/i", $referer)) {
             $url = $referer;
         }
+
+        if( $msg = input('msg')){
+            $this->assignconfig('msg',$msg);
+        }
         $this->view->assign('url', $url);
         $this->view->assign('title', __('Login'));
         return $this->view->fetch();
@@ -207,7 +211,7 @@ class User extends Frontend
             $uc = new \addons\ucenter\library\client\Client();
             $synchtml = $uc->uc_user_synlogout();
         }
-        $this->success(__('Logout successful') . $synchtml, url('user/index'));
+        $this->redirect('user/login',['msg'=>__('Logout successful')]);
     }
 
     /**

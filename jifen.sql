@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-09 01:55:41
+Date: 2018-09-09 11:17:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,7 +40,7 @@ CREATE TABLE `fa_admin` (
 -- ----------------------------
 -- Records of fa_admin
 -- ----------------------------
-INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536409032', '1492186163', '1536409032', 'c045d7c4-9e48-4ef9-a93b-a9ed525de8e8', 'normal');
+INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536456389', '1492186163', '1536456389', '02ab70b0-798a-40fe-a85f-43da5d13c92f', 'normal');
 INSERT INTO `fa_admin` VALUES ('2', 'admin2', 'admin2', '9a28ce07ce875fbd14172a9ca5357d3c', '2dHDmj', '/assets/img/avatar.png', 'admin2@fastadmin.net', '0', '1505450906', '1492186163', '1505450906', 'df45fdd5-26f4-45ca-83b3-47e4491a315a', 'normal');
 INSERT INTO `fa_admin` VALUES ('3', 'admin3', 'admin3', '1c11f945dfcd808a130a8c2a8753fe62', 'WOKJEn', '/assets/img/avatar.png', 'admin3@fastadmin.net', '0', '1501980868', '1492186201', '1501982377', '', 'normal');
 INSERT INTO `fa_admin` VALUES ('4', 'admin22', 'admin22', '1c1a0aa0c3c56a8c1a908aab94519648', 'Aybcn5', '/assets/img/avatar.png', 'admin22@fastadmin.net', '0', '0', '1492186240', '1492186240', '', 'normal');
@@ -62,7 +62,7 @@ CREATE TABLE `fa_admin_log` (
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Records of fa_admin_log
@@ -328,6 +328,7 @@ INSERT INTO `fa_admin_log` VALUES ('258', '1', 'admin', '/admin/scoreproduct/edi
 INSERT INTO `fa_admin_log` VALUES ('259', '1', 'admin', '/admin/ajax/upload', '', '{\"name\":\"1536422368.png\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3423.2 Safari/537.36', '1536422336');
 INSERT INTO `fa_admin_log` VALUES ('260', '1', 'admin', '/admin/scoreproduct/add?dialog=1', '积分产品 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"unicom_woerma\",\"score\":\"10500\",\"return\":\"100\",\"sms\":\"\",\"url\":\"https:\\/\\/m.jf.10010.com\\/item\\/118030133621.html\",\"qrimage\":\"\\/uploads\\/20180908\\/10a96eeab010b3f5625832484b6e1e6f.png\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3423.2 Safari/537.36', '1536422338');
 INSERT INTO `fa_admin_log` VALUES ('261', '1', 'admin', '/admin/command/execute/ids/7', '在线命令管理 运行', '{\"ids\":\"7\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3423.2 Safari/537.36', '1536423441');
+INSERT INTO `fa_admin_log` VALUES ('262', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"206b6a5741cdcd672e1376faea530cfd\",\"username\":\"admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3423.2 Safari/537.36', '1536456389');
 
 -- ----------------------------
 -- Table structure for `fa_area`
@@ -4542,7 +4543,7 @@ CREATE TABLE `fa_leesign` (
   `sign_extra_reward` int(11) DEFAULT NULL COMMENT '连签额外奖励',
   `max_sign` int(11) DEFAULT NULL COMMENT '连签数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户签到表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户签到表';
 
 -- ----------------------------
 -- Records of fa_leesign
@@ -4550,6 +4551,7 @@ CREATE TABLE `fa_leesign` (
 INSERT INTO `fa_leesign` VALUES ('3', '4', '127.0.0.1', '2018-09-04 17:18:08', '0', '1', '1');
 INSERT INTO `fa_leesign` VALUES ('4', '4', '127.0.0.1', '2018-09-06 10:26:54', '0', '1', '1');
 INSERT INTO `fa_leesign` VALUES ('5', '4', '127.0.0.1', '2018-09-08 09:05:11', '0', '1', '1');
+INSERT INTO `fa_leesign` VALUES ('6', '4', '127.0.0.1', '2018-09-09 09:20:48', '0', '2', '2');
 
 -- ----------------------------
 -- Table structure for `fa_mobile_area`
@@ -15882,7 +15884,7 @@ CREATE TABLE `fa_user` (
 -- ----------------------------
 -- Records of fa_user
 -- ----------------------------
-INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '5', '3', '3', '1536387931', '1536408791', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536428926', '', 'normal', '', '0.85', '225.00', '0.00', '0.00', '', '', '', '', '2018-09-08');
+INSERT INTO `fa_user` VALUES ('4', '0', '1', 'yangmengyu', '杨梦雨', '52a560efbbe1b60f9f58b565ef01f989', '9Bz4i3', '', '17603852737', '/assets/img/avatar.png', '1', '0', null, '', '7', '4', '4', '1536455994', '1536456012', '127.0.0.1', '0', '127.0.0.1', '1535942945', '1535942945', '1536456048', '', 'normal', '', '0.85', '225.00', '0.00', '0.00', '', '', '', '', '2018-09-08');
 INSERT INTO `fa_user` VALUES ('5', '4', '2', 'yangmengyu1', 'ceshi', '3cbe5f6bfd176550697b28c5e6e63583', 'hN3Jpk', '', '17603852732', '', '1', '0', null, '', '0', '1', '1', '1536041409', '1536379186', '127.0.0.1', '0', '127.0.0.1', '1536041409', '1536041409', '1536428926', '', 'normal', '', '0.80', '220.00', '0.00', '0.00', null, null, null, null, '2018-09-08');
 INSERT INTO `fa_user` VALUES ('6', '4', '1', '1jiyonghu', '1jiyonghu', '11ff4d68dad16a22d509c6a22aae9bf5', 'Be4HOm', '', '17633333333', '', '1', '0', null, '', '0', '1', '1', '1536221560', '1536221586', '127.0.0.1', '0', '127.0.0.1', '1536221560', '1536221560', '1536428926', '', 'normal', '', '0.85', '70.00', '0.00', '0.00', null, null, null, null, '2018-09-08');
 
@@ -16048,7 +16050,7 @@ CREATE TABLE `fa_user_score_log` (
   `memo` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='会员积分变动表';
 
 -- ----------------------------
 -- Records of fa_user_score_log
@@ -16058,6 +16060,7 @@ INSERT INTO `fa_user_score_log` VALUES ('4', '4', '1', '1', '2', '额外签到�
 INSERT INTO `fa_user_score_log` VALUES ('5', '4', '1', '2', '3', '连续签到1天奖励', '1536052688');
 INSERT INTO `fa_user_score_log` VALUES ('6', '4', '1', '3', '4', '连续签到1天奖励', '1536200814');
 INSERT INTO `fa_user_score_log` VALUES ('7', '4', '1', '4', '5', '连续签到1天奖励', '1536368711');
+INSERT INTO `fa_user_score_log` VALUES ('8', '4', '2', '5', '7', '连续签到2天奖励', '1536456048');
 
 -- ----------------------------
 -- Table structure for `fa_user_token`
@@ -16074,7 +16077,6 @@ CREATE TABLE `fa_user_token` (
 -- ----------------------------
 -- Records of fa_user_token
 -- ----------------------------
-INSERT INTO `fa_user_token` VALUES ('278bcd1b23304ab13867e9dde78d6f7c07927a97', '4', '1536408791', '1539000791');
 INSERT INTO `fa_user_token` VALUES ('3dae2e0f5fc34a8674a8372c84957e9310c67cf5', '6', '1536221561', '1538813561');
 INSERT INTO `fa_user_token` VALUES ('8674aa162cae5d92c158db54c4a1b6985f5138ad', '4', '1536041544', '1538633544');
 INSERT INTO `fa_user_token` VALUES ('8708e237a72acae6c339a4dcb36d8f456991b1c6', '4', '1536042555', '1538634555');
@@ -16083,6 +16085,7 @@ INSERT INTO `fa_user_token` VALUES ('a5738851e1e104d019d279ea4b9caacca29cc9f3', 
 INSERT INTO `fa_user_token` VALUES ('a5e89cc57de00bb11af9e1e1f0ebb4adb2e50148', '4', '1535960687', '1538552687');
 INSERT INTO `fa_user_token` VALUES ('a76ac0613931ef7c4b527bb76c87d68f1700acc6', '4', '1536048116', '1538640116');
 INSERT INTO `fa_user_token` VALUES ('e2c3902719cfc461f634c364971efb35276834b8', '4', '1536387931', '1538979931');
+INSERT INTO `fa_user_token` VALUES ('e50eeed601953c5ebb285141b4028ba8a3de04f2', '4', '1536456012', '1539048012');
 INSERT INTO `fa_user_token` VALUES ('ef33df45ac3420d3f0f2af4d893e68782d2ed18f', '4', '1535942945', '1538534945');
 INSERT INTO `fa_user_token` VALUES ('fe921b212bb6ae04a688ec02dc450fd7a54004bd', '4', '1536048351', '1538640351');
 
