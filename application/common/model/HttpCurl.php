@@ -124,4 +124,32 @@ class HttpCurl {
     public function conv2utf8($text){
         return mb_convert_encoding($text,'UTF-8','ASCII,GB2312,GB18030,GBK,UTF-8');
     }
+    //获取验证码
+    public function getSms($MerId,$mobile,$Merkey,$Smstype=NULL){
+
+        $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
+        $data['MerId'] = $MerId;
+        $data['Phone'] = $mobile;
+        $key = $this->MD5($Merkey);
+        $SignSource = $this->MD5($mobile.$key.$MerId.'@!@#@#DDSD323dsds');
+        $data['SignSource'] = $SignSource;
+        $result = $this->callInterfaceCommon($url,$data,'POST','',FALSE);
+        return $result;
+    }
+
+    //发起上报
+    public function shangbao($MerId,$mobile,$MerKey,$smscode,$LoginKey){
+        $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
+        $data['MerId'] = $MerId;
+        $data['Phone'] = $mobile;
+        $key = $this->MD5($MerKey);
+        $data['SmsCode'] = $smscode;
+        $data['LoginKey'] = $LoginKey;
+        $SignSource = $this->MD5($mobile.$key.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
+        $data['SignSource'] = $SignSource;
+        $result = $this->callInterfaceCommon($url,$data,'POST','',FALSE);
+        return $result;
+    }
+
+
 }

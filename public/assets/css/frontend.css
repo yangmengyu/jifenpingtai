@@ -532,6 +532,9 @@ main.content {
     font-size: 14px;
     line-height: 30px;
   }
+  .search{
+    width:120px;
+  }
 }
 .article-metas .metas-body .title {
   margin: 5px 0 0 0;
@@ -545,4 +548,5 @@ main.content {
   transition: all 0.3s ease;
 }
 .value{margin-left: 10px;}
+
 /*# sourceMappingURL=../css/frontend.css.map */
