@@ -110,7 +110,6 @@ class Score extends Frontend
         if($dosubmit){
             $data['SmsCode'] = $smscode;
             $data['LoginKey'] = $LoginKey;
-            dump($LoginKey);exit;
             $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
             $data['SignSource'] = $SignSource;
             $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
