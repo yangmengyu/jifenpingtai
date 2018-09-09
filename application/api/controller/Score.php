@@ -27,22 +27,29 @@ class Score extends Api
         $endTime = time();
         $where['createtime'] = ['between', [$startTime, $endTime]];
         $where['status'] = 0;
-        $orders = Order::where($where)->select();
-        foreach ($orders as $order)
-        {
-            $result = $this->OrderStatus($order->order);
-            if($result->result == 99){
-                $order->status = 1;
-                $order->memo = '已兑换';
-                \app\common\model\User::add_blocked_balances($order->amount,$order->user_id,'discount');
-            }elseif(in_array($result->result,['3','11','12','13','14'])){
-                $order->status = 2;
-                $order->memo = $result->memo;
-            }else{
-                $order->memo = $result->memo;
+        $data = [];
+        $successnum = 0;
+        Order::where($where)->chunk(100,function ($items) use(&$data,&$successnum){
+            foreach ($items as $order)
+            {
+                $result = $this->OrderStatus($order->order);
+                if($result->result == 99){
+                    $order->status = 1;
+                    $order->memo = '已兑换';
+                    \app\common\model\User::add_blocked_balances($order->amount,$order->user_id,'discount');
+                }elseif(in_array($result->result,['3','11','12','13','14'])){
+                    $order->status = 2;
+                    $order->memo = $result->memo;
+                }else{
+                    $order->memo = $result->memo;
+                }
+                $order->save();
+                $data[] = '订单号：'.$order->order.',状态修改为'.$order->status.'。备注：'.$order->memo;
+                $successnum++;
             }
-            $order->save();
-        }
+        });
+        $this->success('成功更新'.$successnum.'条数据',$data);
+
     }
     /*
      * 查询订单状态
