@@ -35,17 +35,28 @@ class Dashboard extends Backend
         $config = Config::get("composer");
         $addonVersion = isset($config['version']) ? $config['version'] : __('Unknown');
         $totaluser = User::count();
+        $totalorder = \app\common\model\Order::where('status',1)->count();
+        $totalorderamount = \app\common\model\Order::where('status',1)->sum('amount');
+        //当天
+        $firstDate = date('Y-m-d 00:00:00', time());
+        $lastDate = date('Y-m-d H:i:s', strtotime("$firstDate + 1 day")-1);
+        $startTime = strtotime($firstDate);
+        $endTime = strtotime($lastDate);
+        $todayorder = \app\common\model\Order::where('status',1)->where('createtime','between',[$startTime,$endTime])->count();
+        $unsettleorder = \app\common\model\Order::where('status',0)->where('createtime','between',[$startTime,$endTime])->count();
+        $todayorderamount = \app\common\model\Order::where('status',1)->where('createtime','between',[$startTime,$endTime])->sum('amount');
+        $todayusersignup = User::where('createtime','between',[$startTime,$endTime])->count();
         $this->view->assign([
             'totaluser'        => $totaluser,
             'totalviews'       => 219390,
-            'totalorder'       => 32143,
-            'totalorderamount' => 174800,
+            'totalorder'       => $totalorder,
+            'totalorderamount' => $totalorderamount,
             'todayuserlogin'   => 321,
-            'todayusersignup'  => 430,
-            'todayorder'       => 2324,
-            'unsettleorder'    => 132,
+            'todayusersignup'  => $todayusersignup,
+            'todayorder'       => $todayorder,
+            'unsettleorder'    => $unsettleorder,
             'sevendnu'         => '80%',
-            'sevendau'         => '32%',
+            'todayorderamount'=> $todayorderamount,
             'paylist'          => $paylist,
             'createlist'       => $createlist,
             'addonversion'       => $addonVersion,
