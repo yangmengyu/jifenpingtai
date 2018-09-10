@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label class="control-label" for="account">{:__('Account')}</label>
                     <div class="controls">
-                        <input class="form-control input-lg" id="account" type="text" name="account" value="" data-rule="required" placeholder="{:__('Email/Mobile/Username')}" autocomplete="off">
+                        <input class="form-control input-lg" id="account" type="text" name="account" value="" data-rule="required" placeholder="手机/用户名" autocomplete="off">
                         <div class="help-block"></div>
                     </div>
                 </div>
@@ -39,19 +39,19 @@
                 <label for="" class="control-label col-xs-12 col-sm-3">{:__('Type')}:</label>
                 <div class="col-xs-12 col-sm-8">
                     <div class="radio">
-                        <label for="type-email"><input id="type-email" checked="checked" name="type" data-send-url="{:url('api/ems/send')}" data-check-url="{:url('api/validate/check_ems_correct')}" type="radio" value="email"> {:__('Reset password by email')}</label>
-                        <label for="type-mobile"><input id="type-mobile" name="type" type="radio" data-send-url="{:url('api/sms/send')}" data-check-url="{:url('api/validate/check_sms_correct')}" value="mobile"> {:__('Reset password by mobile')}</label>
+                        <!--<label for="type-email"><input id="type-email" checked="checked" name="type" data-send-url="{:url('api/ems/send')}" data-check-url="{:url('api/validate/check_ems_correct')}" type="radio" value="email"> {:__('Reset password by email')}</label>-->
+                        <label for="type-mobile"><input id="type-mobile"  checked="checked" name="type" type="radio" data-send-url="{:url('api/sms/send')}" data-check-url="{:url('api/validate/check_sms_correct')}" value="mobile"> {:__('Reset password by mobile')}</label>
                     </div>        
                 </div>
             </div>
-            <div class="form-group" data-type="email">
+            <div class="form-group hide" data-type="email">
                 <label for="email" class="control-label col-xs-12 col-sm-3">{:__('Email')}:</label>
                 <div class="col-xs-12 col-sm-8">
                     <input type="text" class="form-control" id="email" name="email" value="" data-rule="required(#type-email:checked);email;remote({:url('api/validate/check_email_exist')}, event=resetpwd, id={$user.id})" placeholder="">
                     <span class="msg-box"></span>
                 </div>
             </div>
-            <div class="form-group hide" data-type="mobile">
+            <div class="form-group " data-type="mobile">
                 <label for="mobile" class="control-label col-xs-12 col-sm-3">{:__('Mobile')}:</label>
                 <div class="col-xs-12 col-sm-8">
                     <input type="text" class="form-control" id="mobile" name="mobile" value="" data-rule="required(#type-mobile:checked);mobile;remote({:url('api/validate/check_mobile_exist')}, event=resetpwd, id={$user.id})" placeholder="">
@@ -62,9 +62,9 @@
                 <label for="captcha" class="control-label col-xs-12 col-sm-3">{:__('Captcha')}:</label>
                 <div class="col-xs-12 col-sm-8">
                     <div class="input-group">
-                        <input type="text" name="captcha" class="form-control" data-rule="required;length(4);integer[+];remote({:url('api/validate/check_ems_correct')}, event=resetpwd, email:#email)" />
+                        <input type="text" name="captcha" class="form-control" data-rule="required;length(4);integer[+];remote({:url('api/validate/check_sms_correct')}, event=resetpwd, mobile:#mobile)" />
                         <span class="input-group-btn" style="padding:0;border:none;">
-                            <a href="javascript:;" class="btn btn-info btn-captcha" data-url="{:url('api/ems/send')}" data-type="email" data-event="resetpwd">{:__('Send verification code')}</a>
+                            <a href="javascript:;" class="btn btn-info btn-captcha" data-url="{:url('api/sms/send')}" data-type="mobile" data-event="resetpwd">{:__('Send verification code')}</a>
                         </span>
                     </div>
                     <span class="msg-box"></span>
