@@ -148,7 +148,7 @@ class HttpCurl {
         $data['SmsCode'] = $smscode;
         $data['LoginKey'] = $LoginKey;
         $Merkey = $HttpCurl->MD5($config['MerKey']);
-        $SignSource = $HttpCurl->MD5($mobile.$Merkey.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
+        $SignSource = $HttpCurl->MD5($mobile.$Merkey.$data['MerId'].$data['SmsCode'].$data['LoginKey'].'@!@#@#DDSD323dsds');
 
         $data['SignSource'] = $SignSource;
         //获取验证码地址

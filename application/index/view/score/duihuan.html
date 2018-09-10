@@ -7,7 +7,7 @@
                            {$title}
                             <button class="btn btn-warning btn-xs" type="button" id="shuoming" data-channel="{$channel}">使用说明</button>
                         </h2>
-                            <form id="add-form" role="form" data-toggle="validator" method="POST" action="/index/score/add" class="nice-validator n-default n-bootstrap" novalidate="novalidate">
+                            <form id="add-form" role="form" data-toggle="validator" method="POST" action="/index/score/shangbao" class="nice-validator n-default n-bootstrap" novalidate="novalidate">
                                 <div class="box-body box-profile">
                                     <div class="form-group">
                                         <span class="input-group text-sm text-red">
@@ -43,9 +43,9 @@
                                         <input id="mobile" placeholder="手机号码" type="text" class="form-control" name="mobile" value="" data-rule="required;mobile">
                                         <span class="msg-box"></span>
                                     </div>
-                                    <div class="form-group hide">
+                                    <!--<div class="form-group hide">
                                         <input id="LoginKey" placeholder="" type="text" class="form-control" name="LoginKey" value="">
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input type="text" placeholder="验证码"  class="form-control" name="smscode" value="" data-rule="required;">

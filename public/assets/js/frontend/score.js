@@ -76,10 +76,10 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
             $('#getsmscode').click(function () {
                 var mobile = $('#mobile').val();
                 var channel = $(this).data('channel');
-                $.post('/index/score/add',{mobile:mobile,channel:channel},function (res) {
-                    if(res.data.LoginKey){
+                $.post('/index/score/getSmsCode',{mobile:mobile,channel:channel},function (res) {
+                   /* if(res.data.LoginKey){
                         $('#LoginKey').val(res.data.LoginKey);
-                    }
+                    }*/
                     layer.msg(res.msg);
                 });
             });

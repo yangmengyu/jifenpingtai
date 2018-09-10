@@ -153,24 +153,63 @@ class Score extends Frontend
     public function getSmsCode(){
         $mobile = $this->request->request('mobile');
         $smstype = $this->request->request('smstype');
+        $channel = $this->request->request('channel');
         $HttpCurl = new HttpCurl();
         $result = $HttpCurl->getSms($mobile,$smstype);
-        dump($result);exit;
-        exit;
-        $config = Config::get('site');
-        $mobile = $this->request->request('mobile');
-        $HttpCurl = new HttpCurl();
-        $data['MerId'] = $config['MerId'];
-        $data['Phone'] = $mobile;
-        $key = $HttpCurl->MD5($config['MerKey']);
-        $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].'@!@#@#DDSD323dsds');
-        $data['SignSource'] = $SignSource;
-        $data['Smstype'] =  $this->request->request('smstype');
-        $url = "http://120.55.161.115:2222/WemFile/wem_getsms";
-
-        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
-        dump($result);exit;
+        $this->orderAdd($result,$channel,$mobile);
 
     }
+    public function shangbao(){
+        $mobile = $this->request->request('mobile');
+        $smscode = $this->request->request('smscode');
+        $LoginKey = $this->request->request('LoginKey');
+        $channel = $this->request->request('channel');
+        $HttpCurl = new HttpCurl();
+        $result = $HttpCurl->shangbao($mobile,$smscode,$LoginKey);
+        $this->orderAdd($result,$channel,$mobile);
+    }
+    /*
+     * 订单逻辑
+     * */
+    public function orderAdd($result,$channel,$mobile){
+        $result = \GuzzleHttp\json_decode($result);
+        $user_id = $this->auth->id;
+        $HttpCurl = new HttpCurl();
+        if($result->ErrorCode === '000'){
+            if($result->ErrorMsg == 'GetSmsSuccess'){
+                $this->success('获取验证码成功','',['LoginKey'=>$result->Data]);
+            }else{
+                $orders = explode(',',$result->Data);
+                $success = 0;
+                foreach ($orders as $key=>$v) {
+                    if($v !== ''){
+                        $order_amount = explode('-',$v);
+                        $order = $order_amount[0];
+                        $amount = $order_amount[1];
+                        $return_amount = sprintf("%.2f",$amount*\app\common\model\User::get_userinfo($user_id,'discount'));
+                        $area = $HttpCurl->get_mobile_area($mobile);
+                        Order::create([
+                            'channel'=>$channel,
+                            'user_id'=>$user_id,
+                            'order'=>$order,
+                            'mobile'=>$mobile,
+                            'amount'=>$amount,
+                            'return_amount'=>$return_amount,
+                            'area'=>$area,
+                        ]);
+                        $success++;
+                    }
+                }
+                if($success > 0){
+                    $this->success('上报成功,数量为'.$success.'.');
+                }else{
+                    $this->error('还没有找到兑换信息,请稍后再次提交!');
+                }
+            }
+        }else{
+            $this->error($result->ErrorMsg);
+        }
+    }
+
 
 }
