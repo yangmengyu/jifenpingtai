@@ -108,18 +108,9 @@ class Score extends Frontend
         $data['Phone'] = $mobile;
         $key = $HttpCurl->MD5($config['MerKey']);
         if($dosubmit){
-            $data['SmsCode'] = $smscode;
-            $data['LoginKey'] = $LoginKey;
-            $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
-            $data['SignSource'] = $SignSource;
-            $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
-            $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
+            $result = $HttpCurl->shangbao($mobile,$smscode,$LoginKey);
         }else{
-            $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].'@!@#@#DDSD323dsds');
-            $data['Smstype'] =  $smstype;
-            $data['SignSource'] = $SignSource;
-            $url = "http://120.55.161.115:2222/WemFile/wem_getsms";
-            $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
+            $result = $HttpCurl->getSms($mobile,$smstype);
         }
         Log::write('('.$mobile.'-'.date('Y-m-d H:i:s',time()).')，通道为：'.$channel.'：'.$result);
         //$result = "{\"Success\":true,\"ErrorCode\":\"000\",\"ErrorTarget\":\"\",\"ErrorMsg\":\"提交成功\",\"Data\":\"WM090717373593452452-50.00,WM090717373652501116-50.00,\"}";
@@ -158,6 +149,28 @@ class Score extends Frontend
         }else{
             $this->error($result->ErrorMsg);
         }
+    }
+    public function getSmsCode(){
+        $mobile = $this->request->request('mobile');
+        $smstype = $this->request->request('smstype');
+        $HttpCurl = new HttpCurl();
+        $result = $HttpCurl->getSms($mobile,$smstype);
+        dump($result);exit;
+        exit;
+        $config = Config::get('site');
+        $mobile = $this->request->request('mobile');
+        $HttpCurl = new HttpCurl();
+        $data['MerId'] = $config['MerId'];
+        $data['Phone'] = $mobile;
+        $key = $HttpCurl->MD5($config['MerKey']);
+        $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].'@!@#@#DDSD323dsds');
+        $data['SignSource'] = $SignSource;
+        $data['Smstype'] =  $this->request->request('smstype');
+        $url = "http://120.55.161.115:2222/WemFile/wem_getsms";
+
+        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
+        dump($result);exit;
+
     }
 
 }

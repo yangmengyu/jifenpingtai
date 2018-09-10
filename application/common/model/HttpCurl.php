@@ -125,29 +125,35 @@ class HttpCurl {
         return mb_convert_encoding($text,'UTF-8','ASCII,GB2312,GB18030,GBK,UTF-8');
     }
     //获取验证码
-    public function getSms($MerId,$mobile,$Merkey,$Smstype=NULL){
-
-        $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
-        $data['MerId'] = $MerId;
+    public function getSms($mobile,$Smstype=NULL){
+        $HttpCurl = new HttpCurl();
+        $config = \think\Config::get('site');
+        $data['MerId'] = $config['MerId'];
         $data['Phone'] = $mobile;
-        $key = $this->MD5($Merkey);
-        $SignSource = $this->MD5($mobile.$key.$MerId.'@!@#@#DDSD323dsds');
+        $key = $HttpCurl->MD5($config['MerKey']);
+        $SignSource = $HttpCurl->MD5($mobile.$key.$data['MerId'].'@!@#@#DDSD323dsds');
         $data['SignSource'] = $SignSource;
-        $result = $this->callInterfaceCommon($url,$data,'POST','',FALSE);
+        $data['Smstype'] =  $Smstype;
+        $url = "http://120.55.161.115:2222/WemFile/wem_getsms";
+        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
         return $result;
     }
 
     //发起上报
-    public function shangbao($MerId,$mobile,$MerKey,$smscode,$LoginKey){
-        $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
-        $data['MerId'] = $MerId;
+    public function shangbao($mobile,$smscode,$LoginKey){
+        $config = \think\Config::get('site');
+        $HttpCurl = new HttpCurl();
+        $data['MerId'] = $config['MerId'];
         $data['Phone'] = $mobile;
-        $key = $this->MD5($MerKey);
         $data['SmsCode'] = $smscode;
         $data['LoginKey'] = $LoginKey;
-        $SignSource = $this->MD5($mobile.$key.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
+        $Merkey = $HttpCurl->MD5($config['MerKey']);
+        $SignSource = $HttpCurl->MD5($mobile.$Merkey.$data['MerId'].$data['SmsCode'].$LoginKey.'@!@#@#DDSD323dsds');
+
         $data['SignSource'] = $SignSource;
-        $result = $this->callInterfaceCommon($url,$data,'POST','',FALSE);
+        //获取验证码地址
+        $url = "http://120.55.161.115:2222/WemFile/wem_setsms";
+        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
         return $result;
     }
 

@@ -34,6 +34,7 @@ class Index extends Frontend
         $data['user'] = \app\common\model\User::get($user_id);
         $data['news'] = \app\common\model\News::order('createtime','desc')->paginate(5);
         $this->view->assign('data',$data);
+        $this->view->assign('title','首页');
         return $this->view->fetch();
     }
 

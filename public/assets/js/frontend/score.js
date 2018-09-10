@@ -77,7 +77,9 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 var mobile = $('#mobile').val();
                 var channel = $(this).data('channel');
                 $.post('/index/score/add',{mobile:mobile,channel:channel},function (res) {
-                    $('#LoginKey').val(res.data.LoginKey);
+                    if(res.data.LoginKey){
+                        $('#LoginKey').val(res.data.LoginKey);
+                    }
                     layer.msg(res.msg);
                 });
             });
