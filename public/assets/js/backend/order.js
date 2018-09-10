@@ -26,7 +26,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'channel', title: __('Channel'), searchList: {"unicom_maidelong":__('Channel unicom_maidelong'),"unicom_woerma":__('Channel unicom_woerma'),"mobile_maidelong":__('Channel mobile_maidelong'),"mobile_woerma":__('Channel mobile_woerma')}, formatter: Table.api.formatter.normal},
-                        {field: 'user_id', title: __('User_id')},
+                        {field: 'user.nickname', title: __('User_id')},
                         {field: 'order', title: __('Order')},
                         {field: 'mobile', title: __('Mobile')},
                         {field: 'amount', title: __('Amount'), operate:'BETWEEN'},
@@ -35,8 +35,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
-                        {field: 'user.username', title: __('User.username')},
-                        {field: 'user.nickname', title: __('User.nickname')},
+                        /*{field: 'user.username', title: __('User.username')},
+                        {field: 'user.nickname', title: __('User.nickname')},*/
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

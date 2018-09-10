@@ -78,12 +78,14 @@ class User extends Frontend
             $this->success(__('You\'ve logged in, do not login again'), $url);
         if ($this->request->isPost()) {
             $username = $this->request->post('username');
+            $nickname = $this->request->post('nickname');
             $password = $this->request->post('password');
             $mobile = $this->request->post('mobile', '');
             $captcha = $this->request->post('captcha');
             $token = $this->request->post('__token__');
             $rule = [
                 'username'  => 'require|length:3,30',
+                'nickname'  => 'require',
                 'password'  => 'require|length:6,30',
                 'mobile'    => 'regex:/^1\d{10}$/',
                 'captcha'   => 'require|captcha',
@@ -92,6 +94,7 @@ class User extends Frontend
 
             $msg = [
                 'username.require' => 'Username can not be empty',
+                'nickname.require' => '昵称不能为空',
                 'username.length'  => 'Username must be 3 to 30 characters',
                 'password.require' => 'Password can not be empty',
                 'password.length'  => 'Password must be 6 to 30 characters',
@@ -101,6 +104,7 @@ class User extends Frontend
             ];
             $data = [
                 'username'  => $username,
+                'nickname'  => $nickname,
                 'password'  => $password,
                 'mobile'    => $mobile,
                 'captcha'   => $captcha,
@@ -112,6 +116,7 @@ class User extends Frontend
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
             $params['status'] = 'locked';
+            $params['nickname'] = $nickname;
             if ($this->auth->register($username, $password, '', $mobile,$params)) {
                 $synchtml = '';
                 ////////////////同步到Ucenter////////////////

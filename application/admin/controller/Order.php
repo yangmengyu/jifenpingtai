@@ -17,7 +17,7 @@ class Order extends Backend
      * @var \app\common\model\Order
      */
     protected $model = null;
-
+    protected $searchFields = 'id,user.nickname,amount,order,mobile';
     public function _initialize()
     {
         parent::_initialize();
