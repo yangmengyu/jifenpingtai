@@ -29,6 +29,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 sortName: 'id',
                 showColumns: false,
                 showExport: false,
+                cardView: cardView(),
                 columns: [
                     [
                         {field: 'id', title: 'ID'},
@@ -137,5 +138,12 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
             }
         }
     };
+    function cardView() {
+        if(Config.mobile == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
     return Controller;
 });

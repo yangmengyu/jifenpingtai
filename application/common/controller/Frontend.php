@@ -134,6 +134,10 @@ class Frontend extends Controller
         $this->assign('config', $config);
         //渲染权限对象
         $this->assign('auth', $this->auth);
+        //判断浏览设备
+        if(ismobile()){
+            $this->assignconfig('mobile','1');
+        }
     }
 
     /**

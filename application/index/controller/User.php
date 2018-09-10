@@ -361,6 +361,8 @@ class User extends Frontend
 
             return json($result);
         }
+        $this->view->assign('title','我的提现');
+
         return $this->view->fetch();
     }
     /**

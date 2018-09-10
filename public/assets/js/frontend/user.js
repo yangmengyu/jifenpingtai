@@ -145,6 +145,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 showColumns: false,
                 showExport: false,
                 search:false,
+                cardView: cardView(),
                 columns: [
                     [
                         {field: 'id', title: __('Id')},
@@ -183,6 +184,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 sortName: 'id',
                 showColumns: false,
                 showExport: false,
+                cardView: cardView(),
                 columns: [
                     [
                         {field: 'id', title: __('Id'), sortable: true},
@@ -236,6 +238,14 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 Form.api.bindevent($("form[role=form]"));
             }
         }
+
     };
+    function cardView() {
+        if(Config.mobile == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
     return Controller;
 });
