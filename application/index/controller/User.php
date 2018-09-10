@@ -400,6 +400,7 @@ class User extends Frontend
 
             return json($result);
         }
+        $this->view->assign('title','我的用户');
         return $this->view->fetch();
     }
     /*
@@ -449,6 +450,7 @@ class User extends Frontend
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
             }
         }
+
         return $this->view->fetch();
     }
     /*
@@ -535,6 +537,7 @@ class User extends Frontend
     public function scorelog(){
         $list = ScoreLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
         $this->assign('list',$list);
+        $this->view->assign('title', '积分日志');
         return $this->view->fetch();
     }
     /*
@@ -543,6 +546,7 @@ class User extends Frontend
     public function balancelog(){
         $list = BalanceLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
         $this->assign('list',$list);
+        $this->view->assign('title', '余额日志');
         return $this->view->fetch();
     }
 }

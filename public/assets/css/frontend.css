@@ -505,7 +505,6 @@ main.content {
 .article-metas .date {
   height: 48px;
   width: 48px;
-  margin-top: 10px;
   text-align: center;
   color: #c1c1c1;
   border: 1px solid #c1c1c1;
@@ -529,7 +528,7 @@ main.content {
 }
 @media (max-width: 1199px){
   .article-metas .metas-body .title {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 30px;
   }
   .search{
@@ -538,7 +537,6 @@ main.content {
 }
 .article-metas .metas-body .title {
   margin: 5px 0 0 0;
-  line-height: 60px;
 }
 .article-metas .metas-body .title a {
   color: #616161;

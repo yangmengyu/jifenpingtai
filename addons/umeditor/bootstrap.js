@@ -1,17 +1,3 @@
-define([], function () {
-    require.config({
-    paths: {
-        'async': '../addons/example/js/async',
-        'BMap': ['//api.map.baidu.com/api?v=2.0&ak=mXijumfojHnAaN2VxpBGoqHM'],
-    },
-    shim: {
-        'BMap': {
-            deps: ['jquery'],
-            exports: 'BMap'
-        }
-    }
-});
-
 window.UMEDITOR_HOME_URL = Config.__CDN__ + "/assets/addons/umeditor/";
 require.config({
     paths: {
@@ -122,5 +108,4 @@ require(['upload', 'umeditor', 'umeditor.lang'], function (Upload, UME, undefine
             imagePath: Config.upload.cdnurl
         });
     });
-});
 });
