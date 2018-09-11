@@ -32,7 +32,7 @@ class Score extends Frontend
      * */
     public function index()
     {
-        $categorys =  Category::getCategoryArray();
+        $categorys =  Category::getCategoryArray(NULL,'normal');
         $this->view->assign('categorys',$categorys);
         $this->view->assign('title', '积分兑换');
         return $this->view->fetch();
