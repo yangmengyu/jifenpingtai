@@ -38,7 +38,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 Layer.open({
                     type: 1,
                     title: __('Reset password'),
-                    area: ["450px", "355px"],
+                    area: [Config.mobile?'90%':'450px', "400px"],
                     content: content,
                     success: function (layero) {
                         Form.api.bindevent($("#resetpwd-form", layero), function (data) {
@@ -89,7 +89,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 Layer.open({
                     type: 1,
                     title: "修改",
-                    area: ["400px", "250px"],
+                    area: [Config.mobile?'90%':'450px', "250px"],
                     content: content,
                     success: function (layero) {
                         var form = $("form", layero);
@@ -108,7 +108,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 Layer.open({
                     type: 1,
                     title: '申请提现',
-                    area: ["355px", "355px"],
+                    area: [Config.mobile?'90%':'450px', "355px"],
                     content: content,
                     success: function (layero) {
                         Form.api.bindevent($("#tixian-form", layero), function (data,res) {
@@ -212,7 +212,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 Layer.open({
                     type: 1,
                     title: '申请提现',
-                    area: ["355px", "355px"],
+                    area: [Config.mobile?'90%':'450px', "355px"],
                     content: content,
                     success: function (layero) {
                         Form.api.bindevent($("#tixian-form", layero), function (data,res) {

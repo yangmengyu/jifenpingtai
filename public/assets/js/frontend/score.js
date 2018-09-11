@@ -66,7 +66,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                     content += '</div>';
                 layer.open({
                     type: 1
-                    ,area: ['350px', '500px']
+                    ,area: [Config.mobile?'90%':'400px', '450px']
                     ,title: '兑换'+score+'积分'
                     ,shade: 0.6
                     ,maxmin: true
@@ -122,7 +122,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
 
                 layer.open({
                     type: 1 //Page层类型
-                    ,area: ['350px', '500px']
+                    ,area: [Config.mobile?'90%':'400px', '500px']
                     ,title: '使用说明'
                     ,shade: 0.6 //遮罩透明度
                     ,maxmin: true //允许全屏最小化
