@@ -26,6 +26,7 @@ class Index extends Frontend
         $data['child_count'] = count($child_userid);
         $child_userid[] = $user_id;
         $data['order_count'] = Order::whereIn('user_id',$child_userid)->count();
+        $data['totalamount'] = Order::whereIn('user_id',$child_userid)->where('status',1)->sum('return_amount');
         $firstDate = date('Y-m-d 00:00:00', time());
         $lastDate = date('Y-m-d H:i:s', strtotime("$firstDate + 1 day")-1);
         $startTime = strtotime($firstDate);
