@@ -159,37 +159,41 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-6  stat-col">
-                                                <div class="stat-icon"> <i class="fa fa-line-chart"></i> </div>
-                                                <div class="stat">
-                                                    <div class="value"> {$data.user.blocked_balances} </div>
-                                                    <div class="name"> 今日待结算 </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" style="width: 100%"></div>
-                                                </div>
+                                                <a href="{:url('user/index')}">
+                                                    <div class="stat-icon"> <i class="fa fa-line-chart"></i> </div>
+                                                    <div class="stat">
+                                                        <div class="value"> {$data.user.blocked_balances} </div>
+                                                        <div class="name"> 待结算 </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class="col-xs-6  stat-col">
-                                                <div class="stat-icon"> <i class="fa fa-users"></i> </div>
-                                                <div class="stat">
-                                                    <div class="value"> {$data.child_count} </div>
-                                                    <div class="name"> 下级会员 </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" style="width: 100%"></div>
-                                                </div>
+                                                <a href="{:url('user/myuser')}">
+                                                    <div class="stat-icon"> <i class="fa fa-users"></i> </div>
+                                                    <div class="stat">
+                                                        <div class="value"> {$data.child_count} </div>
+                                                        <div class="name"> 下级会员 </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class="col-xs-6  stat-col">
-                                                <div class="stat-icon"> <i class="fa fa-cny"></i> </div>
-                                                <div class="stat">
-                                                    <div class="value"> {$data.totalamount} </div>
-                                                    <div class="name"> 总金额 </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" style="width: 100%"></div>
-                                                </div>
+                                                <a href="{:url('user/index')}">
+                                                    <div class="stat-icon"> <i class="fa fa-cny"></i> </div>
+                                                    <div class="stat">
+                                                        <div class="value"> {$data.totalamount} </div>
+                                                        <div class="name"> 总金额 </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                                                    </div>
+                                                </a>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>

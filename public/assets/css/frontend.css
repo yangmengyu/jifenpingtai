@@ -526,6 +526,11 @@ main.content {
 .article-metas .metas-body {
   padding-left: 60px;
 }
+.list-group {
+  margin-bottom: 20px;
+  padding-left: 0;
+  height: 180px;
+}
 @media (max-width: 1199px){
   .article-metas .metas-body .title {
     font-size: 12px;
@@ -533,6 +538,20 @@ main.content {
   }
   .search{
     width:120px;
+  }
+
+}
+@media (min-width: 768px){
+  .list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+    height: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .sidenav .list-group .list-group-item.active {
+    border: none;
+    background: none;
   }
 }
 .article-metas .metas-body .title {
