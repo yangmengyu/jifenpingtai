@@ -25,7 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'ID', title: __('Id')},
-                        {field: 'name', title: __('Name'), searchList: {"unicom_maidelong":__('Name unicom_maidelong'),"unicom_woerma":__('Name unicom_woerma'),"mobile_maidelong":__('Name mobile_maidelong'),"mobile_woerma":__('Name mobile_woerma')}, formatter: Table.api.formatter.normal},
+                        {field: 'name', title: __('Name'), searchList: {"unicom_maidelong":__('Name unicom_maidelong'),"unicom_woerma":__('Name unicom_woerma'),"mobile_maidelong":__('Name mobile_maidelong'),"mobile_woerma":__('Name mobile_woerma'),"mobile_tmall":__('Name mobile_tmall')}, formatter: Table.api.formatter.normal},
                         {field: 'score', title: __('Score')},
                         {field: 'return', title: __('Return')},
                         {field: 'sms', title: __('Sms')},

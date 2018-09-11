@@ -40,7 +40,7 @@
                                     </span>
                                     </div>
                                     <div class="form-group">
-                                        <input id="mobile" placeholder="手机号码" type="text" class="form-control" name="mobile" value="" data-rule="required;mobile">
+                                        <input id="mobile" placeholder="手机号码" type="text" class="form-control" name="mobile" value="" data-rule="手机号码:required;mobile">
                                         <span class="msg-box"></span>
                                     </div>
                                     <!--<div class="form-group hide">
@@ -48,7 +48,7 @@
                                     </div>-->
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" placeholder="验证码"  class="form-control" name="smscode" value="" data-rule="required;">
+                                            <input type="text" placeholder="验证码"  class="form-control" name="smscode" value="" data-rule="验证码:required;">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button" id="getsmscode" data-channel="{$channel}">获取验证码</button>
                                             </span>
@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <input type="hidden" name="dosubmit" value="1">
                                         <input type="hidden" name="channel" value="{$channel}">
-                                        <button type="submit" class="btn btn-success">提交</button>
+                                        <button type="submit" class="btn btn-success">上报</button>
                                         <button type="reset" class="btn btn-default">重置</button>
                                     </div>
 

@@ -25,7 +25,7 @@ class Scoreproduct extends Model
     
     public function getNameList()
     {
-        return ['unicom_maidelong' => __('Name unicom_maidelong'),'unicom_woerma' => __('Name unicom_woerma'),'mobile_maidelong' => __('Name mobile_maidelong'),'mobile_woerma' => __('Name mobile_woerma')];
+        return ['unicom_maidelong' => __('Name unicom_maidelong'),'unicom_woerma' => __('Name unicom_woerma'),'mobile_maidelong' => __('Name mobile_maidelong'),'mobile_woerma' => __('Name mobile_woerma'),'mobile_tmall' => __('Name mobile_tmall')];
     }     
 
 
