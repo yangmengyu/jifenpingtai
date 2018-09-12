@@ -33,10 +33,11 @@ class Score extends Api
         $where['channel'] = ['in',$channel_arr];
         $data = [];
         $successnum = 0;
-        Order::where($where)->chunk(100,function ($items) use(&$data,&$successnum){
+        $HttpCurl = new HttpCurl();
+        Order::where($where)->chunk(100,function ($items) use(&$data,&$successnum,&$HttpCurl){
             foreach ($items as $order)
             {
-                $result = $this->OrderStatus($order->order);
+                $result = $HttpCurl->OrderStatus($order->order);
                 if($result->result == 99){
                     $order->status = 1;
                     $order->memo = '已兑换';
@@ -55,19 +56,5 @@ class Score extends Api
         $this->success('成功更新'.$successnum.'条数据',$data);
 
     }
-    /*
-     * 查询订单状态
-     * */
-    public function OrderStatus($orderid){
-        $HttpCurl = new HttpCurl();
-        $config = Config::get('site');
-        $data['merid'] = $config['MerId'];
-        $data['orderid'] = $orderid;
-        $data['timestamp'] = $HttpCurl->Timestamp();
-        $key = $HttpCurl->MD5($config['MerKey']);
-        $data['sign'] = $HttpCurl->MD5($data['timestamp'].$key.$data['merid'].$data['orderid'].'@!@#@#DDSD323dsds');
-        $url = 'http://120.55.161.115:2222/Home/queryorder';
-        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
-        return \GuzzleHttp\json_decode($result);
-    }
+
 }

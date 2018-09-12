@@ -171,6 +171,21 @@ class HttpCurl {
         return $result;
 
     }
+    /*
+   * 查询订单状态
+   * */
+    public function OrderStatus($orderid){
+        $HttpCurl = new HttpCurl();
+        $config = Config::get('site');
+        $data['merid'] = $config['MerId'];
+        $data['orderid'] = $orderid;
+        $data['timestamp'] = $HttpCurl->Timestamp();
+        $key = $HttpCurl->MD5($config['MerKey']);
+        $data['sign'] = $HttpCurl->MD5($data['timestamp'].$key.$data['merid'].$data['orderid'].'@!@#@#DDSD323dsds');
+        $url = 'http://120.55.161.115:2222/Home/queryorder';
+        $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
+        return \GuzzleHttp\json_decode($result);
+    }
 
 
 }
