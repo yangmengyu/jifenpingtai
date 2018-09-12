@@ -24,7 +24,7 @@ class Score extends Api
     public function updateStatus()
     {
         //unicom_maidelong=联通麦德龙,unicom_woerma=联通沃尔玛,mobile_maidelong=移动麦德龙,mobile_woerma=移动沃尔玛
-        $channel_arr = ['unicom_maidelong','unicom_woerma','mobile_maidelong','mobile_woerma'];
+        $channel_arr = ['unicom_maidelong','unicom_woerma','mobile_maidelong','mobile_woerma','mobile_tmall'];
 
         $startTime = strtotime(date('Y-m-d 00:00:00', strtotime("-1 day")));
         $endTime = time();

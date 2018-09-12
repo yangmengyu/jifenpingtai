@@ -197,7 +197,24 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
 
             // 为表格绑定事件
             Table.api.bindevent(table);
-            Form.api.bindevent($("#add-form"));
+            Form.api.bindevent($("#add-form"),function (res,data) {
+                if(data.code == 1){
+                    var content =  '<div class="panel-body">' +
+                        '<p>请自行发送 <span class="text-danger">'+data.data.sms+'</span> 至<span class="text-danger">10658999</span>，随后按短信提示操作，或扫下面二维码。</p>'+
+                        '<p class="text-center"><img width="200" src="http://120.55.161.115:2222/ydjfsh/tmall_getbarcode?orderid='+data.data.order_id+'" alt=""></p>'+
+                        '<p>一个手机对应一个二维码，没上报的手机请勿扫此二维码，扫码操作兑换成功后，请点返回，操作下一个。</p>'+
+                        '</div>';
+                    layer.open({
+                        type: 1 //Page层类型
+                        ,area: [Config.mobile?'90%':'400px', '500px']
+                        ,title: '使用说明'
+                        ,shade: 0.6 //遮罩透明度
+                        ,maxmin: true //允许全屏最小化
+                        ,anim: 1 //0-6的动画形式，-1不开启
+                        ,content:content
+                    });
+                }
+            });
         },
         api: {
             bindevent: function () {

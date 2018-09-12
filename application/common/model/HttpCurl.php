@@ -166,7 +166,7 @@ class HttpCurl {
         $Merkey = $HttpCurl->MD5($config['MerKey']);
         $SignSource = $HttpCurl->MD5($mobile.$Merkey.$data['MerId'].$data['Score'].'@!@#@#DDSD323dsds');
         $data['SignSource'] = $SignSource;
-        $url = 'http://120.55.161.115:2222/ydjfsh/tmall';
+        $url = 'http://120.55.161.115:2222/ydjfsh/tmall_jk';
         $result = $HttpCurl->callInterfaceCommon($url,$data,'POST','',FALSE);
         return $result;
 

@@ -297,6 +297,7 @@ class Score extends Frontend
                 'return_amount'=>$return_amount,
                 'area'=>$area,
             ]);
+            $product['order_id'] = $result->Data;
             $this->success('上报成功','',$product);
         }else{
             $this->error($result->ErrorMsg);
