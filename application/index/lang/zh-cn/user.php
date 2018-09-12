@@ -37,7 +37,7 @@ return [
     'Reset password by email'               => '通过邮箱',
     'Reset password by mobile'              => '通过手机重置',
     'Reset password successful'             => '修改密码成功',
-    'Account is locked'                     => '账户已经被锁定',
+    'Account is locked'                     => '账户已经被锁定,请联系管理员开通',
     'Password is incorrect'                 => '密码不正确',
     'Account is incorrect'                  => '账户不正确',
     'Account not exist'                     => '账户不存在',

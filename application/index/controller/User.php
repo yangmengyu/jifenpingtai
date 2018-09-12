@@ -5,6 +5,7 @@ namespace app\index\controller;
 use app\admin\model\Withdraw;
 use app\common\controller\Frontend;
 use app\common\library\Auth;
+use app\common\library\Sms;
 use app\common\model\BalanceLog;
 use app\common\model\ScoreLog;
 use fast\Random;
@@ -88,7 +89,7 @@ class User extends Frontend
                 'nickname'  => 'require',
                 'password'  => 'require|length:6,30',
                 'mobile'    => 'regex:/^1\d{10}$/',
-                'captcha'   => 'require|captcha',
+                'captcha'   => 'require',
                 '__token__' => 'token',
             ];
 
@@ -99,7 +100,6 @@ class User extends Frontend
                 'password.require' => 'Password can not be empty',
                 'password.length'  => 'Password must be 6 to 30 characters',
                 'captcha.require'  => 'Captcha can not be empty',
-                'captcha.captcha'  => 'Captcha is incorrect',
                 'mobile'           => 'Mobile is incorrect',
             ];
             $data = [
@@ -107,13 +107,18 @@ class User extends Frontend
                 'nickname'  => $nickname,
                 'password'  => $password,
                 'mobile'    => $mobile,
-                'captcha'   => $captcha,
+                'captcha'    => $captcha,
                 '__token__' => $token,
             ];
             $validate = new Validate($rule, $msg);
             $result = $validate->check($data);
             if (!$result) {
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
+            }
+            $smsresult = Sms::check($mobile, $captcha, 'register');
+            if (!$smsresult)
+            {
+                $this->error(__('Captcha is incorrect'));
             }
             $params['status'] = 'locked';
             $params['nickname'] = $nickname;
@@ -124,6 +129,7 @@ class User extends Frontend
                     $uc = new \addons\ucenter\library\client\Client();
                     $synchtml = $uc->uc_user_synregister($this->auth->id, $password);
                 }
+                Sms::flush($mobile, 'register');
                 $this->success(__('Sign up successful') . $synchtml, $url ? $url : url('user/index'));
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
