@@ -9,7 +9,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'LTAI1eXXAwBWoThX',
+    'value' => 'key',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -24,7 +24,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => 'mKw8XCpaXtDcv3wJSsr1tX3OU3xF3w',
+    'value' => 'secret',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
@@ -39,7 +39,7 @@ return array (
     'content' => 
     array (
     ),
-    'value' => '雨点购',
+    'value' => '签名',
     'rule' => 'required',
     'msg' => '',
     'tip' => '',
