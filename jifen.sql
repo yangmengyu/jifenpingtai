@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-12 17:00:30
+Date: 2018-09-12 17:11:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,7 +62,7 @@ CREATE TABLE `fa_admin_log` (
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=302 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Records of fa_admin_log
@@ -367,6 +367,7 @@ INSERT INTO `fa_admin_log` VALUES ('297', '1', 'admin', '/admin/addon/install', 
 INSERT INTO `fa_admin_log` VALUES ('298', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536741897');
 INSERT INTO `fa_admin_log` VALUES ('299', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"your key\",\"secret\":\"your secret\",\"sign\":\"your sign\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536741939');
 INSERT INTO `fa_admin_log` VALUES ('300', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"LTAI1eXXAwBWoThX\",\"secret\":\"mKw8XCpaXtDcv3wJSsr1tX3OU3xF3w\",\"sign\":\"\\u96e8\\u70b9\\u8d2d\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536741951');
+INSERT INTO `fa_admin_log` VALUES ('301', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"key\",\"secret\":\"secret\",\"sign\":\"\\u7b7e\\u540d\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536743477');
 
 -- ----------------------------
 -- Table structure for fa_area
