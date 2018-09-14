@@ -5,7 +5,8 @@
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='profile'?'active':''}"> <a href="{:url('user/profile')}"><i class="fa fa-user-o fa-fw"></i> {:__('Profile')}</a> </li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='changepwd'?'active':''}"> <a href="{:url('user/changepwd')}"><i class="fa fa-key fa-fw"></i> {:__('Change password')}</a> </li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='myuser'?'active':''}"> <a href="{:url('user/myuser')}"><i class="fa fa-users fa-fw"></i> 我的用户</a> </li>
-        <li class="col-xs-6 col-md-12 col-md-12col-lg-12 list-group-item {:$config['actionname']=='withdraw'?'active':''}"> <a href="{:url('user/withdraw')}"><i class="fa fa-list fa-fw"></i> 提现列表</a> </li>
+        <li class="col-xs-6 col-md-12 col-md-12col-lg-12 list-group-item {:$config['actionname']=='withdraw'?'active':''}"> <a href="{:url('user/withdraw')}"><i class="fa fa-list fa-exchange fa-fw"></i> 结算提现</a> </li>
+        <li class="col-xs-6 col-md-12 col-md-12col-lg-12 list-group-item {:$config['actionname']=='balancelog'||$config['actionname']=='blockbalancelog'||$config['actionname']=='scorelog'?'active':''}"> <a href="{:url('user/balancelog')}"><i class="fa fa-list fa-fw"></i> 财务管理</a> </li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='sign'?'active':''}"> <a href="{:url('user/sign')}"><i class="fa fa-map-signs fa-fw"></i> 签到</a> </li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='logout'?'active':''}"> <a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i> {:__('Sign out')}</a> </li>
     </ul>

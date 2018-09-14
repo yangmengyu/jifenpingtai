@@ -333,7 +333,7 @@ class User extends Frontend
     }
     /**
      * 用户提现列表
-    */
+     */
     public function withdraw(){
         $this->model = new \app\admin\model\Withdraw;
         $this->view->assign("statusList", $this->model->getStatusList());

@@ -56,7 +56,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template','table'], function
                 var score = $(this).data('score');
                 var content = '<div class="panel-body"><p class="text-center"><img width="200" src="'+qrimage+'" alt=""></p>';
                     if(sms == ''){
-                        content += '注：扫码后进入联通积分商城，点击‘立刻兑换’（第一次登录需输入手机号和登录密码或使用随机密码登录），获取到验证码兑换';
+                        content += '注：扫码后进入联通积分商城，点击‘立刻兑换’（第一次登录需输入手机号和服务密码登录），获取到验证码兑换';
                     }else{
                         content += '注：扫码后点击发送，兑换短信发出后会收到一条确认短信，根据对应的短信输入对应的数据回复确认，即完成兑换,若发送失败请手动发短信<span class="text-danger">' +
                             sms +
