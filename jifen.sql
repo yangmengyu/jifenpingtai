@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-09-12 17:11:33
+Date: 2018-09-14 17:18:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,7 +40,7 @@ CREATE TABLE `fa_admin` (
 -- ----------------------------
 -- Records of fa_admin
 -- ----------------------------
-INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536723452', '1492186163', '1536723452', 'f978116e-7910-4a24-bce5-68b1207f828d', 'normal');
+INSERT INTO `fa_admin` VALUES ('1', 'admin', 'Admin', '7fe8afb1310bbde72158a9f568ae25f3', 'a9f3c7', '/assets/img/avatar.png', 'admin@admin.com', '0', '1536915120', '1492186163', '1536915120', '6129b725-e9fa-4a99-8d81-c031519559c1', 'normal');
 INSERT INTO `fa_admin` VALUES ('2', 'admin2', 'admin2', '9a28ce07ce875fbd14172a9ca5357d3c', '2dHDmj', '/assets/img/avatar.png', 'admin2@fastadmin.net', '0', '1505450906', '1492186163', '1505450906', 'df45fdd5-26f4-45ca-83b3-47e4491a315a', 'normal');
 INSERT INTO `fa_admin` VALUES ('3', 'admin3', 'admin3', '1c11f945dfcd808a130a8c2a8753fe62', 'WOKJEn', '/assets/img/avatar.png', 'admin3@fastadmin.net', '0', '1501980868', '1492186201', '1501982377', '', 'normal');
 INSERT INTO `fa_admin` VALUES ('4', 'admin22', 'admin22', '1c1a0aa0c3c56a8c1a908aab94519648', 'Aybcn5', '/assets/img/avatar.png', 'admin22@fastadmin.net', '0', '0', '1492186240', '1492186240', '', 'normal');
@@ -62,7 +62,7 @@ CREATE TABLE `fa_admin_log` (
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=302 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=333 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Records of fa_admin_log
@@ -368,6 +368,37 @@ INSERT INTO `fa_admin_log` VALUES ('298', '1', 'admin', '/admin/index/index', ''
 INSERT INTO `fa_admin_log` VALUES ('299', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"your key\",\"secret\":\"your secret\",\"sign\":\"your sign\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536741939');
 INSERT INTO `fa_admin_log` VALUES ('300', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"LTAI1eXXAwBWoThX\",\"secret\":\"mKw8XCpaXtDcv3wJSsr1tX3OU3xF3w\",\"sign\":\"\\u96e8\\u70b9\\u8d2d\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536741951');
 INSERT INTO `fa_admin_log` VALUES ('301', '1', 'admin', '/admin/addon/config?name=alisms&dialog=1', '插件管理 配置', '{\"name\":\"alisms\",\"dialog\":\"1\",\"row\":{\"key\":\"key\",\"secret\":\"secret\",\"sign\":\"\\u7b7e\\u540d\",\"template\":\"{\\\"register\\\":\\\"SMS_144370286\\\",\\\"resetpwd\\\":\\\"SMS_144375254\\\",\\\"changepwd\\\":\\\"SMS_144375254\\\",\\\"profile\\\":\\\"SMS_144375248\\\",\\\"changemobile\\\":\\\"SMS_144375248\\\"}\"}}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36', '1536743477');
+INSERT INTO `fa_admin_log` VALUES ('302', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"05ca8de18382224678928c661e260508\",\"username\":\"admin\",\"captcha\":\"gbwf\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828608');
+INSERT INTO `fa_admin_log` VALUES ('303', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828613');
+INSERT INTO `fa_admin_log` VALUES ('304', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_leesign\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828618');
+INSERT INTO `fa_admin_log` VALUES ('305', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828619');
+INSERT INTO `fa_admin_log` VALUES ('306', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828619');
+INSERT INTO `fa_admin_log` VALUES ('307', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828620');
+INSERT INTO `fa_admin_log` VALUES ('308', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828620');
+INSERT INTO `fa_admin_log` VALUES ('309', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_user\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828624');
+INSERT INTO `fa_admin_log` VALUES ('310', '1', 'admin', '/admin/command/get_field_list', '', '{\"table\":\"fa_user\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828625');
+INSERT INTO `fa_admin_log` VALUES ('311', '1', 'admin', '/admin/command/command/action/command', '', '{\"commandtype\":\"crud\",\"isrelation\":\"1\",\"local\":\"1\",\"delete\":\"0\",\"force\":\"1\",\"menu\":\"0\",\"table\":\"fa_leesign\",\"controller\":\"\",\"model\":\"\",\"relation\":{\"2\":{\"relation\":\"fa_user\",\"relationmode\":\"belongsto\",\"relationforeignkey\":\"uid\",\"relationprimarykey\":\"id\",\"relationfields\":[\"username\",\"nickname\"]}},\"setcheckboxsuffix\":\"\",\"enumradiosuffix\":\"\",\"imagefield\":\"\",\"filefield\":\"\",\"intdatesuffix\":\"\",\"switchsuffix\":\"\",\"citysuffix\":\"\",\"selectpagesuffix\":\"\",\"selectpagessuffix\":\"\",\"ignorefields\":\"\",\"sortfield\":\"\",\"editorsuffix\":\"\",\"headingfilterfield\":\"\",\"action\":\"command\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828632');
+INSERT INTO `fa_admin_log` VALUES ('312', '1', 'admin', '/admin/command/command/action/execute', '', '{\"commandtype\":\"crud\",\"isrelation\":\"1\",\"local\":\"1\",\"delete\":\"0\",\"force\":\"1\",\"menu\":\"0\",\"table\":\"fa_leesign\",\"controller\":\"\",\"model\":\"\",\"relation\":{\"2\":{\"relation\":\"fa_user\",\"relationmode\":\"belongsto\",\"relationforeignkey\":\"uid\",\"relationprimarykey\":\"id\",\"relationfields\":[\"username\",\"nickname\"]}},\"setcheckboxsuffix\":\"\",\"enumradiosuffix\":\"\",\"imagefield\":\"\",\"filefield\":\"\",\"intdatesuffix\":\"\",\"switchsuffix\":\"\",\"citysuffix\":\"\",\"selectpagesuffix\":\"\",\"selectpagessuffix\":\"\",\"ignorefields\":\"\",\"sortfield\":\"\",\"editorsuffix\":\"\",\"headingfilterfield\":\"\",\"action\":\"execute\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828633');
+INSERT INTO `fa_admin_log` VALUES ('313', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828634');
+INSERT INTO `fa_admin_log` VALUES ('314', '1', 'admin', '/admin/leesign/del/ids/7,6,5,4,3', '签到管理 删除', '{\"action\":\"del\",\"ids\":\"7,6,5,4,3\",\"params\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536828719');
+INSERT INTO `fa_admin_log` VALUES ('315', '1', 'admin', '/admin/user/user/edit/ids/8?dialog=1', '会员管理 会员管理 编辑', '{\"dialog\":\"1\",\"row\":{\"group_id\":\"1\",\"username\":\"yangmengyu\",\"nickname\":\"\\u6768\\u68a6\\u96e8\",\"password\":\"\",\"mobile\":\"17603852737\",\"discount\":\"0.8\",\"successions\":\"1\",\"maxsuccessions\":\"1\",\"prevtime\":\"2018-09-12 16:57:11\",\"logintime\":\"2018-09-12 16:57:11\",\"loginip\":\"127.0.0.1\",\"loginfailure\":\"0\",\"joinip\":\"127.0.0.1\",\"jointime\":\"2018-09-12 16:57:11\",\"status\":\"locked\"},\"ids\":\"8\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536830901');
+INSERT INTO `fa_admin_log` VALUES ('316', '1', 'admin', '/admin/user/user/edit/ids/8?dialog=1', '会员管理 会员管理 编辑', '{\"dialog\":\"1\",\"row\":{\"group_id\":\"1\",\"username\":\"yangmengyu\",\"nickname\":\"\\u6768\\u68a6\\u96e8\",\"password\":\"\",\"mobile\":\"17603852737\",\"discount\":\"0.8\",\"successions\":\"1\",\"maxsuccessions\":\"1\",\"prevtime\":\"2018-09-12 16:57:11\",\"logintime\":\"2018-09-12 16:57:11\",\"loginip\":\"127.0.0.1\",\"loginfailure\":\"0\",\"joinip\":\"127.0.0.1\",\"jointime\":\"2018-09-12 16:57:11\",\"status\":\"normal\"},\"ids\":\"8\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536830906');
+INSERT INTO `fa_admin_log` VALUES ('317', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"4a326e001721629eb5f91b524181c30d\",\"username\":\"admin\",\"captcha\":\"gzpv\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536893955');
+INSERT INTO `fa_admin_log` VALUES ('318', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"5b1e7cf32bb86468dca31d563d8f45fb\",\"username\":\"admin\",\"captcha\":\"ujse\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908079');
+INSERT INTO `fa_admin_log` VALUES ('319', '1', 'admin', '/admin/addon/install', '插件管理 安装', '{\"name\":\"geet\",\"force\":\"0\",\"uid\":\"3875\",\"token\":\"5c14d0b3-747b-4615-a4bf-53b841dd5412\",\"version\":\"1.0.1\",\"faversion\":\"1.0.0.20180806_beta\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908093');
+INSERT INTO `fa_admin_log` VALUES ('320', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908094');
+INSERT INTO `fa_admin_log` VALUES ('321', '1', 'admin', '/admin/index/login?url=%2Fadmin', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"d00f02dc3488733ff63f1d9b8b199ed3\",\"username\":\"admin\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908946');
+INSERT INTO `fa_admin_log` VALUES ('322', '1', 'admin', '/admin/addon/state', '插件管理 禁用启用', '{\"name\":\"geet\",\"action\":\"disable\",\"force\":\"0\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908968');
+INSERT INTO `fa_admin_log` VALUES ('323', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908969');
+INSERT INTO `fa_admin_log` VALUES ('324', '1', 'admin', '/admin/addon/uninstall', '插件管理 卸载', '{\"name\":\"geet\",\"force\":\"0\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908978');
+INSERT INTO `fa_admin_log` VALUES ('325', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908979');
+INSERT INTO `fa_admin_log` VALUES ('326', '1', 'admin', '/admin/addon/install', '插件管理 安装', '{\"name\":\"geet\",\"force\":\"0\",\"uid\":\"0\",\"token\":\"\",\"version\":\"1.0.1\",\"faversion\":\"1.0.0.20180806_beta\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908992');
+INSERT INTO `fa_admin_log` VALUES ('327', '1', 'admin', '/admin/index/index', '', '{\"action\":\"refreshmenu\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536908993');
+INSERT INTO `fa_admin_log` VALUES ('328', '1', 'admin', '/admin/index/login?url=%2Fadmin&__token__=ba5128f7d5dc1235adc458abca00919e&username=admin&password=123456&captcha=ok&geetest_challenge=54229abfcfa5649e7003b83dd475529444&geetest_validate=2b4b3236fe625e17c2814931ac3c5f76&geetest_seccode=2b4b3236fe625e17c2814931ac3c5f76%7Cjordan&geeturl=%2Fadmin%2Findex%2Flogin%3Furl%3D%252Fadmin&geetmodule=admin&geetmoduleurl=%2Fadmin&addon=geet&controller=index&action=check', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"ba5128f7d5dc1235adc458abca00919e\",\"username\":\"admin\",\"captcha\":\"ok\",\"geetest_challenge\":\"54229abfcfa5649e7003b83dd475529444\",\"geetest_validate\":\"2b4b3236fe625e17c2814931ac3c5f76\",\"geetest_seccode\":\"2b4b3236fe625e17c2814931ac3c5f76|jordan\",\"geeturl\":\"\\/admin\\/index\\/login?url=%2Fadmin\",\"geetmodule\":\"admin\",\"geetmoduleurl\":\"\\/admin\",\"addon\":\"geet\",\"controller\":\"index\",\"action\":\"check\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536909585');
+INSERT INTO `fa_admin_log` VALUES ('329', '1', 'admin', '/admin/index/login?url=%2Fadmin&__token__=ba5128f7d5dc1235adc458abca00919e&username=admin&password=123456&captcha=ok&geetest_challenge=54229abfcfa5649e7003b83dd475529444&geetest_validate=2b4b3236fe625e17c2814931ac3c5f76&geetest_seccode=2b4b3236fe625e17c2814931ac3c5f76%7Cjordan&geeturl=%2Fadmin%2Findex%2Flogin%3Furl%3D%252Fadmin&geetmodule=admin&geetmoduleurl=%2Fadmin&addon=geet&controller=index&action=check', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"ba5128f7d5dc1235adc458abca00919e\",\"username\":\"admin\",\"captcha\":\"ok\",\"geetest_challenge\":\"54229abfcfa5649e7003b83dd475529444\",\"geetest_validate\":\"2b4b3236fe625e17c2814931ac3c5f76\",\"geetest_seccode\":\"2b4b3236fe625e17c2814931ac3c5f76|jordan\",\"geeturl\":\"\\/admin\\/index\\/login?url=%2Fadmin\",\"geetmodule\":\"admin\",\"geetmoduleurl\":\"\\/admin\",\"addon\":\"geet\",\"controller\":\"index\",\"action\":\"check\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536909585');
+INSERT INTO `fa_admin_log` VALUES ('330', '1', 'admin', '/admin/user/user/del/ids/8', '会员管理 会员管理 删除', '{\"action\":\"del\",\"ids\":\"8\",\"params\":\"\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536913058');
+INSERT INTO `fa_admin_log` VALUES ('331', '1', 'admin', '/admin/index/login?url=%2Fadmin&__token__=87be43647a134d77e8e61032840a2951&username=admin&password=123456&captcha=ok&geetest_challenge=17e62166fc8586dfa4d1bc0e1742c08bd0&geetest_validate=5e079ab4a1b706a32a0b0b6ee71abfd2&geetest_seccode=5e079ab4a1b706a32a0b0b6ee71abfd2%7Cjordan&geeturl=%2Fadmin%2Findex%2Flogin%3Furl%3D%252Fadmin&geetmodule=admin&geetmoduleurl=%2Fadmin&addon=geet&controller=index&action=check', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"87be43647a134d77e8e61032840a2951\",\"username\":\"admin\",\"captcha\":\"ok\",\"geetest_challenge\":\"17e62166fc8586dfa4d1bc0e1742c08bd0\",\"geetest_validate\":\"5e079ab4a1b706a32a0b0b6ee71abfd2\",\"geetest_seccode\":\"5e079ab4a1b706a32a0b0b6ee71abfd2|jordan\",\"geeturl\":\"\\/admin\\/index\\/login?url=%2Fadmin\",\"geetmodule\":\"admin\",\"geetmoduleurl\":\"\\/admin\",\"addon\":\"geet\",\"controller\":\"index\",\"action\":\"check\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536915120');
+INSERT INTO `fa_admin_log` VALUES ('332', '1', 'admin', '/admin/index/login?url=%2Fadmin&__token__=87be43647a134d77e8e61032840a2951&username=admin&password=123456&captcha=ok&geetest_challenge=17e62166fc8586dfa4d1bc0e1742c08bd0&geetest_validate=5e079ab4a1b706a32a0b0b6ee71abfd2&geetest_seccode=5e079ab4a1b706a32a0b0b6ee71abfd2%7Cjordan&geeturl=%2Fadmin%2Findex%2Flogin%3Furl%3D%252Fadmin&geetmodule=admin&geetmoduleurl=%2Fadmin&addon=geet&controller=index&action=check', '登录', '{\"url\":\"\\/admin\",\"__token__\":\"87be43647a134d77e8e61032840a2951\",\"username\":\"admin\",\"captcha\":\"ok\",\"geetest_challenge\":\"17e62166fc8586dfa4d1bc0e1742c08bd0\",\"geetest_validate\":\"5e079ab4a1b706a32a0b0b6ee71abfd2\",\"geetest_seccode\":\"5e079ab4a1b706a32a0b0b6ee71abfd2|jordan\",\"geeturl\":\"\\/admin\\/index\\/login?url=%2Fadmin\",\"geetmodule\":\"admin\",\"geetmoduleurl\":\"\\/admin\",\"addon\":\"geet\",\"controller\":\"index\",\"action\":\"check\"}', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36', '1536915120');
 
 -- ----------------------------
 -- Table structure for fa_area
@@ -4486,7 +4517,7 @@ CREATE TABLE `fa_command` (
   `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` enum('successed','failured') NOT NULL DEFAULT 'failured' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='在线命令表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='在线命令表';
 
 -- ----------------------------
 -- Records of fa_command
@@ -4512,6 +4543,7 @@ INSERT INTO `fa_command` VALUES ('18', 'min', '[\"--module=all\",\"--resource=al
 INSERT INTO `fa_command` VALUES ('19', 'min', '[\"--module=all\",\"--resource=all\"]', 'php think min --module=all --resource=all', 'Compress require-frontend.js\nCompress frontend.css\nCompress require-backend.js\nCompress backend.css\nBuild Successed!', '1536570000', '1536570000', '1536570001', 'successed');
 INSERT INTO `fa_command` VALUES ('20', 'min', '[\"--module=all\",\"--resource=all\"]', 'php think min --module=all --resource=all', 'Compress require-frontend.js\nCompress frontend.css\nCompress require-backend.js\nCompress backend.css\nBuild Successed!', '1536630256', '1536630256', '1536630259', 'successed');
 INSERT INTO `fa_command` VALUES ('21', 'min', '[\"--module=all\",\"--resource=all\"]', 'php think min --module=all --resource=all', 'Compress require-frontend.js\nCompress frontend.css\nCompress require-backend.js\nCompress backend.css\nBuild Successed!', '1536630297', '1536630297', '1536630301', 'successed');
+INSERT INTO `fa_command` VALUES ('22', 'crud', '[\"--force=1\",\"--table=fa_leesign\",\"--relation=fa_user\",\"--relationmode=belongsto\",\"--relationforeignkey=uid\",\"--relationprimarykey=id\",\"--relationfields=username,nickname\"]', 'php think crud --force=1 --table=fa_leesign --relation=fa_user --relationmode=belongsto --relationforeignkey=uid --relationprimarykey=id --relationfields=username,nickname', 'Build Successed', '1536828633', '1536828633', '1536828633', 'successed');
 
 -- ----------------------------
 -- Table structure for fa_config
@@ -4590,16 +4622,11 @@ CREATE TABLE `fa_leesign` (
   `sign_extra_reward` int(11) DEFAULT NULL COMMENT '连签额外奖励',
   `max_sign` int(11) DEFAULT NULL COMMENT '连签数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户签到表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户签到表';
 
 -- ----------------------------
 -- Records of fa_leesign
 -- ----------------------------
-INSERT INTO `fa_leesign` VALUES ('3', '4', '127.0.0.1', '2018-09-04 17:18:08', '0', '1', '1');
-INSERT INTO `fa_leesign` VALUES ('4', '4', '127.0.0.1', '2018-09-06 10:26:54', '0', '1', '1');
-INSERT INTO `fa_leesign` VALUES ('5', '4', '127.0.0.1', '2018-09-08 09:05:11', '0', '1', '1');
-INSERT INTO `fa_leesign` VALUES ('6', '4', '127.0.0.1', '2018-09-09 09:20:48', '0', '2', '2');
-INSERT INTO `fa_leesign` VALUES ('7', '4', '127.0.0.1', '2018-09-10 09:14:20', '0', '3', '3');
 
 -- ----------------------------
 -- Table structure for fa_mobile_area
@@ -15844,7 +15871,7 @@ CREATE TABLE `fa_sms` (
   `ip` varchar(30) NOT NULL DEFAULT '' COMMENT 'IP',
   `createtime` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='短信验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='短信验证码表';
 
 -- ----------------------------
 -- Records of fa_sms
@@ -15943,7 +15970,6 @@ CREATE TABLE `fa_user` (
 -- ----------------------------
 -- Records of fa_user
 -- ----------------------------
-INSERT INTO `fa_user` VALUES ('8', '0', '0', 'yangmengyu', '杨梦雨', '63a7e2c69221564985dacf059b5b0b1c', 'WgrYBh', '', '17603852737', '', '1', '0', null, '', '0', '1', '1', '1536742631', '1536742631', '127.0.0.1', '0', '127.0.0.1', '1536742631', '1536742631', '1536742631', '', 'locked', '', '0.00', '0.00', '0.00', '0.00', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for fa_user_balance_log
@@ -16135,6 +16161,7 @@ CREATE TABLE `fa_user_token` (
 -- ----------------------------
 -- Records of fa_user_token
 -- ----------------------------
+INSERT INTO `fa_user_token` VALUES ('1258a328a8922a5da5ba8dd5493e1497f3655380', '8', '1536830908', '1539422908');
 INSERT INTO `fa_user_token` VALUES ('2f762d620d82ad76ab64274bd317c2467abd78a8', '7', '1536558454', '1539150454');
 INSERT INTO `fa_user_token` VALUES ('3dae2e0f5fc34a8674a8372c84957e9310c67cf5', '6', '1536221561', '1538813561');
 INSERT INTO `fa_user_token` VALUES ('792fb74de70db4b740bbbb2c5b90d12d196a08a4', '7', '1536558364', '1539150364');
