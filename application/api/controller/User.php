@@ -178,9 +178,9 @@ class User extends Api
         $user->bio = $bio;
         $user->avatar = $avatar;
 
-        $user->bankusername = $avatar;
-        $user->bankname = $avatar;
-        $user->bankcode = $avatar;
+        $user->bankusername = $bankusername;
+        $user->bankname = $bankname;
+        $user->bankcode = $bankcode;
         $user->alipay = $alipay;
 
         $user->save();

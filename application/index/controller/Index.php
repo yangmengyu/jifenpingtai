@@ -21,6 +21,7 @@ class Index extends Frontend
 
     public function index()
     {
+
         $user_id = $this->auth->id;
         $child_userid = \app\common\model\User::getChildsId('',$user_id);
         $data['child_count'] = count($child_userid);

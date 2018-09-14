@@ -8,11 +8,19 @@
             <div class="panel panel-default panel-intro">
                 <div class="panel-body">
                     <h2 class="page-header">
-                        账户余额日志
+                        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                            <li class="active"><a href="{:url('user/balancelog')}">余额日志</a></li>
+                            <li><a href="{:url('user/blockbalancelog')}">待结算日志</a></li>
+                            <li><a href="{:url('user/scorelog')}">积分日志</a></li>
+                        </ul>
+
                         <small class="text-danger">账户余额：{$user.balance} </small>
                         <a href="javascript:;"  class="btn btn-success btn-transfer pull-right tixian" ><i class="fa fa-exchange"></i> 立即提现</a>
                     </h2>
                     <div class="bs-component">
+                        {if condition="count($list)==0"}
+                        <blockquote>暂无数据</blockquote>
+                        {/if}
                         {volist name="list" id="v"}
                         <blockquote>
                             <p>{$v.memo}</p>

@@ -7,6 +7,7 @@ use app\common\controller\Frontend;
 use app\common\library\Auth;
 use app\common\library\Sms;
 use app\common\model\BalanceLog;
+use app\common\model\BlockedBalanceLog;
 use app\common\model\ScoreLog;
 use fast\Random;
 use think\Config;
@@ -553,6 +554,15 @@ class User extends Frontend
         $list = BalanceLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
         $this->assign('list',$list);
         $this->view->assign('title', '余额日志');
+        return $this->view->fetch();
+    }
+    /*
+     * 待结算列表
+     * */
+    public function blockbalancelog(){
+        $list = BlockedBalanceLog::where('user_id',$this->auth->id)->order('createtime','desc')->paginate(10);
+        $this->assign('list',$list);
+        $this->view->assign('title', '待结算日志');
         return $this->view->fetch();
     }
 }

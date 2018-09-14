@@ -49,7 +49,8 @@ class Score extends Api
                     $order->memo = $result->memo;
                 }
                 $order->save();
-                $data[] = '订单号：'.$order->order.',状态修改为'.$order->status.'。备注：'.$order->memo;
+                $data[]['message'] = '订单号：'.$order->order.',状态修改为'.$order->status.'。备注：'.$order->memo;
+                $data[]['result'] = $result;
                 $successnum++;
             }
         });

@@ -176,7 +176,7 @@ class HttpCurl {
    * */
     public function OrderStatus($orderid){
         $HttpCurl = new HttpCurl();
-        $config = Config::get('site');
+        $config = \think\Config::get('site');
         $data['merid'] = $config['MerId'];
         $data['orderid'] = $orderid;
         $data['timestamp'] = $HttpCurl->Timestamp();

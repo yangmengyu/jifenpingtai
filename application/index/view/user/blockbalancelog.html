@@ -10,11 +10,10 @@
                     <h2 class="page-header">
                         <ul class="nav nav-tabs" style="margin-bottom: 15px;">
                             <li ><a href="{:url('user/balancelog')}">余额日志</a></li>
-                            <li><a href="{:url('user/blockbalancelog')}">待结算日志</a></li>
-                            <li class="active"><a href="{:url('user/scorelog')}">积分日志</a></li>
+                            <li class="active"><a href="{:url('user/blockbalancelog')}">待结算日志</a></li>
+                            <li><a href="{:url('user/scorelog')}">积分日志</a></li>
                         </ul>
-                        <small class="text-danger">总积分：{$user.score} </small>
-                        <button type="button" class="btn btn-success btn-transfer pull-right" data-container="body" data-toggle="popover" data-placement="top" data-content="暂未开放，敬请期待" data-original-title="" title=""><i class="fa fa-exchange"></i> 积分兑换</button>
+                        <small class="text-danger">待结算余额：{$user.blocked_balances} </small>
                     </h2>
                     <div class="bs-component">
                         {if condition="count($list)==0"}
@@ -23,7 +22,12 @@
                         {volist name="list" id="v"}
                         <blockquote>
                             <p>{$v.memo}</p>
-                            <p class="text-success">积分：+{$v.score}</p>
+
+                            {if condition="($v.type == '+') "}
+                            <p class="text-success">余额：+{$v.balance}</p>
+                            {else /}
+                            <p class="text-danger">余额：-{$v.balance}</p>
+                            {/if}
                             <small>操作时间：{$v.createtime|date="Y-m-d H:i:s",###} </small>
                         </blockquote>
                         {/volist}

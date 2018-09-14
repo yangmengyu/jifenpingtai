@@ -3,10 +3,12 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use app\common\library\Sms;
 use think\Config;
 use app\common\model\User;
 use app\admin\model\Aop\AlipayFundTransToaccountTransferRequest;
 use app\admin\model\Aop\AopClient;
+use think\Hook;
 
 /**
  * 提现列管理
@@ -88,6 +90,7 @@ class Withdraw extends Backend
         $usermodel = new User();
         $user = $usermodel->get($row->user_id);
         $config = Config::get('site');
+
         if($this->request->isPost()){
             $data = $this->request->post("row/a");
             $amount = $row['amount'];
@@ -108,14 +111,15 @@ class Withdraw extends Backend
                 $request = new AlipayFundTransToaccountTransferRequest();
                 $payee_account = $user['alipay'];
                 $order_id = 'alipay-'.$user['id'].'-'.time();
-                /*$request->setBizContent("{" .
+                $remark = '您在【'.$config['name'].'】平台的提现申请已通过,祝您生活愉快';
+                $request->setBizContent("{" .
                     "\"out_biz_no\":\"$order_id\"," .
                     "\"payee_type\":\"ALIPAY_LOGONID\"," .
                     "\"payee_account\":\"$payee_account\"," .
-                    "\"amount\":\"$amount\"" .
+                    "\"amount\":\"$amount\"," .
+                    "\"remark\":\"$remark\"" .
                     "}");
                 $result = $aop->execute ( $request);
-
                 $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
                 $resultCode = $result->$responseNode->code;
                 if(!empty($resultCode)&&$resultCode == 10000){
@@ -125,17 +129,16 @@ class Withdraw extends Backend
                         'status'=>1,
                         'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向支付宝为：'.$payee_account.'转账'.$amount.'元。（订单号：'.$result->$responseNode->out_biz_no.'）'
                     ]);
+                    $sms =[
+                        'username'=>$user->nickname,
+                        'createtime'=>date('Y-m-d H:i:s',$row->createtime),
+                        'price'=>$amount
+                    ];
+                    Sms::notice($user->mobile,$sms,'withdraw_success');
                     $this->success('转账成功');
                 } else {
                     $this->error($result->$responseNode->sub_msg);
-                }*/
-                $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
-                $user->save($update);
-                $row->save([
-                    'status'=>1,
-                    'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向支付宝为：'.$payee_account.'转账'.$amount.'元。'
-                ]);
-                $this->success('转账成功');
+                }
             }elseif($data['type'] == 'bank'&&$data['status']== 1){
                 $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
                 $user->save($update);
@@ -143,6 +146,12 @@ class Withdraw extends Backend
                     'status'=>1,
                     'remark'=>$data['remark'].'系统在'.date('Y-m-d H:i:s',time()).'向'.$user['bankname'].'：'.$user['bankcode'].'-（'.$user['bankusername'].'）转账'.$amount.'元。'
                 ]);
+                $sms =[
+                    'username'=>$user->nickname,
+                    'createtime'=>date('Y-m-d H:i:s',$row->createtime),
+                    'price'=>$amount
+                ];
+                Sms::notice($user->mobile,$sms,'withdraw_success');
                 $this->success('转账成功');
             }elseif($data['status']== 2){
                 $update['withdrawal_balances'] = $user['withdrawal_balances']-$amount;
@@ -153,6 +162,12 @@ class Withdraw extends Backend
                     'status'=>2,
                     'remark'=>$data['remark']
                 ]);
+                $sms =[
+                    'username'=>$user->nickname,
+                    'createtime'=>date('Y-m-d H:i:s',$row->createtime),
+                    'price'=>$amount
+                ];
+                Sms::notice($user->mobile,$sms,'withdraw_error');
                 $this->success('更新状态成功');
             }else{
                 $this->success('未更新状态');

@@ -51,10 +51,11 @@ class Alisms extends Addons
      */
     public function smsNotice(&$params)
     {
-        $alisms = library\Alisms::instance();
+        $config = get_addon_config('alisms');
+        $alisms = new library\Alisms();
         $result = $alisms->mobile($params['mobile'])
-                ->template($params['template'])
-                ->param($params)
+                ->template($config['template'][$params['event']])
+                ->param($params['data'])
                 ->send();
         return $result;
     }
