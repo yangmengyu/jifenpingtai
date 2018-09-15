@@ -14,7 +14,7 @@ use think\Validate;
 class User extends Api
 {
 
-    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third','blocked_to_use'];
+    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third','blocked_to_use','register_num_email'];
     protected $noNeedRight = '*';
 
     public function _initialize()
@@ -383,5 +383,28 @@ class User extends Api
                 }
             });
         $this->success('转化成功'.$successnum.'条数据',$data);
+    }
+
+    /*
+     * 半小时内注册会员数，并发送邮件提醒
+     * */
+    public function register_num_email(){
+        $startTime = time()-1800;
+        $endTime = time();
+        $where['createtime'] = ['between', [$startTime, $endTime]];
+        $where['status'] = ['<>', 'normal'];
+        $count = \app\common\model\User::where($where)->count();
+        if($count>0){
+            $obj = \app\common\library\Email::instance();
+            $result = $obj
+                ->to('363126523@qq.com')
+                ->subject('有新会员加入')
+                ->message("您有" . $count . '位新会员加入，请尽快开通！')
+                ->send();
+            $this->success($count.'位新会员加入');
+        }else{
+            $this->error('无');
+        }
+
     }
 }
