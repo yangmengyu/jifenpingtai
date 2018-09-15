@@ -131,6 +131,11 @@ class User extends Frontend
                     $synchtml = $uc->uc_user_synregister($this->auth->id, $password);
                 }
                 Sms::flush($mobile, 'register');
+                $obj = \app\common\library\Email::instance();
+                $obj->to('363126523@qq.com')
+                    ->subject('有新会员注册啦')
+                    ->message("新会员：".$nickname.'，手机：'.$mobile)
+                    ->send();
                 $this->success(__('Sign up successful') . $synchtml, $url ? $url : url('user/index'));
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
