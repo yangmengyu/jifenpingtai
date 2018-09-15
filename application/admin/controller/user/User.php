@@ -4,6 +4,7 @@ namespace app\admin\controller\user;
 
 use app\common\controller\Backend;
 use app\common\library\Auth;
+use app\common\library\Sms;
 use think\Validate;
 
 /**
@@ -72,6 +73,32 @@ class User extends Backend
     public function edit($ids = NULL)
     {
         $row = $this->model->get($ids);
+        if($this->request->isPost()){
+            $notice = $this->request->post('notice');
+
+            if(!empty($notice)){
+                $params  = $this->request->post('row/a');
+                switch ($notice)
+                {
+                    case 'status':
+                        if($params['status']=='normal'){
+                            $doaction = '开通会员，欢迎加入雨点购大家庭，';
+                        }else{
+                            $doaction = '暂时冻结，如有疑问请联系管理员，';
+                        }
+                        break;
+                    case 'update':
+                        $doaction = '资料进行了更新，请登录网站查看，';
+                        break;
+                }
+                $sms =[
+                    'username'=>$params['nickname'],
+                    'doaction'=>$doaction
+                ];
+                Sms::notice($params['mobile'],$sms,'notice');
+            }
+
+        }
         if (!$row)
             $this->error(__('No Results were found'));
         $this->view->assign('groupList', build_select('row[group_id]', \app\admin\model\UserGroup::column('id,name'), $row['group_id'], ['class' => 'form-control selectpicker']));
@@ -116,6 +143,11 @@ class User extends Backend
             $params['discount'] = $discount;
             $this->auth = new Auth();
             if ($this->auth->register($username,$password,'',$mobile,$params)){
+                $sms =[
+                    'username'=>$params['nickname'],
+                    'doaction'=>'开通会员，欢迎加入雨点购大家庭，'
+                ];
+                Sms::notice($mobile,$sms,'notice');
                 $this->success('添加成功');
             }else{
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
