@@ -156,6 +156,7 @@ class Menu extends Command
 
     protected function importRule($controller)
     {
+        $controller = str_replace('\\', '/', $controller);
         $controllerArr = explode('/', $controller);
         end($controllerArr);
         $key = key($controllerArr);

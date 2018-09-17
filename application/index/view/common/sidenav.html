@@ -1,4 +1,5 @@
 <div class="sidenav">
+    {:hook('user_sidenav_before')}
     <ul class="list-group">
         <li class="list-group-heading">{:__('User center')}</li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='index'?'active':''}"> <a href="{:url('user/index')}"><i class="fa fa-user-circle fa-fw"></i> {:__('User center')}</a> </li>
@@ -10,4 +11,5 @@
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='sign'?'active':''}"> <a href="{:url('user/sign')}"><i class="fa fa-map-signs fa-fw"></i> 签到</a> </li>
         <li class="col-xs-6 col-md-12 col-lg-12 list-group-item {:$config['actionname']=='logout'?'active':''}"> <a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i> {:__('Sign out')}</a> </li>
     </ul>
+    {:hook('user_sidenav_after')}
 </div>
