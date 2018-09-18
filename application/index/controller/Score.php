@@ -316,10 +316,8 @@ class Score extends Frontend
             $op = $this->request->post('op');
             /*$columns = $this->request->post('columns');*/
             $channel = $this->request->request('channel');
-            /*$columns = 'id,channel,user_id,mobile,amount,return_amount,area,status,memo,createtime,updatetime';*/
+            $columns = 'order.id,order.channel,order.user_id,order.mobile,amount,order.return_amount,order.area,order.status,order.memo,order.createtime,order.updatetime';
             $this->model = new Order();
-            //当前是否为关联查询
-            $this->relationSearch = true;
             $excel = new \PHPExcel();
 
             $excel->getProperties()
@@ -354,7 +352,7 @@ class Score extends Frontend
             $worksheet = $excel->setActiveSheetIndex(0);
             $worksheet->setTitle('标题');
 
-            $whereIds = $ids == 'all' ? '1=1' : ['id' => ['in', explode(',', $ids)]];
+            $whereIds = $ids == 'all' ? '1=1' : ['order.id' => ['in', explode(',', $ids)]];
             $whereto = ['channel'=>$channel];
             $this->request->get(['search' => $search, 'ids' => $ids, 'filter' => $filter, 'op' => $op]);
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
@@ -364,18 +362,58 @@ class Score extends Frontend
             $ChildIds = \app\common\model\User::getChildsId('',$this->auth->id);
             $ChildIds[] = $this->auth->id;
             $this->model
-                ->with(['user'])
                 ->where($where)
+                ->with(['user'])
                 ->where($whereto)
                 ->where($whereIds)
                 ->whereIn('user_id',$ChildIds)
                 /*->field($columns)*/
                 ->chunk(100, function ($items) use (&$list, &$line, &$worksheet) {
-                   dump($items);
-                });
+                    $styleArray = array(
+                        'font' => array(
+                            'bold'  => true,
+                            'color' => array('rgb' => 'FF0000'),
+                            'size'  => 8,
+                            'name'  => 'Verdana'
+                        ));
+                    $list = $items = collection($items)->toArray();
+                    foreach ($items as $index => $item) {
+                        $item['channel'] = $item['channel_text'];
+                        $item['status'] = $item['status_text'];
+                        $item['user_id'] = $item['user']['nickname'];
+                        unset($item['channel_text']);
+                        unset($item['status_text']);
+                        unset($item['user']);
+                        unset($item['order']);
+                        $line++;
+                        $col = 0;
+                        foreach ($item as $field => $value) {
 
+                            switch ($field){
+                                case 'channel':
+                                    $value = __($value);
+                                    break;
+                                case 'status':
+                                    $value = __($value);
+                                    break;
+                                case 'createtime':
+                                    $value = date('Y-m-d H:i:s',$value);
+                                    break;
+                                case 'updatetime':
+                                    $value = date('Y-m-d H:i:s',$value);
+                                    break;
+                            }
+                            $worksheet->setCellValueByColumnAndRow($col, $line, $value);
+                            $worksheet->getStyleByColumnAndRow($col, $line)->getNumberFormat()->setFormatCode(\PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+                            $worksheet->getCellByColumnAndRow($col, $line)->getStyle()->applyFromArray($styleArray);
+                            $col++;
+                        }
+
+                    }
+
+                },'order.id');
             $first = [
-                'ID','兑换通道','用户','手机','金额','返费','地区','状态','说明','创建时间','更新时间'
+              'ID','兑换通道','用户','手机','金额','返费','地区','状态','说明','创建时间','更新时间'
             ];
 
             foreach ($first as $index => $item) {

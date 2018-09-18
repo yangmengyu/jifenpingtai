@@ -22,9 +22,6 @@ require(['geet'], function (Geet) {
     var geetInit = false;
     $("input[name='captcha']").each(function () {
         var obj = $(this);
-        if(obj.data('geet')=='0'){
-            return false;
-        }
         var form = obj.closest('form');
         $("<input type='hidden' name='geeturl' value='" + (form.attr("action") ? form.attr("action") : location.pathname + location.search) + "' />").appendTo(form);
         $("<input type='hidden' name='geetmodule' value='" + Config.modulename + "' />").appendTo(form);
