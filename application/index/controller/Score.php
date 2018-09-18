@@ -321,8 +321,8 @@ class Score extends Frontend
             $excel = new \PHPExcel();
 
             $excel->getProperties()
-                ->setCreator("FastAdmin")
-                ->setLastModifiedBy("FastAdmin")
+                ->setCreator("雨点购")
+                ->setLastModifiedBy("雨点购")
                 ->setTitle("标题")
                 ->setSubject("Subject");
             $excel->getDefaultStyle()->getFont()->setName('Microsoft Yahei');
